@@ -38,8 +38,6 @@
       width: 80%;
       height: auto;
       margin-bottom: 20px;
-
-      /* Fully transparent around 70% outward */
       -webkit-mask-image: radial-gradient(circle at center, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 70%);
       mask-image: radial-gradient(circle at center, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 70%);
       mask-mode: alpha;
@@ -54,15 +52,25 @@
 
     .social-icons {
       margin-bottom: 30px;
+      display: flex;
+      justify-content: center;
+      align-items: center; /* This line vertically centers all children */
+      gap: 30px;
     }
 
     .social-icons a {
       color: white;
       font-size: 1.8rem;
-      margin: 0 15px;
-      transition: opacity 0.3s ease;
       text-decoration: none;
-      outline: none;
+      display: flex;
+      align-items: center; /* Ensures img or <i> is vertically centered */
+    }
+
+    .social-icons a img {
+      width: 28px;
+      height: 28px;
+      display: block;
+      border-radius: 5px;
     }
 
     .social-icons a:hover {
@@ -77,6 +85,15 @@
   </div>
 
   <div class="social-icons">
+    <a href="https://www.hotseat.io" target="_blank" aria-label="Hotseat">
+      <img src="assets/hotseat.ico" alt="Blink" />
+    </a>
+    <a href="https://retune.ucladevx.com" target="_blank" aria-label="Retune">
+      <img src="assets/retune.ico" alt="Retune" />
+    </a>
+    <a href="https://www.instagram.com/uclablink" target="_blank" aria-label="Blink">
+      <img src="assets/blink.ico" alt="Blink" />
+    </a>
     <a href="https://www.instagram.com/ucladevx" target="_blank" aria-label="Instagram">
       <i class="fab fa-instagram"></i>
     </a>
