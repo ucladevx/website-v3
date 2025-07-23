@@ -8,16 +8,15 @@ const slides = [
 ];
 
 export default function ProjectsCarousel() {
-  const [idx, setIdx] = useState(1);           // start on middle
+  const [idx, setIdx] = useState(1);
   const [dragX, setDragX] = useState(0);
   const [dragging, setDragging] = useState(false);
   const vpRef = useRef(null);
   const trackRef = useRef(null);
   const centerRef = useRef(null);
   const startX = useRef(0);
-  const baseX = useRef(0);                     // translate needed to center current card
+  const baseX = useRef(0);
 
-  // recalc translate to perfectly center the "center" card
   const recalcBase = () => {
     if (!vpRef.current || !centerRef.current || !trackRef.current) return;
     const vp = vpRef.current.getBoundingClientRect();
@@ -28,7 +27,6 @@ export default function ProjectsCarousel() {
 
   useLayoutEffect(() => {
     recalcBase();
-    // re-center on resize
     const onResize = () => recalcBase();
     window.addEventListener("resize", onResize);
     return () => window.removeEventListener("resize", onResize);
@@ -48,7 +46,6 @@ export default function ProjectsCarousel() {
     else if (delta < -THRESH) setIdx((i) => (i + 1) % slides.length);
   };
 
-  // order: left, center, right (always render 3)
   const left  = (idx - 1 + slides.length) % slides.length;
   const right = (idx + 1) % slides.length;
 
