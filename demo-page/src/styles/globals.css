@@ -1,0 +1,23 @@
+:root {
+  --bg: #030b1a;
+  --text: #e9eef7;
+  --muted: #9aa7c7;
+  --accent1: #3392eb;
+  --accent2: #1965ac;
+  --radius: 20px;
+  --font-inter: "Inter", system-ui, sans-serif;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-inter);
+}
+
+.page {
+  max-width: 1440px;
+  margin: 0 auto;
+}
