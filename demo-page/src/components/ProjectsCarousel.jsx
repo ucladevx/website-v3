@@ -1,4 +1,4 @@
-import { useRef, useState, useLayoutEffect } from "react";
+import { useRef, useEffect } from "react";
 import "../styles/about.css";
 
 const slides = [
@@ -7,81 +7,129 @@ const slides = [
   { src: "/assets/project-right.png",  title: "Project Name" },
 ];
 
+const DUP = 3; // repeat list to fake infinite scroll
+
 export default function ProjectsCarousel() {
-  const [idx, setIdx] = useState(1);
-  const [dragX, setDragX] = useState(0);
-  const [dragging, setDragging] = useState(false);
   const vpRef = useRef(null);
-  const trackRef = useRef(null);
-  const centerRef = useRef(null);
-  const startX = useRef(0);
-  const baseX = useRef(0);
+  const cardW = useRef(0);
+  const drag = useRef({ down: false, startX: 0, startScroll: 0 });
 
-  const recalcBase = () => {
-    if (!vpRef.current || !centerRef.current || !trackRef.current) return;
-    const vp = vpRef.current.getBoundingClientRect();
-    const card = centerRef.current.getBoundingClientRect();
-    const offset = card.left + card.width / 2 - (vp.left + vp.width / 2);
-    baseX.current = -offset;
-  };
+  const extSlides = Array.from({ length: DUP }, () => slides).flat();
+  const baseLen = slides.length;
 
-  useLayoutEffect(() => {
-    recalcBase();
-    const onResize = () => recalcBase();
-    window.addEventListener("resize", onResize);
-    return () => window.removeEventListener("resize", onResize);
-  }, [idx]);
+  useEffect(() => {
+    const vp = vpRef.current;
+    if (!vp) return;
 
-  const getX = (e) => (e.touches ? e.touches[0].clientX : e.clientX);
+    const firstCard = vp.querySelector(".caro-card-snap");
+    if (!firstCard) return;
 
-  const down = (e) => { startX.current = getX(e); setDragging(true); };
-  const move = (e) => { if (dragging) setDragX(getX(e) - startX.current); };
-  const up   = () => {
-    if (!dragging) return;
-    const delta = dragX;
-    setDragging(false);
-    setDragX(0);
-    const THRESH = 70;
-    if (delta > THRESH)  setIdx((i) => (i - 1 + slides.length) % slides.length);
-    else if (delta < -THRESH) setIdx((i) => (i + 1) % slides.length);
-  };
+    // measure one card + gap
+    const gap = parseFloat(getComputedStyle(document.documentElement).getPropertyValue("--gap")) || 0;
+    cardW.current = firstCard.getBoundingClientRect().width + gap;
 
-  const left  = (idx - 1 + slides.length) % slides.length;
-  const right = (idx + 1) % slides.length;
+    // jump to the middle copy (no animation)
+    vp.style.scrollBehavior = "auto";
+    vp.scrollLeft = baseLen * cardW.current;
+    vp.style.scrollBehavior = "smooth";
+  }, [baseLen]);
+
+  useEffect(() => {
+    const vp = vpRef.current;
+    if (!vp) return;
+
+    const getX = (e) => (e.touches ? e.touches[0].clientX : e.clientX);
+
+    const down = (e) => {
+      drag.current.down = true;
+      drag.current.startX = getX(e);
+      drag.current.startScroll = vp.scrollLeft;
+      vp.style.scrollBehavior = "auto";
+    };
+
+    const move = (e) => {
+      if (!drag.current.down) return;
+      const dx = getX(e) - drag.current.startX;
+      vp.scrollLeft = drag.current.startScroll - dx;
+      e.preventDefault();
+    };
+
+    const up = () => {
+      if (!drag.current.down) return;
+      drag.current.down = false;
+      snap();
+    };
+
+    const snap = () => {
+      const cards = [...vp.querySelectorAll(".caro-card-snap")];
+      const vpCenter = vp.scrollLeft + vp.offsetWidth / 2;
+
+      let bestIdx = 0;
+      let bestDist = Infinity;
+      cards.forEach((el, i) => {
+        const rect = el.getBoundingClientRect();
+        const elCenter = rect.left + rect.width / 2 + vp.scrollLeft - vp.getBoundingClientRect().left;
+        const d = Math.abs(elCenter - vpCenter);
+        if (d < bestDist) {
+          bestDist = d;
+          bestIdx = i;
+        }
+      });
+
+      const target = cards[bestIdx];
+      if (target) {
+        vp.style.scrollBehavior = "smooth";
+        target.scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
+      }
+
+      // wrap if we drifted near the ends
+      if (bestIdx < baseLen) {
+        vp.style.scrollBehavior = "auto";
+        vp.scrollLeft += baseLen * cardW.current;
+        vp.style.scrollBehavior = "smooth";
+      } else if (bestIdx >= baseLen * 2) {
+        vp.style.scrollBehavior = "auto";
+        vp.scrollLeft -= baseLen * cardW.current;
+        vp.style.scrollBehavior = "smooth";
+      }
+    };
+
+    vp.addEventListener("pointerdown", down);
+    vp.addEventListener("pointermove", move, { passive: false });
+    window.addEventListener("pointerup", up);
+
+    vp.addEventListener("touchstart", down, { passive: true });
+    vp.addEventListener("touchmove", move, { passive: false });
+    vp.addEventListener("touchend", up);
+
+    return () => {
+      vp.removeEventListener("pointerdown", down);
+      vp.removeEventListener("pointermove", move);
+      window.removeEventListener("pointerup", up);
+      vp.removeEventListener("touchstart", down);
+      vp.removeEventListener("touchmove", move);
+      vp.removeEventListener("touchend", up);
+    };
+  }, [baseLen]);
 
   return (
-    <div
-      id="projects"
-      className="caro-wrap"
-      onMouseDown={down} onMouseMove={move} onMouseUp={up} onMouseLeave={up}
-      onTouchStart={down} onTouchMove={move} onTouchEnd={up}
-    >
-      <div ref={vpRef} className="caro-viewport">
-        <div
-          ref={trackRef}
-          className={`caro-track${dragging ? " dragging" : ""}`}
-          style={{ transform: `translateX(${baseX.current + dragX}px)` }}
-        >
-          <Card data={slides[left]}  type="side" />
-          <Card data={slides[idx]}   type="center" refEl={centerRef} />
-          <Card data={slides[right]} type="side" />
+    <div id="projects" className="caro-wrap">
+      <div ref={vpRef} className="caro-viewport-snap">
+        <div className="caro-track-snap">
+          {extSlides.map((s, i) => (
+            <figure key={i} className="caro-card-snap">
+              <div className="thumb">
+                <img src={s.src} alt={s.title} draggable="false" />
+              </div>
+              <figcaption className="cap">{s.title}</figcaption>
+            </figure>
+          ))}
         </div>
       </div>
 
-      <a href="#projects-list" className="proj-btn">Projects <span aria-hidden>→</span></a>
+      <a href="#projects-list" className="proj-btn">
+        Projects <span aria-hidden>→</span>
+      </a>
     </div>
-  );
-}
-
-/* --- Card --- */
-function Card({ data, type, refEl }) {
-  const isCenter = type === "center";
-  return (
-    <figure ref={refEl} className={`caro-card ${isCenter ? "center" : "side"}`}>
-      <div className="thumb">
-        <img src={data.src} alt={isCenter ? data.title : ""} />
-      </div>
-      <figcaption className={`cap ${isCenter ? "" : "side-cap"}`}>{data.title}</figcaption>
-    </figure>
   );
 }
