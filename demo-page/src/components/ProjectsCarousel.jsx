@@ -17,6 +17,7 @@ export default function ProjectsCarousel() {
   const extSlides = Array.from({ length: DUP }, () => slides).flat();
   const baseLen = slides.length;
 
+  // measure & jump to middle copy
   useEffect(() => {
     const vp = vpRef.current;
     if (!vp) return;
@@ -24,11 +25,12 @@ export default function ProjectsCarousel() {
     const firstCard = vp.querySelector(".caro-card-snap");
     if (!firstCard) return;
 
-    // measure one card + gap
-    const gap = parseFloat(getComputedStyle(document.documentElement).getPropertyValue("--gap")) || 0;
+    const gap = parseFloat(
+      getComputedStyle(document.documentElement).getPropertyValue("--gap")
+    ) || 0;
+
     cardW.current = firstCard.getBoundingClientRect().width + gap;
 
-    // jump to the middle copy (no animation)
     vp.style.scrollBehavior = "auto";
     vp.scrollLeft = baseLen * cardW.current;
     vp.style.scrollBehavior = "smooth";
@@ -66,9 +68,11 @@ export default function ProjectsCarousel() {
 
       let bestIdx = 0;
       let bestDist = Infinity;
+
       cards.forEach((el, i) => {
         const rect = el.getBoundingClientRect();
-        const elCenter = rect.left + rect.width / 2 + vp.scrollLeft - vp.getBoundingClientRect().left;
+        const elCenter =
+          rect.left + rect.width / 2 + vp.scrollLeft - vp.getBoundingClientRect().left;
         const d = Math.abs(elCenter - vpCenter);
         if (d < bestDist) {
           bestDist = d;
@@ -82,7 +86,7 @@ export default function ProjectsCarousel() {
         target.scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
       }
 
-      // wrap if we drifted near the ends
+      // wrap
       if (bestIdx < baseLen) {
         vp.style.scrollBehavior = "auto";
         vp.scrollLeft += baseLen * cardW.current;
