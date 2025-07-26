@@ -53,27 +53,35 @@
     .social-icons {
       margin-bottom: 30px;
       display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .icon-row {
+      display: flex;
       justify-content: center;
-      align-items: center; /* This line vertically centers all children */
+      align-items: center;
       gap: 30px;
     }
 
-    .social-icons a {
+    .icon-row a {
       color: white;
       font-size: 1.8rem;
       text-decoration: none;
       display: flex;
-      align-items: center; /* Ensures img or <i> is vertically centered */
+      align-items: center;
     }
 
-    .social-icons a img {
+    .icon-row a img {
       width: 28px;
       height: 28px;
       display: block;
       border-radius: 5px;
     }
 
-    .social-icons a:hover {
+    .icon-row a:hover,
+    .icon-row a:hover img {
       opacity: 0.7;
     }
   </style>
@@ -85,27 +93,32 @@
   </div>
 
   <div class="social-icons">
-    <a href="https://www.hotseat.io" target="_blank" aria-label="Hotseat">
-      <img src="assets/hotseat.ico" alt="Blink" />
-    </a>
-    <a href="https://retune.ucladevx.com" target="_blank" aria-label="Retune">
-      <img src="assets/retune.ico" alt="Retune" />
-    </a>
-    <a href="https://www.instagram.com/uclablink" target="_blank" aria-label="Blink">
-      <img src="assets/blink.ico" alt="Blink" />
-    </a>
-    <a href="https://www.instagram.com/ucladevx" target="_blank" aria-label="Instagram">
-      <i class="fab fa-instagram"></i>
-    </a>
-    <a href="https://www.linkedin.com/company/ucla-devx" target="_blank" aria-label="LinkedIn">
-      <i class="fab fa-linkedin"></i>
-    </a>
-    <a href="https://www.facebook.com/ucladevx/" target="_blank" aria-label="LinkedIn">
-      <i class="fab fa-facebook"></i>
-    </a>
-    <a href="https://substack.com/@ucladevx" target="_blank" aria-label="Substack">
-      <img src="assets/substack.png" alt="Substack" style="width: 28px; height: 28px;" />
-    </a>
+    <div class="icon-row">
+      <a href="https://www.hotseat.io" target="_blank" aria-label="Hotseat">
+        <img src="assets/hotseat.ico" alt="Hotseat" />
+      </a>
+      <a href="https://retune.ucladevx.com" target="_blank" aria-label="Retune">
+        <img src="assets/retune.ico" alt="Retune" />
+      </a>
+      <a href="https://www.instagram.com/uclablink" target="_blank" aria-label="Blink">
+        <img src="assets/blink.ico" alt="Blink" />
+      </a>
+    </div>
+
+    <div class="icon-row">
+      <a href="https://www.instagram.com/ucladevx" target="_blank" aria-label="Instagram">
+        <i class="fab fa-instagram"></i>
+      </a>
+      <a href="https://www.linkedin.com/company/ucla-devx" target="_blank" aria-label="LinkedIn">
+        <i class="fab fa-linkedin"></i>
+      </a>
+      <a href="https://www.facebook.com/ucladevx/" target="_blank" aria-label="Facebook">
+        <i class="fab fa-facebook"></i>
+      </a>
+      <a href="https://substack.com/@ucladevx" target="_blank" aria-label="Substack">
+        <img src="assets/substack.png" alt="Substack" />
+      </a>
+    </div>
   </div>
 </body>
 </html>
