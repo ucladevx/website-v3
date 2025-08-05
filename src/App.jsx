@@ -1,16 +1,17 @@
+import React from "react";
+import { BrowserRouter, Routes, Route, NavLink } from "react-router-dom";
 import "./styles/globals.css";
-import TopSection from "./components/TopSection";
-import AboutSection from "./components/AboutSection";
-import FacesSection from "./components/FacesSection";
+
+import Home  from "./pages/Home";
+import About from "./pages/About";
 
 export default function App() {
   return (
-    <>
-      <TopSection />
-      <section className="about-bg">
-        <AboutSection />
-        <FacesSection />
-      </section>
-    </>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/"      element={<Home />}  />
+        <Route path="/about" element={<About />} />
+      </Routes>
+    </BrowserRouter>
   );
 }

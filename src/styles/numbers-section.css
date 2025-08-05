@@ -1,0 +1,72 @@
+/* section */
+.numbers-sec{
+  padding:100px 0;
+  text-align:center;
+  background:#051A45;
+}
+
+/* title */
+.numbers-sec__title{
+  margin:0 0 64px;
+  font:700 70px/1 "Inter",sans-serif;
+  background:linear-gradient(90deg,#7027E4 8.65%,#34EFF5 50%,#3392EB 82.08%);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+
+/* row */
+.numbers-grid{
+  display:flex;
+  justify-content:center;    
+  gap:120px;        
+  margin:0 auto;
+  max-width:1300px;      
+}
+
+/* card */
+.num-card{
+  width:330px;    
+  display:flex;
+  align-items:center;
+}
+
+.num-card__icon{
+  width:154px;
+  height:154px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.num-card__icon svg{
+  width:154px;
+  height:154px;
+}
+
+.num-card__value{
+  margin-top:24px;
+  font:800 80px/1 "Inter",sans-serif;
+  color:#fff;
+}
+
+.num-card__label{
+  margin-top:8px;
+  font:400 20px/1.2 "Inter",sans-serif;
+  color:#b3bfd4;
+  text-align:center;
+}
+
+.column{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  text-align:center;
+}
+
+/* mobile stack */
+@media(max-width:900px){
+  .numbers-grid{
+    flex-direction:column;
+    gap:48px;
+  }
+}
