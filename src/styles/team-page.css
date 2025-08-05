@@ -7,7 +7,10 @@
 
 .team-page{
   min-height:100vh;
-  background:linear-gradient(180deg,#000 0%,var(--deepBlue) 100%);
+  background:
+    linear-gradient(180deg,#000 0%,var(--deepBlue) 100%)
+    /* solid colour after gradient finishes */
+    , var(--deepBlue);
   color:var(--text);
   font-family:"Inter",system-ui,sans-serif;
 }
@@ -76,3 +79,19 @@
   .team-hero__subtitle{font-size:18px;margin:16px 0 48px;}
   .team-nav__list{gap:16px;}
 }
+/* social strip */
+.team-social{
+  width:180px;
+  margin:80px auto 0px;
+  display:flex;
+  justify-content:space-between;
+  gap:40px;
+}
+
+.team-social svg{
+  fill:#ffffff;
+  width:28px;
+  height:28px;
+  transition:opacity .2s;
+}
+.team-social a:hover svg{opacity:.7;}

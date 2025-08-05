@@ -9,6 +9,7 @@
 .info-row{
   display:flex;
   justify-content:space-between;
+  align-items: center;
   gap:64px;
   margin-bottom:120px;  
 }

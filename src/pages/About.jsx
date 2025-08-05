@@ -22,7 +22,7 @@ export default function About() {
       </header>
 
       <section className="about-hero">
-        <div className="about-hero__overlay" />
+        <div className="about-hero__overlay" aria-hidden/>
         <div className="about-hero__content">
           <h1 className="about-hero__title">About&nbsp;Us</h1>
           <p  className="about-hero__subtitle">
