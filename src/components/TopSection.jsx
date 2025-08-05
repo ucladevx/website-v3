@@ -10,7 +10,7 @@ export default function TopSection() {
           <ul className="nav-list">
             <li><a className="nav-link" href="#projects">Projects</a></li>
             <li><a className="nav-link" href="/about">About</a></li>
-            <li><a className="nav-link" href="#team">Team</a></li>
+            <li><a className="nav-link" href="/team">Team</a></li>
           </ul>
           <a className="nav-cta" href="#join">Join</a>
         </nav>

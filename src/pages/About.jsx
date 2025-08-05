@@ -14,7 +14,7 @@ export default function About() {
             <li><NavLink to="/"          end className="about-nav__link">Home</NavLink></li>
             <li><NavLink to="/#projects" className="about-nav__link">Projects</NavLink></li>
             <li><NavLink to="/about"     className="about-nav__link">About Us</NavLink></li>
-            <li><NavLink to="/#team"     className="about-nav__link">Team</NavLink></li>
+            <li><NavLink to="/team"     className="about-nav__link">Team</NavLink></li>
             <NavLink to="/#join" className="about-cta">Join</NavLink>
           </ul>
 
