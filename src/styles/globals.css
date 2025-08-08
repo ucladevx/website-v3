@@ -21,3 +21,23 @@ html, body {
   max-width: 1440px;
   margin: 0 auto;
 }
+
+.site-header {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  padding: 16px 75px;
+  display: flex;
+  justify-content: flex-end;
+  z-index: 100;
+}
+.site-nav a {
+  margin-left: 32px;
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+}
+.site-nav a.active {
+  color: var(--accent1);
+}
+
