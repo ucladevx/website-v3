@@ -4,21 +4,13 @@ import "../styles/about-page.css";
 import AboutInfo from "../components/AboutInfo";
 import NumbersSection from "../components/NumbersSection";
 import CompaniesSection from "../components/CompaniesSection";
+import NavBar from "../components/NavBar"
 
 export default function About() {
   return (
     <div className="about-page">
       <header className="about-header">
-        <nav className="about-nav">
-          <ul className="about-nav__list">
-            <li><NavLink to="/"          end className="about-nav__link">Home</NavLink></li>
-            <li><NavLink to="/#projects" className="about-nav__link">Projects</NavLink></li>
-            <li><NavLink to="/about"     className="about-nav__link">About Us</NavLink></li>
-            <li><NavLink to="/team"     className="about-nav__link">Team</NavLink></li>
-            <NavLink to="/#join" className="about-cta">Join</NavLink>
-          </ul>
-
-        </nav>
+        <NavBar />
       </header>
 
       <section className="about-hero">
