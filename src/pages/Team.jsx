@@ -2,45 +2,13 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import "../styles/team-page.css";
 import TeamGrid from "../components/TeamGrid";
+import NavBar from "../components/NavBar"
 
 export default function Team() {
   return (
     <div className="team-page">
       <header className="team-header">
-        <nav className="team-nav">
-          <ul className="team-nav__list">
-            <li>
-              <NavLink to="/" end className="team-nav__link">
-                Home
-              </NavLink>
-            </li>
-            <li>
-              <NavLink to="/#projects" className="team-nav__link">
-                Projects
-              </NavLink>
-            </li>
-            <li>
-              <NavLink to="/about" className="team-nav__link">
-                About&nbsp;Us
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                to="/team"
-                end
-                className="team-nav__link"
-              >
-                Team
-              </NavLink>
-            </li>
-
-            <li>
-              <NavLink to="/#join" className="team-cta">
-                Join
-              </NavLink>
-            </li>
-          </ul>
-        </nav>
+        <NavBar />
       </header>
 
       {/* hero heading */}

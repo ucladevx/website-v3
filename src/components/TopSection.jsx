@@ -1,4 +1,5 @@
 import "../styles/top-section.css";
+import NavBar from "../components/NavBar"
 
 export default function TopSection() {
   return (
@@ -6,14 +7,7 @@ export default function TopSection() {
       <div className="hero-bg-img" aria-hidden />
 
       <header className="top-rect">
-        <nav className="nav">
-          <ul className="nav-list">
-            <li><a className="nav-link" href="#projects">Projects</a></li>
-            <li><a className="nav-link" href="/about">About Us</a></li>
-            <li><a className="nav-link" href="/team">Team</a></li>
-          </ul>
-          <a className="nav-cta" href="#join">Join</a>
-        </nav>
+        <NavBar />
       </header>
 
       <div className="hero-inner">
