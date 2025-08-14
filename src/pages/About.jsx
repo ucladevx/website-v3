@@ -1,5 +1,3 @@
-import React from "react";
-import { NavLink } from "react-router-dom";
 import "../styles/about-page.css";
 import AboutInfo from "../components/AboutInfo";
 import NumbersSection from "../components/NumbersSection";

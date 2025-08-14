@@ -1,5 +1,3 @@
-import React from "react";
-import { NavLink } from "react-router-dom";
 import "../styles/team-page.css";
 import TeamGrid from "../components/TeamGrid";
 import NavBar from "../components/NavBar"
