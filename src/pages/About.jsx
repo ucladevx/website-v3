@@ -1,10 +1,10 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
 import "../styles/about-page.css";
 import AboutInfo from "../components/AboutInfo";
 import NumbersSection from "../components/NumbersSection";
 import CompaniesSection from "../components/CompaniesSection";
-import NavBar from "../components/NavBar"
+import NavBar from "../components/NavBar";
+import FooterSection from "../components/FooterSection";
 
 export default function About() {
   return (
@@ -25,6 +25,7 @@ export default function About() {
       <AboutInfo />
       <NumbersSection />
       <CompaniesSection />
+      <FooterSection />
     </div>
 
   );
