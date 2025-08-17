@@ -16,7 +16,7 @@ Runs the app at [http://localhost:5173/](http://localhost:5173/)
 
 ## Development Guide
 1. Create a new branch using the follow naming conventions 
-   - `git checkout -b <your_name/new_branch_name>` (i.e. `git checkout -b jake/update-readme`)
+   - `git checkout -b <your_name/new_branch_name>` (i.e. `git checkout -b andrew/update-readme`)
 2. Commit changes
    - `git add <files to include in commit>`
    - `git commit -m <message>`
