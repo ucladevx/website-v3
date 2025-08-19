@@ -3,6 +3,7 @@ import React from "react";
 import TopSection   from "../components/TopSection";
 import AboutSection from "../components/AboutSection";
 import FacesSection from "../components/FacesSection";
+import FooterSection from "../components/FooterSection";
 
 export default function Home() {
   return (
@@ -12,6 +13,7 @@ export default function Home() {
         <AboutSection />
         <FacesSection />
       </section>
+      <FooterSection />
     </>
   );
 }
