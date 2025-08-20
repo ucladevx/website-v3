@@ -1,0 +1,226 @@
+.projects-grid {
+  width: 100%;
+  background-image: url("/assets/background.png");
+  background-size: cover;
+  background-position: center;
+  padding: 150px 75px 72px;
+  box-sizing: border-box;
+}
+
+.projects-grid__row {
+  width: 1290px;
+  height: 388px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 410px);
+  column-gap: 30px;
+}
+
+.projects-grid__row--bottom {
+  margin-top: 60px;
+}
+
+.project-card {
+  width: 410px;
+  height: 388px;
+  border-radius: 6px;
+}
+
+.project-card__image {
+  position: relative;
+  width: 410px;
+  height: 340px;
+  border-radius: 40px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.project-card__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.5;
+  display: block;
+}
+
+.project-card__cta {
+  position: absolute;
+  left: 14px;
+  bottom: 14px;
+  width: 106px;
+  height: 34px;
+  border-radius: 20px;
+  padding: 5px;
+  border: none;
+  color: #ffffff;
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 24px;
+  background: linear-gradient(180deg, #5BBBFF 0%, #0D45C9 100%);
+  cursor: pointer;
+}
+
+.project-card__name {
+  margin-top: 12px;
+  width: 386px;
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  color: #e6efff;
+}
+
+.projects-reviews {
+  width: 100%;
+  max-width: 1440px;
+  height: 288px;
+  margin: 0 auto;
+  padding: 200px 170px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 60px;
+}
+
+.reviews-left {
+  width: 520px;
+  height: 168px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.reviews-title {
+  width: 520px;
+  height: 48px;
+  margin: 0;
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial;
+  font-weight: 700;
+  font-size: 38px;
+  line-height: 48px;
+  color: #e6efff;
+}
+
+.reviews-subtitle {
+  width: 520px;
+  height: 24px;
+  margin: 0;
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  color: #cfd6e4;
+  opacity: 0.9;
+}
+
+.reviews-cta {
+  width: 240px;
+  height: 48px;
+  border-radius: 8px;
+  padding: 12px;
+  border: none;
+  background: linear-gradient(180deg, #5BBBFF 0%, #0D45C9 100%);
+  color: #ffffff;
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+  cursor: pointer;
+}
+
+.reviews-right {
+  width: 520px;
+  height: auto;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  display: flex;
+  gap: 40px;
+}
+
+.review-card {
+  width: 240px;
+  min-height: 104px;
+  height: auto;
+  border-radius: 6px;
+  padding: 16px;
+  box-sizing: border-box;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.25);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.review-card__header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.review-card__avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 32px;
+  background: #9aa4b2;
+  flex: 0 0 auto;
+}
+
+.review-card__name {
+  font-family: Roboto, Inter, system-ui, -apple-system, "Helvetica Neue", Arial;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  color: #e6efff;
+}
+
+.review-card__stars {
+  margin-left: auto;
+  color: #ffd028;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: 1px;
+}
+
+.review-card__body {
+  font-family: Roboto, Inter, system-ui, -apple-system, "Helvetica Neue", Arial;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  color: #cdc7c7;
+  white-space: normal;
+  overflow: visible;
+  text-overflow: unset;
+}
+
+@media (max-width: 1200px) {
+  .projects-grid__row {
+    width: 100%;
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 24px;
+  }
+  .project-card,
+  .project-card__image {
+    width: 100%;
+  }
+}
+
+@media (max-width: 960px) {
+  .projects-reviews {
+    padding: 48px 24px;
+    height: auto;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 32px;
+  }
+  .reviews-right {
+    width: 100%;
+    padding: 0;
+  }
+}
+
+.projects-page .footer-section {
+  background: #000;
+}
