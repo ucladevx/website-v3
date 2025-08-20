@@ -1,5 +1,4 @@
 // src/pages/Home.jsx
-import React from "react";
 import TopSection   from "../components/TopSection";
 import AboutSection from "../components/AboutSection";
 import FacesSection from "../components/FacesSection";
