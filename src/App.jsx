@@ -5,6 +5,7 @@ import "./styles/globals.css";
 import Home  from "./pages/Home";
 import About from "./pages/About";
 import Team   from "./pages/Team"; 
+import Projects   from "./pages/Projects"; 
 
 export default function App() {
   return (
@@ -13,6 +14,7 @@ export default function App() {
         <Route path="/"      element={<Home />}  />
         <Route path="/about" element={<About />} />
         <Route path="/team"   element={<Team />} />
+        <Route path="/projects"   element={<Projects />} />
       </Routes>
     </BrowserRouter>
     
