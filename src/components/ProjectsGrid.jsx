@@ -1,5 +1,6 @@
 import React from "react";
 import "../styles/projects-grid.css";
+import FooterSection from "./FooterSection";
 
 const topRow = [
   { title: "UCLA BLink", img: "/blink/PNG image.png" },
@@ -67,6 +68,7 @@ export default function ProjectsGrid() {
           </div>
         </div>
       </div>
+      <FooterSection />
     </section>
   );
 }

@@ -8,7 +8,6 @@ export default function Projects() {
     <div className="projects-page">
       <ProjectsHero onLearnMore={() => window.scrollTo({ top: 520, behavior: "smooth" })} />
       <ProjectsGrid />
-      <FooterSection />
     </div>
   );
 }

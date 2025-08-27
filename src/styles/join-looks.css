@@ -1,5 +1,6 @@
 .looks-sec{
   padding:31px 75px 24px;
+  padding-bottom: 0px;
   padding-top: 100px;
   box-sizing:border-box;
   color:var(--text);
@@ -108,7 +109,6 @@
   margin: 0 auto;
   flex-direction: column;
   min-height: 100svh;
-  padding-bottom:24px;
 }
 
 .impact-inner{

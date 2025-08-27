@@ -1,5 +1,6 @@
 import React from "react";
 import "../styles/companies-section.css";
+import FooterSection from "./FooterSection";
 
 export default function CompaniesSection() {
   return (
@@ -16,7 +17,7 @@ export default function CompaniesSection() {
         <li><img src="/assets/roblox-logo.png"    alt="Roblox"    className="logo-lg" /></li>
         <li><img src="/assets/microsoft-logo.png" alt="Microsoft" className="logo-lg" /></li>
       </ul>
-
+      <FooterSection />
     </section>
   );
 }

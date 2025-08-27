@@ -1,5 +1,6 @@
 .companies-sec{
   padding:120px 0 100px;
+  padding-bottom:0;
   background:linear-gradient(180deg,#000000 0%,#051A45 100%);
   text-align:center;
   color:#fff;
