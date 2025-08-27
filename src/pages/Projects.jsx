@@ -1,20 +1,13 @@
 import React from "react";
+import ProjectsHero from "../components/ProjectsHero";
+import ProjectsGrid from "../components/ProjectsGrid";
 import FooterSection from "../components/FooterSection";
-import { NavLink } from "react-router-dom";
-import NavBar from "../components/NavBar";
 
 export default function Projects() {
   return (
-    <div>
-      <header className="top-rect">
-        <NavBar />
-      </header>
-      <h1>Projects</h1>
-
-      <ul>
-        {/* full absolute path since it’s not nested */}
-        <li><NavLink to="/projects/blink">Temporary Link to Blink Project</NavLink></li>
-      </ul>
+    <div className="projects-page">
+      <ProjectsHero onLearnMore={() => window.scrollTo({ top: 520, behavior: "smooth" })} />
+      <ProjectsGrid />
       <FooterSection />
     </div>
   );
