@@ -8,10 +8,12 @@ import Team   from "./pages/Team";
 import Projects from "./pages/Projects"; 
 import Blink from "./projects/Blink";
 import Join   from "./pages/Join";
+import ScrollToTop from "./components/ScrollToTop";
 
 export default function App() {
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <Routes>
         <Route path="/"      element={<Home />}  />
         <Route path="/projects" element={<Projects />} />
