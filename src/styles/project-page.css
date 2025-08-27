@@ -1,0 +1,72 @@
+.blink-page {
+  min-height: 100vh;
+  color: white;
+  padding: 4rem 2rem;
+}
+
+.blink-container {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.blink-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.blink-title {
+  font-size: 3rem;
+  font-weight: bold;
+  background: linear-gradient(to right, #60a5fa, #a78bfa);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.blink-subtitle {
+  margin-top: 1rem;
+  font-size: 1.2rem;
+  color: #d1d5db;
+}
+
+.blink-content {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.blink-text {
+  flex: 1;
+}
+
+.blink-text h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.blink-text p {
+  color: #d1d5db;
+  line-height: 1.6;
+}
+
+.blink-image {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.blink-image img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+}
+
+/* Responsive: stack on small screens */
+@media (min-width: 768px) {
+  .blink-content {
+    flex-direction: row;
+    align-items: center;
+    gap: 3rem;
+  }
+}
