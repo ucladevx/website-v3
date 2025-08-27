@@ -6,6 +6,7 @@ import Home  from "./pages/Home";
 import About from "./pages/About";
 import Team   from "./pages/Team"; 
 import Projects   from "./pages/Projects"; 
+import Join   from "./pages/Join";
 
 export default function App() {
   return (
@@ -15,6 +16,7 @@ export default function App() {
         <Route path="/about" element={<About />} />
         <Route path="/team"   element={<Team />} />
         <Route path="/projects"   element={<Projects />} />
+        <Route path="/join"   element={<Join />} />
       </Routes>
     </BrowserRouter>
     
