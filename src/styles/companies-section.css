@@ -1,6 +1,5 @@
 .companies-sec{
-  padding:120px 0 100px;
-  padding-bottom:0;
+  padding:120px 0 0;
   background:linear-gradient(180deg,#000000 0%,#051A45 100%);
   text-align:center;
   color:#fff;
@@ -12,44 +11,62 @@
 }
 
 .companies-sec__heading p{
-  margin:0 0 80px;
+  margin:0 0 60px;
   font:400 20px/1 "Inter",sans-serif;
   color:#b3bfd4;
 }
 
-.logo-bar{
+.logo-marquee{
+  --marquee-duration: 20s;
   width:1489px;
   max-width:100%;
   margin:0 auto 100px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  list-style:none;
-  padding:0;
+  overflow:hidden;
+  position:relative;
+  -webkit-mask-image: linear-gradient(to right, rgba(0,0,0,0), rgba(0,0,0,1) 5%, rgba(0,0,0,1) 95%, rgba(0,0,0,0));
+  mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
 }
 
-.logo-bar li img{
+.logo-track{
+  display:flex;
+  flex-wrap:nowrap;
+  width:max-content;
+  will-change:transform;
+  animation: marqueeX var(--marquee-duration) linear infinite;
+  transform:translate3d(0,0,0);
+}
+
+.logo-seq{
+  display:flex;
+  gap:80px;
+  align-items:center;
+  padding:0;
+  margin:0;
+  list-style:none;
+  flex:0 0 auto;
+}
+
+.logo-seq li{
+  flex:0 0 auto;
+}
+
+.logo-seq li img{
+  display:block;
+  height:auto;
   max-height:128px;
   max-width:300px;
   object-fit:contain;
 }
 
-.social-bar{
-  width:180px;
-  margin:0 auto;
-  display:flex;
-  justify-content:space-between;
-  gap:40px;
-}
-
-.social-bar svg{
-  width:28px;
-  height:28px;
-  fill:#ffffff;
-  transition:opacity .2s;
-}
-.social-bar a:hover svg{opacity:.7}
-
 .logo-lg{
   min-height:225px;
+}
+
+.logo-marquee:hover .logo-track{
+  animation-play-state:paused;
+}
+
+@keyframes marqueeX{
+  0%   { transform:translate3d(0,0,0); }
+  100% { transform:translate3d(-50%,0,0); }
 }
