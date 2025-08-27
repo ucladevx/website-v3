@@ -25,7 +25,6 @@ export default function About() {
       <AboutInfo />
       <NumbersSection />
       <CompaniesSection />
-      <FooterSection />
     </div>
 
   );

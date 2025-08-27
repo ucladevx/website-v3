@@ -11,8 +11,8 @@ export default function Home() {
       <section className="about-bg">
         <AboutSection />
         <FacesSection />
+        <FooterSection />
       </section>
-      <FooterSection />
     </>
   );
 }

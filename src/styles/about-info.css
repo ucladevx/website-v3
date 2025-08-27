@@ -3,7 +3,7 @@
   max-width: 1440px;
   margin: 0 auto;
   padding: 80px 75px 1px;
-  background: linear-gradient(180deg, #000000 0%, #051A45 100%);       
+  background:url("/assets/about-us-background.png") center/cover no-repeat;    
 }
 
 .info-row{

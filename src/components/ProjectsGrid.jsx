@@ -1,6 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import "../styles/projects-grid.css";
+import FooterSection from "./FooterSection";
 
 const topRow = [
   { title: "UCLA BLink", img: "/blink/PNG image.png", link: "/projects/blink" },
@@ -76,6 +77,7 @@ export default function ProjectsGrid() {
           </div>
         </div>
       </div>
+      <FooterSection />
     </section>
   );
 }

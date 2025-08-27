@@ -2,7 +2,7 @@
 .numbers-sec{
   padding:100px 0;
   text-align:center;
-  background:#051A45;
+  background:url("/assets/numbers-background.png") center/cover no-repeat;
 }
 
 /* title */
