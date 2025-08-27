@@ -1,9 +1,10 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import "../styles/projects-grid.css";
 import FooterSection from "./FooterSection";
 
 const topRow = [
-  { title: "UCLA BLink", img: "/blink/PNG image.png" },
+  { title: "UCLA BLink", img: "/blink/PNG image.png", link: "/projects/blink" },
   { title: "Digityle", img: "/digityle/IMG_7407.png" },
   { title: "TransitTrack", img: "/assets/PageProduct.png" }
 ];
@@ -14,12 +15,20 @@ const bottomRow = [
   { title: "Course Planner", img: "/assets/project-center.png" }
 ];
 
-function ProjectCard({ title, img }) {
+function ProjectCard({ title, img, link }) {
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    if (link) navigate(link);
+  };
+
   return (
     <div className="project-card">
       <div className="project-card__image">
         <img className="project-card__img" src={img} alt={title} />
-        <button className="project-card__cta">Learn More</button>
+        <button className="project-card__cta" onClick={handleClick}>
+          Learn More
+        </button>
       </div>
       <div className="project-card__name">{title}</div>
     </div>
@@ -31,13 +40,13 @@ export default function ProjectsGrid() {
     <section className="projects-grid">
       <div className="projects-grid__row">
         {topRow.map((p) => (
-          <ProjectCard key={p.title} title={p.title} img={p.img} />
+          <ProjectCard key={p.title} title={p.title} img={p.img} link={p.link} />
         ))}
       </div>
 
       <div className="projects-grid__row projects-grid__row--bottom">
         {bottomRow.map((p) => (
-          <ProjectCard key={p.title} title={p.title} img={p.img} />
+          <ProjectCard key={p.title} title={p.title} img={p.img} link={p.link} />
         ))}
       </div>
 
