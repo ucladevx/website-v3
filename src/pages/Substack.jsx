@@ -47,7 +47,6 @@ export default function Substack() {
           <div className="newsletter-card newsletter-card--wide"><span className="newsletter-card__title">Newsletter Title</span></div>
           <div className="newsletter-card newsletter-card--wide newsletter-card--badge">
             <span className="newsletter-card__title">Newsletter Title</span>
-            <img className="newsletter-card__badge" src="/assets/substack-badge.png" alt="Badge" />
           </div>
         </div>
       </section>

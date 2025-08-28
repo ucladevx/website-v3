@@ -1,7 +1,13 @@
+.top-rect{
+  margin-bottom: 100px;
+}
 .blink-page {
   min-height: 100vh;
   color: white;
   padding: 4rem 2rem;
+  padding-bottom: 0px;
+  padding-top: 0px;
+  background: url("/assets/background.png") center/cover no-repeat;;
 }
 
 .blink-container {
@@ -11,15 +17,22 @@
 
 .blink-header {
   text-align: center;
-  margin-bottom: 4rem;
+  margin-bottom: 150px;
 }
 
 .blink-title {
-  font-size: 3rem;
-  font-weight: bold;
-  background: linear-gradient(to right, #60a5fa, #a78bfa);
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial;
+  font-weight: 700;
+  font-size: 60px;
+  line-height: 100%;
+  letter-spacing: 0;
+  text-align: center;
+  background: linear-gradient(90deg, #7027E4 35%, #34EFF5 50%, #3392EB 60%);
   -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
   -webkit-text-fill-color: transparent;
+  min-height: 65px;
 }
 
 .blink-subtitle {
@@ -32,6 +45,7 @@
   display: flex;
   flex-direction: column;
   gap: 2rem;
+  margin-bottom: 150px;
 }
 
 .blink-text {
@@ -70,3 +84,125 @@
     gap: 3rem;
   }
 }
+
+.blink-team {
+  width: 1240px;
+  height: 941px;
+  margin: 150px auto 300px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.blink-team__title {
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial;
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 100%;
+  color: #52ADF9;
+  text-align: center;
+  margin-bottom: 100px;
+}
+
+.blink-team__grid {
+  width: 1240px;
+  height: 715.115px;
+  display: grid;
+  grid-template-columns: repeat(4, 258.901px);
+  grid-auto-rows: 272.424px;
+  column-gap: 68px;
+  row-gap: 170px;
+  justify-content: center;
+  margin-bottom:150px;
+}
+
+.team-card {
+  width: 258.901px;
+  height: 272.424px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: transparent;
+}
+
+.team-card__avatar {
+  width: 181.685px;
+  height: 181.616px;
+  border-radius: 50%;
+  background: #9aa4b2;
+  margin-bottom: 16px;
+}
+
+.team-card__role {
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 100%;
+  text-align: center;
+  color: #ffffff;
+  margin-bottom: 8px;
+}
+
+.team-card__name {
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 100%;
+  text-align: center;
+  color: #e6efff;
+}
+
+.blink-team__ctas {
+  width: 1240px;
+  height: 48px;
+  margin: 32px auto 0;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.btn-outline {
+  width: 240px;
+  height: 48px;
+  border-radius: 8px;
+  padding: 12px;
+  border: 1px solid #ffffff;
+  background: transparent;
+  color: #ffffff;
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  cursor: pointer;
+}
+
+.btn-primary {
+  width: 240px;
+  height: 48px;
+  border-radius: 8px;
+  padding: 12px;
+  border: none;
+  background: linear-gradient(180deg, #5BBBFF 0%, #0D45C9 100%);
+  color: #ffffff;
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  cursor: pointer;
+}
+
+.team-card {
+  background: transparent !important;
+  border: none !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  outline: 0 !important;
+}
+.team-card::before,
+.team-card::after {
+  content: none !important;
+}
+
+
