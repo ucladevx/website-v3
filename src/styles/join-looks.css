@@ -102,7 +102,6 @@
   position: relative;
   display: flex;
   z-index: 1;
-  padding: 55px 75px 60px;
   padding-top: 100px;
   box-sizing: border-box;
   max-width: 1440px;
@@ -224,3 +223,55 @@
 
 .social-bar a:hover svg{ opacity:.75; }
 
+.roles-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* max 2 columns */
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+@media (max-width: 800px) {
+  .roles-grid {
+    grid-template-columns: 1fr; /* 1 column on small screens */
+  }
+}
+
+.role-card {
+  background: #141627;
+  border-radius: 1rem;
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  overflow: hidden; /* ensures pill corners align with card */
+  padding: 20px 20px;
+}
+
+.role-pill {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: rgba(255, 255, 255, 0.08); /* lighter bar */
+  padding: 0 20px;  /* <-- 20px left & right padding */
+  width: 100%;            /* full width pill */
+  box-sizing: border-box;
+  border-radius: 20px;
+  height: 60px;
+}
+
+.role-icon-img {
+  width: 36px;
+  height: 36px;
+  object-fit: contain;
+}
+
+.role-pill__h {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #fff;
+}
+
+.role-card__p {
+  padding: 1rem 20px; /* match left/right padding with pill */
+  font-size: 0.95rem;
+  line-height: 1.5;
+  opacity: 0.85;
+}
