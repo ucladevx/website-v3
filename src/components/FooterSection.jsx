@@ -15,6 +15,12 @@ export default function FooterSection() {
         <a href="https://www.facebook.com/ucladevx/" target="_blank" aria-label="Facebook">
           <FontAwesomeIcon icon={faFacebook} />
         </a>
+        <a href="https://substack.com/@ucladevx" target="_blank" aria-label="Substack">
+          <img src="assets/substack.png" alt="Substack" />
+        </a>
+        <a href="https://linktr.ee/ucladevx" target="_blank" aria-label="Linktree">
+          <img src="assets/linktree.png" alt="Linktree" />
+        </a>
       </div>
     </div>
   );
