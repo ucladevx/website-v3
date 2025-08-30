@@ -2,6 +2,7 @@
 import React from "react";
 import "../styles/join-looks.css";
 import FooterSection from "./FooterSection";
+import TimelineSection from "./TimelineSection";
 
 export default function LooksSection({
   title = "What Being in DevX Looks Like",
@@ -89,6 +90,8 @@ export default function LooksSection({
               </div>
             ))}
           </div>
+
+          <TimelineSection />
 
           <div className="impact-apply">
             <a href="#apply" className="apply-now">
