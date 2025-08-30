@@ -45,7 +45,7 @@ export default function FacesSection() {
         <span className="dot"></span>
       </div>
 
-      <a href="#projects-list" className="faces-cta">
+      <a href="team" className="faces-cta">
         Learn More <span aria-hidden>→</span>
       </a>
 
