@@ -5,8 +5,11 @@ import FooterSection from "./FooterSection";
 
 const projects = [
   { title: "UCLA BLink", img: "/blink/PNG image.png", link: "/projects/blink" },
-  { title: "Digityle", img: "/digityle/IMG_7407.png" },
-  { title: "TransitTrack", img: "/assets/PageProduct.png" },
+  { title: "Digityle", img: "/digityle/IMG_7407.png", link: "/projects/digityle" },
+  { title: "TransitTrack", img: "/assets/PageProduct.png" }
+];
+
+const bottomRow = [
   { title: "NeuVoice", img: "/assets/NeuVoice.png" },
   { title: "Study Spot", img: "/assets/project-left.png" },
   { title: "Course Planner", img: "/assets/project-center.png" }

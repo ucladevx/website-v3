@@ -2,10 +2,10 @@ import React from "react";
 import NavBar from "../components/NavBar";
 import FooterSection from "../components/FooterSection";
 import ImageCarousel from "./ImageCarousel";
-import { blinkImages } from "./BlinkImages";
+import { digityleImages } from "./DigityleImages";
 import "../styles/project-page.css";
 
-export default function Blink() {
+export default function Digityle() {
   return (
     <>
 
@@ -15,13 +15,13 @@ export default function Blink() {
         </header>
         <div className="blink-container">
           <div className="blink-header">
-            <h1 className="blink-title">UCLA BLink</h1>
-            <p className="blink-subtitle">one line description of BLink</p>
+            <h1 className="blink-title">Digityle</h1>
+            <p className="blink-subtitle">one line description of Digityle</p>
           </div>
 
           <div className="blink-content">
             <div className="blink-text">
-              <h2>What is BLink?</h2>
+              <h2>What is Digityle?</h2>
               <p>
                 Qorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam
                 eu turpis molestie, dictum est a, mattis tellus. Sed dignissim,
@@ -30,16 +30,16 @@ export default function Blink() {
               </p>
             </div>
             <div className="blink-image">
-              <img src="/blink/App_store.png" alt="App preview" />
+              <img src="/digityle/IMG_7407.png" alt="App preview" />
             </div>
           </div>
         </div>
 
         {/* carousel right above footer */}
-        <ImageCarousel images={blinkImages} />
+        <ImageCarousel images={digityleImages} />
 
         <div className="blink-team">
-          <h2 className="blink-team__title">The team behind BLink</h2>
+          <h2 className="blink-team__title">The team behind Digityle</h2>
 
           <div className="blink-team__grid">
             {[...Array(8)].map((_, i) => (
