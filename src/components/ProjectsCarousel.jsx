@@ -131,7 +131,7 @@ export default function ProjectsCarousel() {
         </div>
       </div>
 
-      <a href="#projects-list" className="proj-btn">
+      <a href="projects" className="proj-btn">
         Projects <span aria-hidden>→</span>
       </a>
     </div>

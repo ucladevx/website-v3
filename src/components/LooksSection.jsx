@@ -13,30 +13,30 @@ export default function LooksSection({
   const [left, center, right] = images;
   const [altL, altC, altR] = alts;
 
-  const teams = [
+  const roles = [
     {
-      h: "Marketing Team",
-      p: "We tell the world what we’re building. Join if you love storytelling, social media, branding, or just have good meme instincts.",
+      h: "Developer",
+      img: "/assets/dev.png", // replace with actual icon
+      color: "#60a5fa",
+      p: "Developers own the codebase. The code’s architecture, frontend, backend, and deployment are all on them. But they’re not just there to implement specs. They work closely with other team members to refine the scope of the project. If a design is inefficient or a feature is overbuilt, they push back. If a technical constraint changes the scope, they work with the PM and designer to find a workaround that still solves the problem. They care about speed, clarity, and not building things that are going to break in a week."
     },
     {
-      h: "Design Team",
-      p: "From user flows to UI polish, this team makes DevX projects not only usable — but beautiful. Great for creatives who think in pixels and prototypes.",
+      h: "Product Manager",
+      img: "/assets/pm.png",
+      color: "#4ade80",
+      p: "The PM sets direction, planning out the idea of the project and coordinating the different roles to work together to achieve it. They keep the team focused on shipping the right thing by making decisions that keep the team moving. They need to have a strong opinion, but they also need to know when to step back and let others lead. If two teammates have different understandings of what to build, the PM clears it up. If something’s dragging, the PM adjusts scope or makes a call."
     },
     {
-      h: "Tech Team",
-      p: "Bring ideas to life with code. Whether you’re into frontend, backend, or full-stack, this team turns wireframes into real, working products.",
+      h: "Marketer",
+      img: "/assets/marketer.png",
+      color: "#c084fc",
+      p: "The marketer figures out who the product is for, how to talk about it, and how to get it in front of people. They help shape the product’s voice. They write landing pages, promote the project on social media, and conduct surveys to figure out what works and what doesn’t."
     },
     {
-      h: "Product Team",
-      p: "Love solving problems? Product leads keep projects on track, define what to build, and make sure we’re always designing with users in mind.",
-    },
-    {
-      h: "Growth & Outreach Team",
-      p: "Help DevX grow. You’ll work on recruiting new members, building community, and forming partnerships inside and outside UCLA.",
-    },
-    {
-      h: "Events Team",
-      p: "Plan and run our hackathons, speaker events, and workshops. If you’re organized, creative, and love bringing people together — this is your spot.",
+      h: "Designer",
+      img: "/assets/designer.png",
+      color: "#f472b6",
+      p: "The designer is responsible for how the product feels. They make sure it’s usable, clear, and aesthetic. They usually start with rough sketches, then work toward high-fidelity designs. Along the way, they work closely with developers to make sure the design actually works in code. They tweak margins, rework layouts, and make micro-decisions that can have all the difference in how the user interacts with the product."
     },
   ];
 
@@ -72,22 +72,39 @@ export default function LooksSection({
       <section className="impact-sec">
         <h3 className="impact-title">Where Will You Make Your Impact?</h3>
         <div className="impact-inner">
-            <div className="impact-grid">
-            {teams.map((t, i) => (
-                <div className="team-card" key={i}>
-                <h4 className="team-card__h">{t.h}</h4>
-                <p className="team-card__p">{t.p}</p>
+          <div className="roles-grid">
+            {roles.map((r, i) => (
+              <div className="role-card" key={i}>
+                <div className="role-pill">
+                  <img
+                    src={r.img || "/assets/default-role.png"}
+                    alt={`${r.h} icon`}
+                    className="role-icon-img"
+                  />
+                  <h4 className="role-pill__h" style={{ color: r.color }}>
+                    {r.h}
+                  </h4>
                 </div>
+                <p className="role-card__p">{r.p}</p>
+              </div>
             ))}
-            </div>
-            <div className="impact-apply">
-                <a href="#apply" className="apply-now">
-                    <span>Apply Now</span>
-                    <svg viewBox="0 0 24 24" aria-hidden="true">
-                    <path d="M5 12h12M13 6l6 6-6 6" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                    </svg>
-                </a>
-            </div>
+          </div>
+
+          <div className="impact-apply">
+            <a href="#apply" className="apply-now">
+              <span>Apply Now</span>
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path
+                  d="M5 12h12M13 6l6 6-6 6"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+            </a>
+          </div>
         </div>
       </section>
       <FooterSection />

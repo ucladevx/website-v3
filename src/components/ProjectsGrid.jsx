@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import "../styles/projects-grid.css";
 import FooterSection from "./FooterSection";
 
-const topRow = [
+const projects = [
   { title: "UCLA BLink", img: "/blink/PNG image.png", link: "/projects/blink" },
   { title: "Digityle", img: "/digityle/IMG_7407.png", link: "/projects/digityle" },
   { title: "TransitTrack", img: "/assets/PageProduct.png" }
@@ -23,14 +23,11 @@ function ProjectCard({ title, img, link }) {
   };
 
   return (
-    <div className="project-card">
+    <div className="project-card" onClick={handleClick}>
       <div className="project-card__image">
         <img className="project-card__img" src={img} alt={title} />
-        <button className="project-card__cta" onClick={handleClick}>
-          Learn More
-        </button>
+        <div className="project-card__name">{title}</div>
       </div>
-      <div className="project-card__name">{title}</div>
     </div>
   );
 }
@@ -39,14 +36,13 @@ export default function ProjectsGrid() {
   return (
     <section className="projects-grid">
       <div className="projects-grid__row">
-        {topRow.map((p) => (
-          <ProjectCard key={p.title} title={p.title} img={p.img} link={p.link} />
-        ))}
-      </div>
-
-      <div className="projects-grid__row projects-grid__row--bottom">
-        {bottomRow.map((p) => (
-          <ProjectCard key={p.title} title={p.title} img={p.img} link={p.link} />
+        {projects.map((p) => (
+          <ProjectCard
+            key={p.title}
+            title={p.title}
+            img={p.img}
+            link={p.link}
+          />
         ))}
       </div>
 

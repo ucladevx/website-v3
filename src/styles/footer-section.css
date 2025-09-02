@@ -12,13 +12,26 @@
   gap: 40px;
   justify-content: center;
   align-items: center;
+  color: white;
+  transition:opacity .2s;
 }
-
 
 .social-bar-container svg{
   width:28px;
   height:28px;
+  color: white;
   fill:#ffffff;
   transition:opacity .2s;
 }
+.social-bar-container a:hover svg{opacity:.7}
+
+.social-bar-container img{
+  width:28px;
+  height:28px;
+  color: white;
+  fill:#ffffff;
+  transition:opacity .2s;
+  border-radius: 5px;
+}
+
 .social-bar-container a:hover svg{opacity:.7}
