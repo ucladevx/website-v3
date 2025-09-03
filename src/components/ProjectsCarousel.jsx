@@ -1,139 +1,111 @@
-import { useRef, useEffect } from "react";
+import { useState } from "react";
 import "../styles/about.css";
 
 const slides = [
   { src: "/assets/project-left.png",   title: "Project Name" },
   { src: "/assets/project-center.png", title: "Project Name" },
-  { src: "/assets/project-right.png",  title: "Project Name" },
+  { src: "/blink/App_store.png",  title: "Project Name" },
+  { src: "/digityle/IMG_7407.png",  title: "Project Name" },
+  { src: "/assets/NeuVoice.png",  title: "Project Name" },
 ];
 
-const DUP = 3; // repeat list to fake infinite scroll
-
 export default function ProjectsCarousel() {
-  const vpRef = useRef(null);
-  const cardW = useRef(0);
-  const drag = useRef({ down: false, startX: 0, startScroll: 0 });
+  const [index, setIndex] = useState(0);
+  const len = slides.length;
 
-  const extSlides = Array.from({ length: DUP }, () => slides).flat();
-  const baseLen = slides.length;
+  const next = () => {
+    if (index < len - 1) setIndex(index + 1);
+  };
 
-  // measure & jump to middle copy
-  useEffect(() => {
-    const vp = vpRef.current;
-    if (!vp) return;
+  const prev = () => {
+    if (index > 0) setIndex(index - 1);
+  };
 
-    const firstCard = vp.querySelector(".caro-card-snap");
-    if (!firstCard) return;
-
-    const gap = parseFloat(
-      getComputedStyle(document.documentElement).getPropertyValue("--gap")
-    ) || 0;
-
-    cardW.current = firstCard.getBoundingClientRect().width + gap;
-
-    vp.style.scrollBehavior = "auto";
-    vp.scrollLeft = baseLen * cardW.current;
-    vp.style.scrollBehavior = "smooth";
-  }, [baseLen]);
-
-  useEffect(() => {
-    const vp = vpRef.current;
-    if (!vp) return;
-
-    const getX = (e) => (e.touches ? e.touches[0].clientX : e.clientX);
-
-    const down = (e) => {
-      drag.current.down = true;
-      drag.current.startX = getX(e);
-      drag.current.startScroll = vp.scrollLeft;
-      vp.style.scrollBehavior = "auto";
-    };
-
-    const move = (e) => {
-      if (!drag.current.down) return;
-      const dx = getX(e) - drag.current.startX;
-      vp.scrollLeft = drag.current.startScroll - dx;
-      e.preventDefault();
-    };
-
-    const up = () => {
-      if (!drag.current.down) return;
-      drag.current.down = false;
-      snap();
-    };
-
-    const snap = () => {
-      const cards = [...vp.querySelectorAll(".caro-card-snap")];
-      const vpCenter = vp.scrollLeft + vp.offsetWidth / 2;
-
-      let bestIdx = 0;
-      let bestDist = Infinity;
-
-      cards.forEach((el, i) => {
-        const rect = el.getBoundingClientRect();
-        const elCenter =
-          rect.left + rect.width / 2 + vp.scrollLeft - vp.getBoundingClientRect().left;
-        const d = Math.abs(elCenter - vpCenter);
-        if (d < bestDist) {
-          bestDist = d;
-          bestIdx = i;
-        }
-      });
-
-      const target = cards[bestIdx];
-      if (target) {
-        vp.style.scrollBehavior = "smooth";
-        target.scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
-      }
-
-      // wrap
-      if (bestIdx < baseLen) {
-        vp.style.scrollBehavior = "auto";
-        vp.scrollLeft += baseLen * cardW.current;
-        vp.style.scrollBehavior = "smooth";
-      } else if (bestIdx >= baseLen * 2) {
-        vp.style.scrollBehavior = "auto";
-        vp.scrollLeft -= baseLen * cardW.current;
-        vp.style.scrollBehavior = "smooth";
-      }
-    };
-
-    vp.addEventListener("pointerdown", down);
-    vp.addEventListener("pointermove", move, { passive: false });
-    window.addEventListener("pointerup", up);
-
-    vp.addEventListener("touchstart", down, { passive: true });
-    vp.addEventListener("touchmove", move, { passive: false });
-    vp.addEventListener("touchend", up);
-
-    return () => {
-      vp.removeEventListener("pointerdown", down);
-      vp.removeEventListener("pointermove", move);
-      window.removeEventListener("pointerup", up);
-      vp.removeEventListener("touchstart", down);
-      vp.removeEventListener("touchmove", move);
-      vp.removeEventListener("touchend", up);
-    };
-  }, [baseLen]);
+  const leftIdx = index % len;
+  const midIdx = (index + 1) % len;
+  const rightIdx = (index + 2) % len;
 
   return (
-    <div id="projects" className="caro-wrap">
-      <div ref={vpRef} className="caro-viewport-snap">
-        <div className="caro-track-snap">
-          {extSlides.map((s, i) => (
-            <figure key={i} className="caro-card-snap">
-              <div className="thumb">
-                <img src={s.src} alt={s.title} draggable="false" />
-              </div>
-              <figcaption className="cap">{s.title}</figcaption>
-            </figure>
-          ))}
+    <section id="projects" className="faces-wrap">
+      <h2 className="faces-title">
+        <span className="faces-accent">Ongoing Projects</span>
+      </h2>
+
+      <p className="faces-sub">
+        Check out some of the current projects DevX members are actively working on!
+      </p>
+
+      <div className="faces-carousel">
+        <div className="faces-row faces-nowrap">
+          <figure className="faces-card faces-left">
+            <img src={slides[leftIdx].src} alt={slides[leftIdx].title} draggable="false" />
+          </figure>
+
+          <figure className="faces-card faces-mid">
+            <img src={slides[midIdx].src} alt={slides[midIdx].title} draggable="false" />
+          </figure>
+
+          <figure className="faces-card faces-right">
+            <img src={slides[rightIdx].src} alt={slides[rightIdx].title} draggable="false" />
+          </figure>
         </div>
+
+        {index > 0 && (
+          <button
+            className="faces-btn prev"
+            aria-label="Previous"
+            type="button"
+            onClick={prev}
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="28"
+              height="28"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="white"
+              strokeWidth="3"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <polygon points="8,5 19,12 8,19 8,5" />
+            </svg>
+          </button>
+        )}
+
+        {index < len - 1 && (
+          <button
+            className="faces-btn next"
+            aria-label="Next"
+            type="button"
+            onClick={next}
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="28"
+              height="28"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="white"
+              strokeWidth="3"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <polygon points="8,5 19,12 8,19 8,5" />
+            </svg>
+          </button>
+        )}
+      </div>
+
+      <div className="faces-dots" aria-hidden="true">
+        {slides.map((_, idx) => (
+          <span key={idx} className={`dot ${idx === index ? "active" : ""}`} />
+        ))}
       </div>
 
       <a href="projects" className="proj-btn">
         Projects <span aria-hidden>→</span>
       </a>
-    </div>
+    </section>
   );
 }
