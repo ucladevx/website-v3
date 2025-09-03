@@ -22,9 +22,12 @@ export default function Join() {
       </section>
       <LooksSection
         images={[
-          "/assets/what-devx-1.jpg",
-          "/assets/what-devx-2.jpg",
           "/assets/what-devx-3.png",
+          "/digityle/IMG_4537.png",
+          "/digityle/IMG_4820.png",
+          "/assets/faces-bonfire-beach-night.png",
+          "/digityle/IMG_4823.png",
+          "/digityle/IMG_4633.png",
         ]}
         alts={["Workshop", "General meeting", "Lecture room"]}
       />
