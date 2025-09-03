@@ -72,7 +72,6 @@
 
 /* responsive */
 @media(max-width:900px){
-  .team-header{padding:32px 24px;}
   .team-hero{padding-top:160px;}
   .team-hero__title{font-size:64px;}
   .team-hero__subtitle{font-size:18px;margin:16px 0 48px;}

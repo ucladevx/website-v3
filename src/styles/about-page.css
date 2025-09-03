@@ -76,7 +76,6 @@
 }
 
 @media(max-width:900px){
-  .about-header{padding:32px 24px;}
   .about-nav{width:auto;gap:16px;}
   .about-hero{height:360px;}
   .about-hero__title{font-size:48px;}
