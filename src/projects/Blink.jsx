@@ -38,7 +38,8 @@ export default function Blink() {
         {/* carousel right above footer */}
         <ImageCarousel images={blinkImages} />
 
-        <div className="blink-team">
+        {/* Don't have pictures for teams yet */}
+        {/* <div className="blink-team">
           <h2 className="blink-team__title">The team behind BLink</h2>
 
           <div className="blink-team__grid">
@@ -55,7 +56,7 @@ export default function Blink() {
             <button className="btn-outline">Other Projects</button>
             <button className="btn-primary">Get Involved</button>
           </div>
-        </div>
+        </div> */}
 
         <FooterSection />
       </main>

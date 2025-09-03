@@ -25,7 +25,7 @@ export default function App() {
         <Route path="/team"   element={<Team />} />
         <Route path="/projects"   element={<Projects />} />
         <Route path="/join"   element={<Join />} />
-        <Route path="/substack"   element={<Substack />} />
+        {/* <Route path="/substack"   element={<Substack />} /> */}
       </Routes>
     </BrowserRouter>
     

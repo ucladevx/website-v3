@@ -312,6 +312,52 @@
   color: var(--accent1);
 }
 
+.faces-carousel {
+  position: relative;
+  width: 100%;
+}
+
+.faces-btn {
+  position: absolute;
+  width: 70px;
+  height: 70px;
+  top: 50%;
+  transform: translateY(-50%);
+  border-radius: 100px;
+  background: #286FDD;
+  border: 3px solid #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 5;
+  opacity: 0.95;
+  transition: opacity .2s, transform .2s;
+}
+
+.faces-btn:hover {
+  opacity: 1;
+  transform: translateY(-50%) scale(1.05);
+}
+
+.faces-btn svg {
+  width: 28px;
+  height: 28px;
+}
+
+.faces-btn.prev {
+  left: -35px;
+  right: auto;
+}
+
+.faces-btn.prev svg {
+  transform: rotate(180deg);  /* only flip the arrow */
+}
+
+.faces-btn.next {
+  right: -35px;
+}
+
 @media (max-width: 900px) {
   .about-wrap {
     grid-template-columns: 1fr;

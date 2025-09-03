@@ -46,7 +46,7 @@ export default function ProjectsGrid() {
         ))}
       </div>
 
-      <div className="projects-reviews">
+      {/* <div className="projects-reviews">
         <div className="reviews-left">
           <h2 className="reviews-title">What Our Community Says</h2>
           <p className="reviews-subtitle">Feedback from bruin community</p>
@@ -72,7 +72,7 @@ export default function ProjectsGrid() {
             <div className="review-card__body">Digityle was great with...</div>
           </div>
         </div>
-      </div>
+      </div> */}
       <FooterSection />
     </section>
   );
