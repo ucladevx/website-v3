@@ -1,4 +1,11 @@
 import "../styles/about.css";
+import ImageCarousel from "../projects/ImageCarousel";
+
+const facesImages = [
+  { src: "/assets/faces-sunset-beach-group.png", title: "Sunset Beach Hangout" },
+  { src: "/assets/faces-core-team-steps.png", title: "DevX Core Team on the Steps" },
+  { src: "/assets/faces-bonfire-beach-night.png", title: "Bonfire Night at the Beac"}
+];
 
 export default function FacesSection() {
   return (
@@ -12,38 +19,7 @@ export default function FacesSection() {
         the close-knit community behind them.
       </p>
 
-      <div className="faces-row faces-nowrap">
-        <figure className="faces-card faces-left">
-          <img
-            src="/assets/faces-sunset-beach-group.png"
-            alt="Sunset Beach Hangout"
-            draggable="false"
-          />
-        </figure>
-
-        <figure className="faces-card faces-mid">
-          <img
-            src="/assets/faces-core-team-steps.png"
-            alt="DevX Core Team on the Steps"
-            draggable="false"
-          />
-        </figure>
-
-        <figure className="faces-card faces-right">
-          <img
-            src="/assets/faces-bonfire-beach-night.png"
-            alt="Bonfire Night at the Beach"
-            draggable="false"
-          />
-        </figure>
-      </div>
-
-      <div className="faces-dots" aria-hidden="true">
-        <span className="dot active"></span>
-        <span className="dot"></span>
-        <span className="dot"></span>
-        <span className="dot"></span>
-      </div>
+      <ImageCarousel images={facesImages} />
 
       <a href="team" className="faces-cta">
         Learn More <span aria-hidden>→</span>
