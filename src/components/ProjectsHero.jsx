@@ -1,6 +1,5 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import NavBar from "./NavBar";
 import "../styles/projects-hero.css";
 
 export default function ProjectsHero({ onLearnMore }) {
@@ -13,9 +12,6 @@ export default function ProjectsHero({ onLearnMore }) {
 
   return (
     <section className="projects-hero">
-      <div className="projects-hero__nav-shell">
-        <NavBar />
-      </div>
 
       <div className="projects-hero__body">
         <div className="projects-hero__content">

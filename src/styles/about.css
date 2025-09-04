@@ -10,6 +10,7 @@
   max-width: 1440px;
   margin: 0 auto;
   padding: 140px 75px;
+  padding-top: 0;
   box-sizing: border-box;
   display: grid;
   grid-template-columns: 1fr 1fr;

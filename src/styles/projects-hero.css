@@ -6,10 +6,13 @@
   grid-template-rows: auto 1fr;
 }
 
-.projects-hero__nav-shell {
-  max-width: 1440px;
-  margin: 0 auto;
-  padding: 40px 75px;
+.project-header{
+  top:0;left:0;
+  width:100%;
+  padding:40px 75px;
+  box-sizing:border-box;
+  z-index:10;
+  background: linear-gradient(287.84deg, #000920 26.82%, rgba(0, 35, 101, 0.7) 133.03%);
 }
 
 .projects-hero__body {
