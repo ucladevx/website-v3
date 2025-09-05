@@ -31,7 +31,9 @@ Runs the app at [http://localhost:5173/](http://localhost:5173/)
 5. Ping other devs, wait for review, and address comments
   
 ## Deployment
-We are currently deploying a static html file from the `gh-pages` branch. We will need to add a `npm run deploy` script to deploy our react app properly.
+`npm run deploy` 
+
+Creates deployable HTML files in the `gh-pages` branch
 
 ## Production
 Check out [https://ucladevx.com/](https://ucladevx.com/)
