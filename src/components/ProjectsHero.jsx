@@ -3,13 +3,6 @@ import { useNavigate } from "react-router-dom";
 import "../styles/projects-hero.css";
 
 export default function ProjectsHero({ onLearnMore }) {
-  const navigate = useNavigate?.();
-
-  const handleJoin = () => {
-    if (navigate) navigate("/join");
-    else window.location.href = "/join";
-  };
-
   return (
     <section className="projects-hero">
 
@@ -32,8 +25,8 @@ export default function ProjectsHero({ onLearnMore }) {
             <button className="btn btn--outline" type="button" onClick={onLearnMore}>
               Learn More
             </button>
-            <button className="btn btn--primary" type="button" onClick={handleJoin}>
-              Join Us
+            <button className="btn btn--primary" type="button">
+              <a className="interest-form" href="https://tinyurl.com/devxinterestform">Interest Form</a>
             </button>
           </div>
         </div>

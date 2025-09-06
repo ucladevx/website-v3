@@ -17,7 +17,7 @@ export default function Join() {
             <p className="join-sub">Ready to build, design, and innovate with us?</p>
           </div>
 
-          <a href="#apply" className="join-btn">Apply Now</a>
+          <a href="https://tinyurl.com/devxinterestform" className="join-btn">Interest Form</a>
         </div>
       </section>
       <LooksSection

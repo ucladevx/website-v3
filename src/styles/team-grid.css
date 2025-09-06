@@ -2,17 +2,26 @@
   padding: 120px 20px;
 }
 
-.team-grid__inner {
+.team-grid__leaders {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto 48px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(220px, 1fr));
+  gap: 64px 32px;
+  justify-content: center;
+}
+
+.team-grid__rest {
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 64px 32px; /* row-gap col-gap */
+  gap: 64px 32px;
   justify-content: center;
 }
 
-/* card */
 .member-card {
   display: flex;
   flex-direction: column;
@@ -36,10 +45,9 @@
   object-fit: cover;
 }
 
-/* LinkedIn icon */
 .member-linkedin {
   position: absolute;
-  bottom: -10px; /* sits just below circle */
+  bottom: -10px;
   left: 50%;
   transform: translateX(-50%);
   background: #0077b5;
@@ -48,6 +56,7 @@
   font-size: 1.3rem;
   color: white;
   transition: color 0.2s ease;
+  text-decoration: none;
 }
 
 .member-linkedin:hover {
@@ -55,7 +64,7 @@
 }
 
 .member-role {
-  margin-top: 20px; /* adjusted to account for LinkedIn icon */
+  margin-top: 20px;
   font: 700 18px/1 "Inter", sans-serif;
 }
 
@@ -64,18 +73,20 @@
   font: 400 14px/1 "Inter", sans-serif;
 }
 
-/* mobile: stack two per row */
+@media (max-width: 900px) {
+  .team-grid__leaders {
+    max-width: 700px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 48px 16px;
+  }
+}
+
 @media (max-width: 600px) {
-  .team-grid__inner {
+  .team-grid__leaders,
+  .team-grid__rest {
     grid-template-columns: repeat(2, 1fr);
     gap: 48px 0px;
   }
-
-  .member-role {
-    font-size: 20px;
-  }
-
-  .member-name {
-    font-size: 16px;
-  }
+  .member-role { font-size: 20px; }
+  .member-name { font-size: 16px; }
 }

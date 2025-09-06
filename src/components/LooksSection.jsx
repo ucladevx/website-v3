@@ -161,8 +161,8 @@ export default function LooksSection({
           <TimelineSection />
 
           <div className="impact-apply">
-            <a href="#apply" className="apply-now">
-              <span>Apply Now</span>
+            <a href="https://tinyurl.com/devxinterestform" className="apply-now">
+              <span>Interest Form</span>
               <svg viewBox="0 0 24 24" aria-hidden="true">
                 <path
                   d="M5 12h12M13 6l6 6-6 6"
