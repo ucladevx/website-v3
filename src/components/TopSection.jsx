@@ -11,12 +11,9 @@ export default function TopSection() {
       </header>
 
       <div className="hero-inner">
-        <div className="showcase">
-          <img className="shot shot-left"   src="/assets/PageProduct.png" alt="" />
-          <img className="shot shot-center" src="/assets/devx.png"        alt="" />
-          <img className="shot shot-right"  src="/assets/vr.png"          alt="" />
+        <div className="project-images">
+          <img src="/assets/ProjectImages.png" alt="" />
         </div>
-
         <h1 className="tech-title">Technology.<br />Reimagined.</h1>
         <p className="tagline">Entrepreneurs at UCLA</p>
       </div>
