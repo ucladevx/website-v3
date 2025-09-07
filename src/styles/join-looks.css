@@ -1,7 +1,6 @@
 .looks-sec{
-  padding:31px 75px 24px;
+  padding:200px 75px 24px;
   padding-bottom: 0px;
-  padding-top: 100px;
   box-sizing:border-box;
   color:var(--text);
   position:relative;
@@ -119,7 +118,7 @@
 .impact-title{
   width: 694px;
   max-width: 100%;
-  margin: 0 auto 32px;
+  margin: 150px auto 32px;
   text-align: center;
   font: 700 40px/1 "Inter", system-ui, sans-serif;
   color: #fff;
@@ -172,7 +171,8 @@
 .impact-apply{
   display:flex;
   justify-content:center;
-  margin-top:50px; 
+  margin-top:200px; 
+  margin-bottom: 100px;
 }
 
 .apply-now{
@@ -243,6 +243,7 @@
   box-shadow: 0 4px 12px rgba(0,0,0,0.3);
   overflow: hidden; /* ensures pill corners align with card */
   padding: 20px 20px;
+  text-align: center;
 }
 
 .role-pill {

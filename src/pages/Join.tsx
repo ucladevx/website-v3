@@ -17,14 +17,17 @@ export default function Join() {
             <p className="join-sub">Ready to build, design, and innovate with us?</p>
           </div>
 
-          <a href="#apply" className="join-btn">Apply Now</a>
+          <a href="https://tinyurl.com/devxinterestform" className="join-btn">Interest Form</a>
         </div>
       </section>
       <LooksSection
         images={[
-          "/assets/what-devx-1.jpg",
-          "/assets/what-devx-2.jpg",
           "/assets/what-devx-3.png",
+          "/digityle/IMG_4537.png",
+          "/digityle/IMG_4820.png",
+          "/assets/faces-bonfire-beach-night.png",
+          "/digityle/IMG_4823.png",
+          "/digityle/IMG_4633.png",
         ]}
         alts={["Workshop", "General meeting", "Lecture room"]}
       />

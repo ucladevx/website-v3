@@ -16,10 +16,10 @@ export default function FooterSection() {
           <FontAwesomeIcon icon={faFacebook} />
         </a>
         <a href="https://substack.com/@ucladevx" target="_blank" aria-label="Substack">
-          <img src="assets/substack.png" alt="Substack" />
+          <img src="/assets/substack.png" alt="Substack" />
         </a>
         <a href="https://linktr.ee/ucladevx" target="_blank" aria-label="Linktree">
-          <img src="assets/linktree.png" alt="Linktree" />
+          <img src="/assets/linktree.png" alt="Linktree" />
         </a>
       </div>
     </div>

@@ -130,7 +130,7 @@
 .tech-title {
   position: relative;
   z-index: 3;
-  margin: -140px 0 0 -140px;
+  margin: -200px 0 0 -140px;
   max-width: 827px;
   font: 700 100px/1 var(--font-inter);
 }
@@ -140,6 +140,14 @@
   z-index: 3;
   margin: 16px 0 0 -140px;
   font: 400 35px/1 var(--font-inter);
+}
+
+.project-images {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-top: -100px;
 }
 
 @media (max-width: 900px) {
@@ -153,8 +161,7 @@
   }
 
   .hero-inner {
-    padding: 32px 24px 56px;
-    gap: 24px;
+    padding: 32px 24px 32px;
   }
 
   .showcase {

@@ -25,7 +25,7 @@ export default function AboutSection() {
             experienced teammates, building a network that lasts beyond UCLA.
             </p>
         </div>
-
+        <FacesSection />
         <ProjectsCarousel />
         </section>
     </>
