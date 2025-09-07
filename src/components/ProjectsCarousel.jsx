@@ -2,11 +2,9 @@ import { useState } from "react";
 import "../styles/about.css";
 
 const slides = [
-  { src: "/assets/project-left.png",   title: "Project Name" },
   { src: "/assets/project-center.png", title: "Project Name" },
   { src: "/blink/App_store.png",  title: "Project Name" },
   { src: "/digityle/IMG_7407.png",  title: "Project Name" },
-  { src: "/assets/NeuVoice.png",  title: "Project Name" },
 ];
 
 export default function ProjectsCarousel() {
