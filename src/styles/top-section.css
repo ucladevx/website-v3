@@ -147,6 +147,7 @@
   justify-content: center;
   align-items: center;
   width: 100%;
+  margin-top: -100px;
 }
 
 @media (max-width: 900px) {
