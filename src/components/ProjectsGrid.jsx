@@ -6,7 +6,7 @@ import FooterSection from "./FooterSection";
 const projects = [
   { title: "UCLA BLink", img: "/blink/PNG image.png", link: "/projects/blink" },
   { title: "Digityle", img: "/digityle/IMG_7407.png", link: "/projects/digityle" },
-  { title: "TransitTrack", img: "/assets/PageProduct.png" }
+  { title: "More Coming Soon", img: "/assets/devx.png" }
 ];
 
 const bottomRow = [
