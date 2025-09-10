@@ -3,6 +3,6 @@ const modules = import.meta.glob("/src/assets/digityle/*.{png,jpg,jpeg,svg,PNG,J
 });
 
 export const digityleImages = Object.keys(modules).map((path) => ({
-  src: path.replace("/public", ""),
+  src: modules[path].default,
   title: path.split("/").pop().split(".")[0],
 }));

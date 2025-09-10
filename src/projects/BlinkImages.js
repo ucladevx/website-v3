@@ -3,6 +3,6 @@ const modules = import.meta.glob("/src/assets/blink/*.{png,jpg,jpeg,svg,PNG,JPG,
 });
 
 export const blinkImages = Object.keys(modules).map((path) => ({
-  src: path.replace("/public", ""),
+  src: modules[path].default,
   title: path.split("/").pop().split(".")[0],
 }));
