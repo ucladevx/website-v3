@@ -1,4 +1,4 @@
-const modules = import.meta.glob("/public/assets/blink/*.{png,jpg,jpeg,svg,PNG,JPG,JPEG,SVG}", {
+const modules = import.meta.glob("/src/assets/blink/*.{png,jpg,jpeg,svg,PNG,JPG,JPEG,SVG}", {
   eager: true,
 });
 
