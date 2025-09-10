@@ -27,7 +27,7 @@ export default function Blink() {
               </p>
             </div>
             <div className="blink-image">
-              <img src="/blink/App_store.png" alt="App preview" />
+              <img src="/assets/blink/App_store.png" alt="App preview" />
             </div>
           </div>
         </div>

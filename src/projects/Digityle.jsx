@@ -24,12 +24,12 @@ export default function Digityle() {
               <h2>What is Digityle?</h2>
               <p>
                 A new way to shop and find clothes that pop—focusing on individuality and unique user experiences Designed to help users feel more confident with clothes they love, Digityle is an e-commerce styling site with a personality based clothing recommendation system.
-                <p></p>
+                <br /><br />
                 “Our research-backed quiz creates an individualized shopping experience by establishing a user’s unique fashion aesthetic. From anticipating existing wardrobe items to giving ideas on how to style them, Digityle empowers users to express themselves boldly and confidently.” - Digityle Team
               </p>
             </div>
             <div className="blink-image">
-              <img src="/digityle/IMG_7407.png" alt="App preview" />
+              <img src="/assets/digityle/IMG_7407.png" alt="App preview" />
             </div>
           </div>
         </div>

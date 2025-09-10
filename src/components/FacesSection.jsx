@@ -7,7 +7,7 @@ export default function FacesSection() {
     "/assets/faces-core-team-steps.png",
     "/assets/faces-bonfire-beach-night.png",
     "/assets/club-fair.png",
-    "/blink/IMG_0290.png",
+    "/assets/blink/IMG_0290.png",
     "/assets/what-devx-1.jpg",
     "/assets/what-devx-2.jpg"
   ];

@@ -4,8 +4,8 @@ import "../styles/projects-grid.css";
 import FooterSection from "./FooterSection";
 
 const projects = [
-  { title: "UCLA BLink", img: "/blink/PNG image.png", link: "/projects/blink" },
-  { title: "Digityle", img: "/digityle/IMG_7407.png", link: "/projects/digityle" },
+  { title: "UCLA BLink", img: "/assets/blink/PNG_image.PNG", link: "/projects/blink" },
+  { title: "Digityle", img: "/assets/digityle/IMG_7407.png", link: "/projects/digityle" },
   { title: "More Coming Soon", img: "/assets/devx.png" }
 ];
 
