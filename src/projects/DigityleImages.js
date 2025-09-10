@@ -6,5 +6,3 @@ export const digityleImages = Object.keys(modules).map((path) => ({
   src: path.replace("/public", ""),
   title: path.split("/").pop().split(".")[0],
 }));
-
-console.log(digityleImages)
