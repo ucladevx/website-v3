@@ -236,6 +236,12 @@
   }
 }
 
+@media (max-width: 500px) {
+  .looks-sec{
+    padding:200px 25px 24px;
+  }
+}
+
 .role-card {
   background: #141627;
   border-radius: 1rem;
