@@ -31,9 +31,10 @@ Runs the app at [http://localhost:5173/](http://localhost:5173/)
 5. Ping other devs, wait for review, and address comments
   
 ## Deployment
-`npm run deploy` 
+- `npm run predeploy`
+- `npm run deploy`
 
-Creates deployable HTML files in the `gh-pages` branch
+Creates a live `index.html` file in the `gh-pages` branch
 
 ## Production
 Check out [https://ucladevx.com/](https://ucladevx.com/)
