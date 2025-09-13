@@ -7,27 +7,27 @@ export default function TimelineSection() {
     {
       title: "Application Opens",
       desc: "Our application will open in late September. This is your chance to become part of the team that makes up DevX.",
-      date: "09/24",
+      date: "09/23",
     },
     {
       title: "Info Sessions",
       desc: "Come to our info session to learn about our various roles, project teams and application process. End the session with networking time with both current and potential future DevX members!",
-      date: "09/30 - 10/2",
+      date: "10/7",
     },
     {
       title: "Application Due",
       desc: "Tell us about your interests and how you think you can contribute to DevX. We will be looking at your resume and portfolio (if applicable).",
-      date: "10/3",
+      date: "10/8",
     },
     {
       title: "Coffee Chats",
       desc: "Let us get to know you better. If your resume is a good match, we will invite you to tell us a little bit about yourself in person.",
-      date: "10/7 - 10/9",
+      date: "10/14",
     },
     {
-      title: "PM Interviews",
+      title: "Final Interviews",
       desc: "If your skills are a good match for any of our teams, you will be invited to individual final round interviews with the Product Managers of this year's teams.",
-      date: "10/10 - 10/14",
+      date: "10/16 - 10/18",
     },
   ];
 
