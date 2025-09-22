@@ -59,3 +59,23 @@ html, body {
   justify-content:center;
   text-align: center
 }
+
+@media (max-width: 600px) {
+  .site-header {
+    padding: 12px 16px; /* shrink side padding */
+  }
+
+  .nav-list {
+    gap: 8px !important; /* tighter spacing */
+  }
+
+  .nav-link {
+    font-size: 15px; /* slightly smaller font */
+  }
+
+  .about-cta {
+    font-size: 15px;
+    padding: 6px 10px; /* shrink CTA button */
+  }
+}
+
