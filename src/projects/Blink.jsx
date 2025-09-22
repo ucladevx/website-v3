@@ -16,21 +16,18 @@ export default function Blink() {
         <div className="blink-container">
           <div className="blink-header">
             <h1 className="blink-title">UCLA BLink</h1>
-            <p className="blink-subtitle">one line description of BLink</p>
+            <p className="blink-subtitle">The go-to app for discovering every pop‑up and event happening at UCLA</p>
           </div>
 
           <div className="blink-content">
             <div className="blink-text">
               <h2>What is BLink?</h2>
               <p>
-                Qorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam
-                eu turpis molestie, dictum est a, mattis tellus. Sed dignissim,
-                metus nec fringilla accumsan, risus sem sollicitudin lacus, ut
-                interdum tellus elit sed risus.
+                Founded in 2024, UCLA BLink is a student-run platform that aggregates campus events: pop-ups, student org gatherings, workshops, and more—into one easily accessible spot. Linking you with the best events on campus — BLink and you’ll miss it. 
               </p>
             </div>
             <div className="blink-image">
-              <img src="/blink/App_store.png" alt="App preview" />
+              <img src="/assets/blink/App_store.png" alt="App preview" />
             </div>
           </div>
         </div>
@@ -38,7 +35,8 @@ export default function Blink() {
         {/* carousel right above footer */}
         <ImageCarousel images={blinkImages} />
 
-        <div className="blink-team">
+        {/* Don't have pictures for teams yet */}
+        {/* <div className="blink-team">
           <h2 className="blink-team__title">The team behind BLink</h2>
 
           <div className="blink-team__grid">
@@ -55,7 +53,7 @@ export default function Blink() {
             <button className="btn-outline">Other Projects</button>
             <button className="btn-primary">Get Involved</button>
           </div>
-        </div>
+        </div> */}
 
         <FooterSection />
       </main>

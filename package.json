@@ -8,7 +8,8 @@
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "deploy": "gh-pages -b gh-pages-test -d dist"
+    "predeploy": "npm run build && cp dist/index.html dist/404.html",
+    "deploy": "gh-pages -b gh-pages -d dist --cname ucladevx.com"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^7.0.0",

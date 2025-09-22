@@ -4,104 +4,52 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLinkedin } from "@fortawesome/free-brands-svg-icons";
 
 const members = [
-  {
-    id: 1,
-    role: "Co-President",
-    name: "Andrew Cruz",
-    photo: "/assets/team/alice.png",
-    linkedin: "https://www.linkedin.com/in/alicejohnson"
-  },
-  {
-    id: 2,
-    role: "Co-President",
-    name: "Arushi Gupta",
-    photo: "/assets/team/bob.png",
-    linkedin: "https://www.linkedin.com/in/bobsmith"
-  },
-  {
-    id: 3,
-    role: "Internal Vice President",
-    name: "Alex Hu",
-    photo: "/assets/team/bob.png",
-    linkedin: "https://www.linkedin.com/in/bobsmith"
-  },
-  {
-    id: 4,
-    role: "External Vice President",
-    name: "Conor Parman",
-    photo: "/assets/team/bob.png",
-    linkedin: "https://www.linkedin.com/in/bobsmith"
-  },
-  {
-    id: 5,
-    role: "Alumni Relations",
-    name: "Anusha Singhai",
-    photo: "/assets/team/bob.png",
-    linkedin: "https://www.linkedin.com/in/bobsmith"
-  },
-  {
-    id: 6,
-    role: "Finance",
-    name: "Amanda Lee",
-    photo: "/assets/team/bob.png",
-    linkedin: "https://www.linkedin.com/in/bobsmith"
-  },
-  {
-    id: 7,
-    role: "Engineering",
-    name: "Bob Smith",
-    photo: "/assets/team/bob.png",
-    linkedin: "https://www.linkedin.com/in/bobsmith"
-  },
-  {
-    id: 8,
-    role: "Design",
-    name: "Bob Smith",
-    photo: "/assets/team/bob.png",
-    linkedin: "https://www.linkedin.com/in/bobsmith"
-  },
-  {
-    id: 9,
-    role: "Marketing",
-    name: "Bob Smith",
-    photo: "/assets/team/bob.png",
-    linkedin: "https://www.linkedin.com/in/bobsmith"
-  },
-  {
-    id: 10,
-    role: "Marketing",
-    name: "Bob Smith",
-    photo: "/assets/team/bob.png",
-    linkedin: "https://www.linkedin.com/in/bobsmith"
-  },
+  { id: 1, role: "Co-President", name: "Andrew Cruz",  photo: "/assets/board/AndrewCruz.png",  linkedin: "https://www.linkedin.com/in/andrewcruz3/" },
+  { id: 2, role: "Co-President", name: "Arushi Gupta", photo: "/assets/board/ArushiGupta.jpg", linkedin: "https://www.linkedin.com/in/1arushigupta/" },
+  { id: 3, role: "Internal Vice President", name: "Alex Hu", photo: "/assets/board/AlexHu.jpeg", linkedin: "https://www.linkedin.com/in/alex-hu374/" },
+  { id: 4, role: "External Vice President", name: "Conor Parman", photo: "./assets/board/ConorParman.jpeg", linkedin: "https://www.linkedin.com/in/conor-parman" },
+  { id: 5, role: "Alumni Relations", name: "Anusha Singhai", photo: "/assets/board/AnushaSinghai.png", linkedin: "https://www.linkedin.com/in/anusha-singhai/" },
+  { id: 6, role: "Finance", name: "Amanda Lee", photo: "/assets/board/AmandaLee.jpeg", linkedin: "http://linkedin.com/in/amandal35" },
+  { id: 7, role: "Tech", name: "Ishan Royyuru", photo: "/assets/board/IshanRoyyuru.jpg", linkedin: "https://www.linkedin.com/in/ishan-royyuru" },
+  { id: 8, role: "Design", name: "Nancy Rios", photo: "/assets/board/NancyRios.png", linkedin: "https://www.linkedin.com/in/nancyvrios" },
+  { id: 9, role: "Marketing", name: "Natalie Tan", photo: "/assets/board/NatalieTan.jpg", linkedin: "https://www.linkedin.com/in/nataliegracetan/" },
+  { id: 10, role: "Marketing", name: "Lily Tran", photo: "/assets/board/LilyTran.jpeg", linkedin: "https://www.linkedin.com/in/lilymtran?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" },
 ];
 
 export default function TeamGrid() {
+  const leaders = members.filter(m => m.role === "Co-President");
+  const rest = members.filter(m => m.role !== "Co-President");
+
+  const Card = (m) => (
+    <figure key={m.id} className="member-card">
+      <div className="member-avatar">
+        <img src={m.photo} alt={`${m.name} profile`} />
+        {m.linkedin && (
+          <a
+            href={m.linkedin}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={`${m.name} LinkedIn`}
+            className="member-linkedin"
+          >
+            <FontAwesomeIcon icon={faLinkedin} />
+          </a>
+        )}
+      </div>
+      <figcaption>
+        <div className="member-role">{m.role}</div>
+        <div className="member-name">{m.name}</div>
+      </figcaption>
+    </figure>
+  );
+
   return (
     <section className="team-grid">
-      <div className="team-grid__inner">
-        {members.map((m) => (
-          <figure key={m.id} className="member-card">
-            <div className="member-avatar">
-              <img src={m.photo} alt={`${m.name} profile`} />
-              {m.linkedin && (
-                <a
-                  href={m.linkedin}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={`${m.name} LinkedIn`}
-                  className="member-linkedin"
-                >
-                  <FontAwesomeIcon icon={faLinkedin} />
-                </a>
-              )}
-            </div>
-            <figcaption>
-              <div className="member-role">{m.role}</div>
-              <div className="member-name">{m.name}</div>
-            </figcaption>
-          </figure>
-        ))}
+      <div className="team-grid__leaders">
+        {leaders.map(Card)}
+      </div>
+      <div className="team-grid__rest">
+        {rest.map(Card)}
       </div>
     </section>
   );

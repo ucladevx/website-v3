@@ -4,9 +4,9 @@ import "../styles/projects-grid.css";
 import FooterSection from "./FooterSection";
 
 const projects = [
-  { title: "UCLA BLink", img: "/blink/PNG image.png", link: "/projects/blink" },
-  { title: "Digityle", img: "/digityle/IMG_7407.png", link: "/projects/digityle" },
-  { title: "TransitTrack", img: "/assets/PageProduct.png" }
+  { title: "UCLA BLink", img: "/assets/blink/PNG_image.PNG", link: "/projects/blink" },
+  { title: "Digityle", img: "/assets/digityle/IMG_7407.png", link: "/projects/digityle" },
+  { title: "More Coming Soon", img: "/assets/devx.png" }
 ];
 
 const bottomRow = [
@@ -46,7 +46,7 @@ export default function ProjectsGrid() {
         ))}
       </div>
 
-      <div className="projects-reviews">
+      {/* <div className="projects-reviews">
         <div className="reviews-left">
           <h2 className="reviews-title">What Our Community Says</h2>
           <p className="reviews-subtitle">Feedback from bruin community</p>
@@ -72,7 +72,7 @@ export default function ProjectsGrid() {
             <div className="review-card__body">Digityle was great with...</div>
           </div>
         </div>
-      </div>
+      </div> */}
       <FooterSection />
     </section>
   );

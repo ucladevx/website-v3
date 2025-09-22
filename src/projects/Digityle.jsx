@@ -16,21 +16,20 @@ export default function Digityle() {
         <div className="blink-container">
           <div className="blink-header">
             <h1 className="blink-title">Digityle</h1>
-            <p className="blink-subtitle">one line description of Digityle</p>
+            <p className="blink-subtitle">A fashion-tech product that develops personal style without high-end stylists or excessive online shopping. </p>
           </div>
 
           <div className="blink-content">
             <div className="blink-text">
               <h2>What is Digityle?</h2>
               <p>
-                Qorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam
-                eu turpis molestie, dictum est a, mattis tellus. Sed dignissim,
-                metus nec fringilla accumsan, risus sem sollicitudin lacus, ut
-                interdum tellus elit sed risus.
+                A new way to shop and find clothes that pop—focusing on individuality and unique user experiences Designed to help users feel more confident with clothes they love, Digityle is an e-commerce styling site with a personality based clothing recommendation system.
+                <br /><br />
+                “Our research-backed quiz creates an individualized shopping experience by establishing a user’s unique fashion aesthetic. From anticipating existing wardrobe items to giving ideas on how to style them, Digityle empowers users to express themselves boldly and confidently.” - Digityle Team
               </p>
             </div>
             <div className="blink-image">
-              <img src="/digityle/IMG_7407.png" alt="App preview" />
+              <img src="/assets/digityle/IMG_7407.png" alt="App preview" />
             </div>
           </div>
         </div>
@@ -38,7 +37,8 @@ export default function Digityle() {
         {/* carousel right above footer */}
         <ImageCarousel images={digityleImages} />
 
-        <div className="blink-team">
+        {/* Don't have pictures for teams yet */}
+        {/* <div className="blink-team">
           <h2 className="blink-team__title">The team behind Digityle</h2>
 
           <div className="blink-team__grid">
@@ -55,7 +55,7 @@ export default function Digityle() {
             <button className="btn-outline">Other Projects</button>
             <button className="btn-primary">Get Involved</button>
           </div>
-        </div>
+        </div> */}
 
         <FooterSection />
       </main>
