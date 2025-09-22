@@ -52,3 +52,27 @@
     flex-direction: column-reverse;
   }
 }
+
+@media (max-width: 600px) {
+  .about-info {
+    padding: 100px 20px; /* less side padding */
+  }
+
+  .info-text h2 {
+    font-size: 36px; /* shrink heading */
+  }
+
+  .info-text p {
+    font-size: 16px;
+  }
+
+  .info-row {
+    gap: 32px; /* tighter spacing */
+    margin-bottom: 80px;
+  }
+
+  .info-img {
+    width: 100%;
+    height: auto; /* let image resize naturally */
+  }
+}

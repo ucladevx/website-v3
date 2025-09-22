@@ -70,3 +70,36 @@
     gap:48px;
   }
 }
+
+@media (max-width: 600px) {
+  .numbers-sec {
+    padding: 60px 16px;
+  }
+
+  .numbers-sec__title {
+    font-size: 36px;
+    margin-bottom: 40px;
+  }
+
+  .numbers-grid {
+    gap: 32px;
+  }
+
+  .num-card {
+    width: 100%;
+    flex-direction: column; /* stack icon above number */
+  }
+
+  .num-card__icon {
+    margin-bottom: 16px;
+  }
+
+  .num-card__value {
+    font-size: 48px;
+    margin-top: 12px;
+  }
+
+  .num-card__label {
+    font-size: 16px;
+  }
+}

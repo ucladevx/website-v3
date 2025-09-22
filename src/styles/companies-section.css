@@ -70,3 +70,31 @@
   0%   { transform:translate3d(0,0,0); }
   100% { transform:translate3d(-50%,0,0); }
 }
+
+@media (max-width: 600px) {
+  .companies-sec {
+    padding: 100px 16px 0;
+  }
+
+  .companies-sec__heading h2 {
+    font-size: 36px;
+  }
+
+  .companies-sec__heading p {
+    font-size: 16px;
+    margin-bottom: 40px;
+  }
+
+  .logo-seq {
+    gap: 40px; /* tighter spacing */
+  }
+
+  .logo-seq li img {
+    max-height: 64px;
+    max-width: 160px;
+  }
+
+  .logo-lg {
+    min-height: 120px; /* shrink oversized logos */
+  }
+}
