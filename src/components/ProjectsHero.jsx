@@ -26,7 +26,7 @@ export default function ProjectsHero({ onLearnMore }) {
               Learn More
             </button>
             <button className="btn btn--primary" type="button">
-              <a className="interest-form" href="https://tinyurl.com/devxinterestform">Interest Form</a>
+              <a className="interest-form" href="https://linktr.ee/ucladevx" target="_blank">Apply Now</a>
             </button>
           </div>
         </div>
