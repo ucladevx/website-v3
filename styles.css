@@ -555,10 +555,10 @@ main {
 /* Side Glow Container inside Who Section - Subtle edge accent (mostly off-screen) */
 .who-glow-container {
   position: absolute;
-  top: 50px;
+  top: -120px;
   left: -440px;
   width: 593px;
-  height: 593px;
+  height: 960px;
   pointer-events: none;
   z-index: 0;
 }
@@ -671,7 +671,7 @@ main {
   display: flex;
   flex-direction: column;
   max-width: 437px;
-  padding-left: 20px;
+  padding-left: 110px;
 }
 
 .who-title {
