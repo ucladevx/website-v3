@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us | UCLA DevX</title>
+  <meta name="description" content="Learn about UCLA DevX's mission, our origin story from ACM to an independent tech incubator, memorable club moments, and member stories.">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="assets/icons/favicon-dark.png">
+  <link rel="apple-touch-icon" href="assets/icons/favicon-dark.png">
+  
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="styles.css?v=60">
+</head>
+<body class="about-body">
+
+  <!-- Top Left Ambient Blue Glow (Figma Node 530:1114) -->
+  <div class="about-glow-blue-topleft" aria-hidden="true">
+    <img src="assets/about-glow-blue-topleft.svg" alt="" />
+  </div>
+
+  <!-- Header / Navigation -->
+  <header class="navbar-wrapper">
+    <nav class="navbar" id="navbar" aria-label="Main Navigation">
+      <a href="index.html#hero" class="navbar-brand" aria-label="DevX Home">
+        <img src="assets/team/navbar-logo-blue.png" alt="DevX Logo" class="brand-logo" width="38" height="38" decoding="async" />
+      </a>
+
+      <div class="navbar-links" id="nav-links">
+        <a href="index.html#hero" class="nav-link">Home</a>
+        <a href="about.html" class="nav-link active">About Us</a>
+        <a href="projects.html" class="nav-link">Projects</a>
+        <a href="team.html" class="nav-link">Our Team</a>
+      </div>
+
+      <div class="navbar-actions">
+        <a href="join.html" class="btn btn-primary nav-join-btn" id="nav-join-trigger">Join</a>
+        <button class="mobile-menu-toggle" id="mobile-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Main Content -->
+  <main class="about-main">
+
+    <!-- 1. Hero & Mission Section -->
+    <section class="about-mission-section" id="about-mission">
+      <div class="mission-wrapper">
+        <div class="mission-banner-card about-reveal-media">
+          <img src="assets/about/mission-banner.png" alt="UCLA DevX Team at Royce Hall" class="mission-banner-img" decoding="async" />
+        </div>
+        
+        <div class="mission-content about-reveal about-delay-1">
+          <h1 class="mission-title">Our Mission</h1>
+          <p class="mission-desc">
+            We aim to empower students to bring bold product ideas to life. Through hands-on teamwork, mentorship, and career-building opportunities, we prepare the next generation of innovators to thrive in tech.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. Our Story Section -->
+    <section class="about-story-section" id="about-story">
+      <div class="story-container">
+        
+        <div class="story-content about-reveal">
+          <h2 class="story-title">Our Story</h2>
+          <div class="story-text">
+            <p>
+              We started as a project initiative within UCLA's ACM student chapter. We wanted to give student developers team-based experience building real-world software applications and technical "moonshot" projects.
+            </p>
+            <p>
+              We then became an independent entity outside of ACM in 2017 to expand its real-world software development scope.
+            </p>
+          </div>
+        </div>
+
+        <div class="story-media-card about-reveal-media about-delay-1">
+          <img src="assets/about/our-story.png" alt="DevX team members collaborating" class="story-img" decoding="async" />
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 3. DevX Moments Gallery Section -->
+    <section class="moments-section" id="about-moments">
+      <div class="moments-header about-reveal">
+        <h2 class="moments-title">DevX Moments</h2>
+      </div>
+
+      <div class="moments-gallery">
+        
+        <!-- Row 1: 2 Photos (Warriors game & Big Bear retreat) -->
+        <div class="moments-row moments-row-1">
+          <div class="moments-item moments-item-warriors about-reveal-media" data-moment="Retune watching Warriors vs. Clippers">
+            <img src="assets/about/moments-warriors.png" alt="Retune watching Warriors vs. Clippers" class="moments-img" decoding="async" />
+          </div>
+          <div class="moments-item moments-item-bigbear about-reveal-media" data-moment="Retune retreat @ Big Bear">
+            <img src="assets/about/moments-bigbear.png" alt="Retune retreat @ Big Bear" class="moments-img" decoding="async" />
+          </div>
+        </div>
+
+        <!-- Row 2: 3 Photos (Beach trip, Frolicking, Dinner nights) -->
+        <div class="moments-row moments-row-2">
+          <div class="moments-item moments-item-beach about-reveal-media" data-moment="Bchat beach trip">
+            <img src="assets/about/moments-beach-trip.png" alt="Bchat beach trip" class="moments-img" decoding="async" />
+          </div>
+          <div class="moments-item moments-item-frolicking about-reveal-media" data-moment="Bchat frolicking to the Beach">
+            <img src="assets/about/moments-frolicking.png" alt="Bchat frolicking to the Beach" class="moments-img" decoding="async" />
+          </div>
+          <div class="moments-item moments-item-dinner about-reveal-media" data-moment="Retune Dinner Nights">
+            <img src="assets/about/moments-dinner.png" alt="Retune Dinner Nights" class="moments-img" decoding="async" />
+          </div>
+        </div>
+
+        <!-- Row 3: 2 Photos (Big & littles, Rooftop social) -->
+        <div class="moments-row moments-row-3">
+          <div class="moments-item moments-item-big-littles about-reveal-media" data-moment="Bchat big & littles">
+            <img src="assets/about/moments-big-littles.png" alt="Bchat big & littles" class="moments-img" decoding="async" />
+          </div>
+          <div class="moments-item moments-item-rooftop about-reveal-media" data-moment="Rooftop social">
+            <img src="assets/about/moments-rooftop.png" alt="Rooftop social" class="moments-img" decoding="async" />
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Floating Cursor Tooltip for Moments -->
+      <div class="moments-cursor-label" id="moments-cursor-label" aria-hidden="true"></div>
+    </section>
+
+    <!-- 4. Member Stories Section -->
+    <section class="member-stories-section" id="about-members">
+      <div class="member-stories-header about-reveal">
+        <h2 class="member-stories-title">Member Stories</h2>
+      </div>
+
+      <div class="member-stories-container">
+        
+        <!-- Story 1: Lexi Chua (Featured Card) -->
+        <div class="member-story-card story-card-featured about-reveal">
+          <div class="story-avatar-wrapper">
+            <img src="assets/about/lexi-story.png" alt="Lexi Chua" class="story-avatar" decoding="async" />
+          </div>
+          <div class="story-member-info">
+            <h3 class="story-member-name">Lexi Chua</h3>
+            <p class="story-member-role">Designer for Retune</p>
+            <p class="story-member-major">Cognitive Science</p>
+            <p class="story-member-class">c/o 2029</p>
+          </div>
+          <div class="story-quote-box">
+            <p class="story-quote">
+              “I joined DevX in my Freshman year, and It exponentially improved my design skills, prepared me for working in tech, and gave me a fun and supportive social group.”
+            </p>
+          </div>
+        </div>
+
+
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer" id="footer">
+    <div class="footer-container">
+      
+      <!-- Column 1: Brand & Copyright -->
+      <div class="footer-col footer-brand-col">
+        <h2 class="footer-brand">DevX</h2>
+        <p class="footer-copyright">© 2026 UCLA DevX</p>
+      </div>
+
+      <!-- Column 2: Explore Links -->
+      <div class="footer-col footer-nav-col">
+        <h4 class="footer-heading">EXPLORE</h4>
+        <ul class="footer-links">
+          <li><a href="index.html#hero">Home</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="index.html#projects">Projects</a></li>
+        </ul>
+      </div>
+
+      <!-- Column 3: Secondary Links -->
+      <div class="footer-col footer-team-col">
+        <ul class="footer-links secondary-links">
+          <li><a href="team.html">Our Team</a></li>
+          <li><a href="join.html">Join</a></li>
+        </ul>
+      </div>
+
+      <!-- Column 4: Contact & Socials -->
+      <div class="footer-col footer-contact-col">
+        <h4 class="footer-heading">CONTACT</h4>
+        <a href="mailto:ucladevx@gmail.com" class="footer-email" target="_blank" rel="noopener noreferrer">
+          ucladevx@gmail.com
+        </a>
+        <div class="footer-socials">
+          <a href="https://www.linkedin.com/company/ucladevx/" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="LinkedIn">
+            <svg width="28" height="28" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M9 13.5V21M9 9V9.015M15 21V13.5M21 21V16.5C21 15.7044 20.6839 14.9413 20.1213 14.3787C19.5587 13.8161 18.7956 13.5 18 13.5C17.2044 13.5 16.4413 13.8161 15.8787 14.3787C15.3161 14.9413 15 15.7044 15 16.5M1.5 7.5C1.5 5.9087 2.13214 4.38258 3.25736 3.25736C4.38258 2.13214 5.9087 1.5 7.5 1.5H22.5C24.0913 1.5 25.6174 2.13214 26.7426 3.25736C27.8679 4.38258 28.5 5.9087 28.5 7.5V22.5C28.5 24.0913 27.8679 25.6174 26.7426 26.7426C25.6174 27.8679 24.0913 28.5 22.5 28.5H7.5C5.9087 28.5 4.38258 27.8679 3.25736 26.7426C2.13214 25.6174 1.5 24.0913 1.5 22.5V7.5Z" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+          <a href="https://www.instagram.com/ucladevx/" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="Instagram">
+            <svg width="28" height="28" viewBox="0 0 30.375 30.375" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M22.7812 7.59375V7.61063M1.6875 8.4375C1.6875 6.64729 2.39866 4.9304 3.66453 3.66453C4.9304 2.39866 6.64729 1.6875 8.4375 1.6875H21.9375C23.7277 1.6875 25.4446 2.39866 26.7105 3.66453C27.9763 4.9304 28.6875 6.64729 28.6875 8.4375V21.9375C28.6875 23.7277 27.9763 25.4446 26.7105 26.7105C25.4446 27.9763 23.7277 28.6875 21.9375 28.6875H8.4375C6.64729 28.6875 4.9304 27.9763 3.66453 26.7105C2.39866 25.4446 1.6875 23.7277 1.6875 21.9375V8.4375ZM10.125 15.1875C10.125 16.5302 10.6584 17.8178 11.6078 18.7672C12.5572 19.7166 13.8448 20.25 15.1875 20.25C16.5302 20.25 17.8178 19.7166 18.7672 18.7672C19.7166 17.8178 20.25 16.5302 20.25 15.1875C20.25 13.8448 19.7166 12.5572 18.7672 11.6078C17.8178 10.6584 16.5302 10.125 15.1875 10.125C13.8448 10.125 12.5572 10.6584 11.6078 11.6078C10.6584 12.5572 10.125 13.8448 10.125 15.1875Z" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- Smooth Scroll Inertia (Lenis) -->
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"></script>
+
+  <!-- JavaScript Logic -->
+  <script src="script.js?v=11"></script>
+</body>
+</html>
