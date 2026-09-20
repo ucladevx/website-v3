@@ -545,7 +545,7 @@ main {
   max-width: var(--max-content-width);
   min-height: auto;
   height: auto;
-  padding: 80px 48px 60px;
+  padding: 170px 48px 80px;
   display: flex;
   justify-content: center;
   z-index: 1;
@@ -555,7 +555,7 @@ main {
 /* Side Glow Container inside Who Section - Subtle edge accent (mostly off-screen) */
 .who-glow-container {
   position: absolute;
-  top: -30px;
+  top: 50px;
   left: -440px;
   width: 593px;
   height: 593px;
@@ -691,7 +691,7 @@ main {
 .who-description p {
   color: var(--text-muted);
   font-size: 20px;
-  line-height: 1.2;
+  line-height: 1.4;
   font-weight: 400;
 }
 
