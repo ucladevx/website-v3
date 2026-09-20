@@ -670,7 +670,7 @@ main {
 .who-right {
   display: flex;
   flex-direction: column;
-  max-width: 437px;
+  max-width: 550px;
   padding-left: 110px;
 }
 
