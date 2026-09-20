@@ -15,22 +15,9 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   
   <!-- Main Stylesheet -->
-  <link rel="stylesheet" href="styles.css?v=4">
+  <link rel="stylesheet" href="styles.css?v=60" />
 </head>
 <body>
-
-  <!-- Background Ambient Mesh -->
-  <div class="page-background" aria-hidden="true">
-    <div class="ambient-glow hero-glow-top">
-      <img src="assets/hero-gradient.svg" alt="" />
-    </div>
-    <div class="ambient-glow hero-glow-blue-left">
-      <img src="assets/ellipse3.svg" alt="" />
-    </div>
-    <div class="ambient-glow hero-glow-blue-right">
-      <img src="assets/ellipse4.svg" alt="" />
-    </div>
-  </div>
 
   <!-- Header / Navigation -->
   <header class="navbar-wrapper">
@@ -41,8 +28,8 @@
 
       <div class="navbar-links" id="nav-links">
         <a href="#hero" class="nav-link active">Home</a>
-        <a href="#who-we-are" class="nav-link">About Us</a>
-        <a href="#projects" class="nav-link">Projects</a>
+        <a href="about.html" class="nav-link">About Us</a>
+        <a href="projects.html" class="nav-link">Projects</a>
         <a href="team.html" class="nav-link">Our Team</a>
       </div>
 
@@ -62,6 +49,12 @@
     
     <!-- Hero Section -->
     <section class="hero-section" id="hero">
+
+      <!-- Top Left Ambient Blue Glow (Figma Node 534:1116) -->
+      <div class="hero-glow-blue-topleft" aria-hidden="true">
+        <img src="assets/hero-glow-blue-topleft.svg" alt="" />
+      </div>
+
       <div class="hero-container">
         
         <!-- Left Column: Headline & CTA -->
@@ -71,34 +64,17 @@
             UCLA creators, entrepreneurs who want to put something out into the world
           </p>
           <div class="hero-cta">
-            <button class="btn btn-primary btn-large" id="hero-join-trigger">Join</button>
+            <!-- Subtle Ambient Binary Field Texture Behind Join Button -->
+            <div class="binary-field hero-binary-btn" aria-hidden="true"></div>
+            <a href="join.html" class="btn btn-primary btn-large" id="hero-join-trigger">Join</a>
           </div>
         </div>
 
-        <!-- Right Column: 3D Laptop & Phone Device Showcase -->
-        <div class="hero-graphics" id="hero-graphics" aria-label="DevX Community Preview">
-          <div class="hero-devices-cluster">
-            
-            <!-- Laptop Assembly -->
-            <div class="laptop-mockup-wrapper">
-              <div class="laptop-screen-container">
-                <img src="assets/laptop-screen-frame.png" alt="Laptop Frame" class="laptop-frame-bg" />
-                <div class="laptop-display">
-                  <img src="assets/team-photo-warped.png" alt="DevX UCLA Team Group Photo" class="team-screen-img" />
-                  <div class="laptop-glare"></div>
-                </div>
-              </div>
-              <img src="assets/laptop-base.png" alt="Laptop Keyboard Base" class="laptop-base-img" />
-            </div>
-
-            <!-- Standing Phone Mockup -->
-            <div class="phone-mockup-wrapper">
-              <div class="phone-chassis">
-                <img src="assets/hero-phone.svg" alt="Phone Mockup" class="phone-vector" />
-                <div class="phone-screen-glow"></div>
-              </div>
-            </div>
-
+        <!-- Right Column: Interactive X Glyph Field -->
+        <div class="hero-graphics" id="hero-graphics" aria-label="DevX Interactive X Graphic">
+          <div class="xfx">
+            <img alt="DevX X" src="assets/hero-x-graphic.png" />
+            <canvas aria-hidden="true"></canvas>
           </div>
         </div>
 
@@ -108,6 +84,9 @@
     <!-- Who We Are Section -->
     <section class="who-section" id="who-we-are">
       
+      <!-- Subtle Ambient Binary Field Textures -->
+      <div class="binary-field who-binary-right" aria-hidden="true"></div>
+
       <!-- Side Ambient Glow (Alternating Blue & Orange) -->
       <div class="who-glow-container glow-theme-blue" id="who-glow" aria-hidden="true">
         <img src="assets/ellipse5.svg" alt="" class="glow-layer glow-blue" />
@@ -120,6 +99,8 @@
         <div class="who-left">
           <h2 class="dynamic-heading">
             <span class="dynamic-word-line">
+              <!-- Subtle Ambient Binary Field Texture Behind Typed Word -->
+              <div class="binary-field who-binary-left" aria-hidden="true"></div>
               <span class="dynamic-word theme-blue" id="cycling-word">Entrepreneurs</span><span class="typing-cursor" aria-hidden="true">|</span>
             </span>
             <span class="static-phrase">at UCLA</span>
@@ -138,7 +119,7 @@
             </p>
           </div>
           <div class="who-cta">
-            <button class="btn btn-primary btn-large" id="about-us-trigger">About Us</button>
+            <a href="about.html" class="btn btn-primary btn-large" id="about-us-trigger">About Us</a>
           </div>
         </div>
 
@@ -147,6 +128,11 @@
 
     <!-- Ongoing Projects Section -->
     <section class="projects-section" id="projects">
+      
+      <!-- Subtle Ambient Binary Field Textures -->
+      <div class="binary-field projects-binary-left" aria-hidden="true"></div>
+      <div class="binary-field projects-binary-right" aria-hidden="true"></div>
+
       <div class="projects-container">
         
         <!-- Section Header -->
@@ -199,7 +185,7 @@
 
           <!-- Action Button -->
           <div class="projects-cta">
-            <button class="btn btn-primary btn-large" id="view-projects-trigger">View Projects</button>
+            <a href="projects.html" class="btn btn-primary btn-large" id="view-projects-trigger">View Projects</a>
           </div>
 
         </div>
@@ -209,45 +195,52 @@
 
     <!-- Where Our Members Have Gone Section -->
     <section class="alumni-section" id="alumni">
+      
+      <!-- Subtle Ambient Binary Field Textures -->
+      <div class="binary-field alumni-binary-topleft" aria-hidden="true"></div>
+      <div class="binary-field alumni-binary-bottomright" aria-hidden="true"></div>
+
       <div class="alumni-container">
         
         <h2 class="section-title">Where our members have gone</h2>
         
-        <div class="logos-grid">
-          
-          <!-- Row 1: Apple, Microsoft, Adobe -->
-          <div class="logo-row row-1">
-            <div class="logo-item" title="Apple">
-              <img src="assets/logo-apple.png" alt="Apple logo" class="company-logo logo-apple" />
+        <div class="alumni-box">
+          <div class="logos-grid">
+            
+            <!-- Row 1: Apple, Microsoft, Adobe -->
+            <div class="logo-row row-1">
+              <div class="logo-item" title="Apple">
+                <img src="assets/logo-apple.png?v=2" alt="Apple logo" class="company-logo logo-apple" />
+              </div>
+              <div class="logo-item" title="Microsoft">
+                <img src="assets/logo-microsoft.png?v=2" alt="Microsoft logo" class="company-logo logo-microsoft" />
+              </div>
+              <div class="logo-item" title="Adobe">
+                <img src="assets/logo-adobe.png?v=2" alt="Adobe logo" class="company-logo logo-adobe" />
+              </div>
             </div>
-            <div class="logo-item" title="Microsoft">
-              <img src="assets/logo-microsoft.png" alt="Microsoft logo" class="company-logo logo-microsoft" />
-            </div>
-            <div class="logo-item" title="Adobe">
-              <img src="assets/logo-adobe.png" alt="Adobe logo" class="company-logo logo-adobe" />
-            </div>
-          </div>
 
-          <!-- Row 2: Google, Roblox -->
-          <div class="logo-row row-2">
-            <div class="logo-item" title="Google">
-              <img src="assets/logo-google.png" alt="Google logo" class="company-logo logo-google" />
+            <!-- Row 2: Google, Roblox -->
+            <div class="logo-row row-2">
+              <div class="logo-item" title="Google">
+                <img src="assets/logo-google.png?v=2" alt="Google logo" class="company-logo logo-google" />
+              </div>
+              <div class="logo-item" title="Roblox">
+                <img src="assets/logo-roblox.png?v=2" alt="Roblox logo" class="company-logo logo-roblox" />
+              </div>
             </div>
-            <div class="logo-item" title="Roblox">
-              <img src="assets/logo-roblox.png" alt="Roblox logo" class="company-logo logo-roblox" />
-            </div>
-          </div>
 
-          <!-- Row 3: Meta, Coinbase -->
-          <div class="logo-row row-3">
-            <div class="logo-item" title="Meta">
-              <img src="assets/logo-meta.png" alt="Meta logo" class="company-logo logo-meta" />
+            <!-- Row 3: Meta, Coinbase -->
+            <div class="logo-row row-3">
+              <div class="logo-item" title="Meta">
+                <img src="assets/logo-meta.png?v=2" alt="Meta logo" class="company-logo logo-meta" />
+              </div>
+              <div class="logo-item" title="Coinbase">
+                <img src="assets/logo-coinbase.png?v=2" alt="Coinbase logo" class="company-logo logo-coinbase" />
+              </div>
             </div>
-            <div class="logo-item" title="Coinbase">
-              <img src="assets/logo-coinbase.png" alt="Coinbase logo" class="company-logo logo-coinbase" />
-            </div>
-          </div>
 
+          </div>
         </div>
 
       </div>
@@ -270,8 +263,8 @@
         <h4 class="footer-heading">EXPLORE</h4>
         <ul class="footer-links">
           <li><a href="#hero">Home</a></li>
-          <li><a href="#who-we-are">About Us</a></li>
-          <li><a href="#projects">Projects</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="projects.html">Projects</a></li>
         </ul>
       </div>
 
@@ -357,8 +350,10 @@
     </div>
   </div>
 
-  <!-- JavaScript Logic -->
+  <!-- JavaScript Logic & Interactive Hero X Component -->
+  <script src="hero-x.js?v=12"></script>
+  <script src="binary-texture.js?v=2"></script>
   <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"></script>
-  <script src="script.js?v=6"></script>
+  <script src="script.js?v=23"></script>
 </body>
 </html>

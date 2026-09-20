@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projects | UCLA DevX</title>
+  <meta name="description" content="Explore ongoing software products built by UCLA DevX - Retune, bLink, BChat, Sync, and BruinPlan.">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="assets/icons/devx-logo.svg">
+  
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="styles.css?v=35">
+
+  <!-- Smooth Scroll Inertia (Lenis) -->
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"></script>
+</head>
+<body class="projects-body">
+
+  <!-- Header / Navigation -->
+  <header class="navbar-wrapper">
+    <nav class="navbar" id="navbar" aria-label="Main Navigation">
+      <a href="index.html#hero" class="navbar-brand" aria-label="DevX Home">
+        <img src="assets/team/navbar-logo-blue.png" alt="DevX Logo" class="brand-logo" width="38" height="38" />
+      </a>
+
+      <div class="navbar-links" id="nav-links">
+        <a href="index.html#hero" class="nav-link">Home</a>
+        <a href="about.html" class="nav-link">About Us</a>
+        <a href="projects.html" class="nav-link active">Projects</a>
+        <a href="team.html" class="nav-link">Our Team</a>
+      </div>
+
+      <div class="navbar-actions">
+        <a href="join.html" class="btn btn-primary nav-join-btn" id="nav-join-trigger">Join</a>
+        <button class="mobile-menu-toggle" id="mobile-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Main Content Container -->
+  <main class="projects-main">
+
+    <!-- Top Header & Jump Navigation Section (Centered) -->
+    <section class="projects-hero-section" id="projects-hero">
+      <div class="projects-header-container">
+        <h1 class="projects-page-title">Ongoing Projects</h1>
+        
+        <!-- 5 Interactive Project Icons Bar (Bigger & Centered) -->
+        <div class="projects-icon-bar" id="projects-icon-bar" role="navigation" aria-label="Projects quick jump">
+          
+          <button class="project-jump-btn" data-target="retune" aria-label="Jump to Retune project">
+            <div class="jump-icon-card">
+              <img src="Images/Retune_Logo.png" alt="Retune Logo" class="jump-logo-img" />
+            </div>
+            <span class="jump-label">Retune</span>
+          </button>
+
+          <button class="project-jump-btn" data-target="blink" aria-label="Jump to bLink project">
+            <div class="jump-icon-card">
+              <img src="Images/blink-logo.png" alt="bLink Logo" class="jump-logo-img" />
+            </div>
+            <span class="jump-label">bLink</span>
+          </button>
+
+          <button class="project-jump-btn" data-target="bchat" aria-label="Jump to BChat project">
+            <div class="jump-icon-card">
+              <img src="Images/bchat-logo.png" alt="BChat Logo" class="jump-logo-img" />
+            </div>
+            <span class="jump-label">BChat</span>
+          </button>
+
+          <button class="project-jump-btn" data-target="sync" aria-label="Jump to Sync project">
+            <div class="jump-icon-card">
+              <img src="Images/sync-logo.png" alt="Sync Logo" class="jump-logo-img" />
+            </div>
+            <span class="jump-label">Sync</span>
+          </button>
+
+          <button class="project-jump-btn" data-target="bruinplan" aria-label="Jump to BruinPlan project">
+            <div class="jump-icon-card">
+              <img src="Images/bruinplan-logo.png" alt="BruinPlan Logo" class="jump-logo-img" />
+            </div>
+            <span class="jump-label">BruinPlan</span>
+          </button>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Project 1: Retune (Phone Left, Content Right) -->
+    <section class="project-feature-section retune-section" id="retune">
+      <div class="project-band band-retune" aria-hidden="true"></div>
+      <div class="project-feature-container">
+        
+        <!-- Large Device Mockup (Auto Changing Screens) -->
+        <div class="project-device-column">
+          <div class="device-showcase-wrapper phone-showcase" data-project="retune">
+            <div class="device-screen-stack">
+              <img src="Product Showcase Screens/Retune Screen 1.png?v=17" alt="Retune App Screen 1" class="device-screen-img active" data-screen="1" />
+              <img src="Product Showcase Screens/REtuneScreen2.png?v=17" alt="Retune App Screen 2" class="device-screen-img" data-screen="2" />
+              <img src="Product Showcase Screens/RetuneScreen3.png?v=17" alt="Retune App Screen 3" class="device-screen-img" data-screen="3" />
+            </div>
+          </div>
+        </div>
+
+        <!-- Content Info Column -->
+        <div class="project-content-column">
+          <div class="project-title-row">
+            <div class="project-logo-badge badge-retune">
+              <img src="Images/Retune_Logo.png" alt="Retune Logo" />
+            </div>
+            <h2 class="project-title">Retune</h2>
+          </div>
+
+          <p class="project-description">
+            A location based music tracking app that turns your city into an interactive music map. Connect the app with your Spotify account and explore what people are listening to nearby.
+          </p>
+
+          <div class="project-actions-row">
+            <a href="https://apps.apple.com" target="_blank" rel="noopener noreferrer" class="app-store-badge-link" aria-label="Download Retune on the App Store">
+              <img src="assets/icons/app-store-badge.svg?v=19" alt="Download on the App Store" class="app-store-img" />
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Project 2: bLink (Content Left, Phone Right) -->
+    <section class="project-feature-section blink-section" id="blink">
+      <div class="project-band band-blink" aria-hidden="true"></div>
+      <div class="project-feature-container reverse-layout">
+        
+        <!-- Content Info Column -->
+        <div class="project-content-column">
+          <div class="project-title-row">
+            <div class="project-logo-badge badge-blink">
+              <img src="Images/blink-logo.png" alt="bLink Logo" />
+            </div>
+            <h2 class="project-title">Blink</h2>
+          </div>
+
+          <p class="project-description">
+            Discover pop-ups around UCLA, all in one place and never miss another one again.
+            <br><br>
+            Find freebies and other events or submit a pop-up you spot to share it with the community.
+          </p>
+
+          <div class="project-actions-row">
+            <a href="https://apps.apple.com" target="_blank" rel="noopener noreferrer" class="app-store-badge-link" aria-label="Download Blink on the App Store">
+              <img src="assets/icons/app-store-badge.svg?v=19" alt="Download on the App Store" class="app-store-img" />
+            </a>
+          </div>
+        </div>
+
+        <!-- Large Device Mockup (Auto Changing Screens) -->
+        <div class="project-device-column">
+          <div class="device-showcase-wrapper phone-showcase" data-project="blink">
+            <div class="device-screen-stack">
+              <img src="Product Showcase Screens/bLinkScreen_1.png?v=17" alt="bLink App Screen 1" class="device-screen-img active" data-screen="1" />
+              <img src="Product Showcase Screens/bLinkScreen_2.png?v=17" alt="bLink App Screen 2" class="device-screen-img" data-screen="2" />
+              <img src="Product Showcase Screens/bLinkScreen_3.png?v=17" alt="bLink App Screen 3" class="device-screen-img" data-screen="3" />
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Project 3: BChat (Phone Left, Content Right) -->
+    <section class="project-feature-section bchat-section" id="bchat">
+      <div class="project-band band-bchat" aria-hidden="true"></div>
+      <div class="project-feature-container">
+        
+        <!-- Large Device Mockup (Auto Changing Screens) -->
+        <div class="project-device-column">
+          <div class="device-showcase-wrapper phone-showcase" data-project="bchat">
+            <div class="device-screen-stack">
+              <img src="Product Showcase Screens/bChatScreen1.png?v=17" alt="BChat App Screen 1" class="device-screen-img active" data-screen="1" />
+              <img src="Product Showcase Screens/bChatScreen2.png?v=17" alt="BChat App Screen 2" class="device-screen-img" data-screen="2" />
+              <img src="Product Showcase Screens/bChatScreen3.png?v=17" alt="BChat App Screen 3" class="device-screen-img" data-screen="3" />
+            </div>
+          </div>
+        </div>
+
+        <!-- Content Info Column -->
+        <div class="project-content-column">
+          <div class="project-title-row">
+            <div class="project-logo-badge badge-bchat">
+              <img src="Images/bchat-logo.png" alt="BChat Logo" />
+            </div>
+            <h2 class="project-title">BChat</h2>
+          </div>
+
+          <p class="project-description">
+            A student-centric app that automatically generates a dedicated chat for every course at UCLA.
+            <br><br>
+            With BChat, students can connect with classmates and build community from the moment they enroll.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Project 4: Sync (Content Left, Phone Right) -->
+    <section class="project-feature-section sync-section" id="sync">
+      <div class="project-band band-sync" aria-hidden="true"></div>
+      <div class="project-feature-container reverse-layout">
+        
+        <!-- Content Info Column -->
+        <div class="project-content-column">
+          <div class="project-title-row">
+            <div class="project-logo-badge badge-sync">
+              <img src="Images/sync-logo.png" alt="Sync Logo" />
+            </div>
+            <h2 class="project-title">Sync</h2>
+          </div>
+
+          <p class="project-description">
+            A centralized platform that streamlines scheduling and makes coordinating with others easier.
+            <br><br>
+            Compare calendars, find mutual availability and organize events with anybody - all in one place
+          </p>
+        </div>
+
+        <!-- Large Device Mockup (Auto Changing Screens) -->
+        <div class="project-device-column">
+          <div class="device-showcase-wrapper phone-showcase" data-project="sync">
+            <div class="device-screen-stack">
+              <img src="Product Showcase Screens/SyncScreen1.png?v=17" alt="Sync App Screen 1" class="device-screen-img active" data-screen="1" />
+              <img src="Product Showcase Screens/SyncScreen2.png?v=17" alt="Sync App Screen 2" class="device-screen-img" data-screen="2" />
+              <img src="Product Showcase Screens/SyncScreen3.png?v=17" alt="Sync App Screen 3" class="device-screen-img" data-screen="3" />
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Project 5: BruinPlan (Laptop Left, Content Right) -->
+    <section class="project-feature-section bruinplan-section" id="bruinplan">
+      <div class="project-band band-bruinplan" aria-hidden="true"></div>
+      <div class="project-feature-container">
+        
+        <!-- Large Laptop Mockup (Auto Changing Screens) -->
+        <div class="project-device-column laptop-column">
+          <div class="device-showcase-wrapper laptop-showcase" data-project="bruinplan">
+            <div class="device-screen-stack laptop-screen-stack">
+              <img src="Product Showcase Screens/bruinplan-laptop1.png?v=17" alt="BruinPlan Laptop Screen 1" class="device-screen-img active" data-screen="1" />
+              <img src="Product Showcase Screens/bruinplan-laptop2.png?v=17" alt="BruinPlan Laptop Screen 2" class="device-screen-img" data-screen="2" />
+              <img src="Product Showcase Screens/bruinplan-laptop3.png?v=17" alt="BruinPlan Laptop Screen 3" class="device-screen-img" data-screen="3" />
+            </div>
+          </div>
+        </div>
+
+        <!-- Content Info Column -->
+        <div class="project-content-column">
+          <div class="project-title-row">
+            <div class="project-logo-badge badge-bruinplan">
+              <img src="Images/bruinplan-logo.png" alt="BruinPlan Logo" />
+            </div>
+            <h2 class="project-title">BruinPlan</h2>
+          </div>
+
+          <p class="project-description">
+            BruinPlan parses your DARS to fill in your existing schedule. It then lets you build the rest by simply dragging and dropping your desired classes.
+            <br><br>
+            Integrated class reviews, ratings, and grading distributions help you plan your schedule with accuracy and confidence
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Bottom CTA Section -->
+    <section class="projects-cta-section" id="projects-cta">
+      <div class="projects-cta-container">
+        <h2 class="projects-cta-title">Interested in Starting your own project?</h2>
+        <a href="mailto:ucladevx@gmail.com" class="btn contact-us-btn" id="projects-contact-trigger">Contact Us!</a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Site Footer (Standardized with about.html, team.html, join.html) -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      
+      <!-- Column 1: Brand & Copyright -->
+      <div class="footer-col footer-brand-col">
+        <h2 class="footer-brand">DevX</h2>
+        <p class="footer-copyright">© 2026 UCLA DevX</p>
+      </div>
+
+      <!-- Column 2: Explore Links -->
+      <div class="footer-col footer-nav-col">
+        <h4 class="footer-heading">EXPLORE</h4>
+        <ul class="footer-links">
+          <li><a href="index.html#hero">Home</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="projects.html">Projects</a></li>
+        </ul>
+      </div>
+
+      <!-- Column 3: Secondary Links -->
+      <div class="footer-col footer-team-col">
+        <ul class="footer-links secondary-links">
+          <li><a href="team.html">Our Team</a></li>
+          <li><a href="join.html">Join</a></li>
+        </ul>
+      </div>
+
+      <!-- Column 4: Contact & Socials -->
+      <div class="footer-col footer-contact-col">
+        <h4 class="footer-heading">CONTACT</h4>
+        <a href="mailto:ucladevx@gmail.com" class="footer-email" target="_blank" rel="noopener noreferrer">
+          ucladevx@gmail.com
+        </a>
+        <div class="footer-socials">
+          <a href="https://www.linkedin.com/company/ucladevx/" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="LinkedIn">
+            <svg width="28" height="28" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M9 13.5V21M9 9V9.015M15 21V13.5M21 21V16.5C21 15.7044 20.6839 14.9413 20.1213 14.3787C19.5587 13.8161 18.7956 13.5 18 13.5C17.2044 13.5 16.4413 13.8161 15.8787 14.3787C15.3161 14.9413 15 15.7044 15 16.5M1.5 7.5C1.5 5.9087 2.13214 4.38258 3.25736 3.25736C4.38258 2.13214 5.9087 1.5 7.5 1.5H22.5C24.0913 1.5 25.6174 2.13214 26.7426 3.25736C27.8679 4.38258 28.5 5.9087 28.5 7.5V22.5C28.5 24.0913 27.8679 25.6174 26.7426 26.7426C25.6174 27.8679 24.0913 28.5 22.5 28.5H7.5C5.9087 28.5 4.38258 27.8679 3.25736 26.7426C2.13214 25.6174 1.5 24.0913 1.5 22.5V7.5Z" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+          <a href="https://www.instagram.com/ucladevx/" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="Instagram">
+            <svg width="28" height="28" viewBox="0 0 30.375 30.375" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M22.7812 7.59375V7.61063M1.6875 8.4375C1.6875 6.64729 2.39866 4.9304 3.66453 3.66453C4.9304 2.39866 6.64729 1.6875 8.4375 1.6875H21.9375C23.7277 1.6875 25.4446 2.39866 26.7105 3.66453C27.9763 4.9304 28.6875 6.64729 28.6875 8.4375V21.9375C28.6875 23.7277 27.9763 25.4446 26.7105 26.7105C25.4446 27.9763 23.7277 28.6875 21.9375 28.6875H8.4375C6.64729 28.6875 4.9304 27.9763 3.66453 26.7105C2.39866 25.4446 1.6875 23.7277 1.6875 21.9375V8.4375ZM10.125 15.1875C10.125 16.5302 10.6584 17.8178 11.6078 18.7672C12.5572 19.7166 13.8448 20.25 15.1875 20.25C16.5302 20.25 17.8178 19.7166 18.7672 18.7672C19.7166 17.8178 20.25 16.5302 20.25 15.1875C20.25 13.8448 19.7166 12.5572 18.7672 11.6078C17.8178 10.6584 16.5302 10.125 15.1875 10.125C13.8448 10.125 12.5572 10.6584 11.6078 11.6078C10.6584 12.5572 10.125 13.8448 10.125 15.1875Z" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- JavaScript Logic & Smooth Scroll Inertia -->
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"></script>
+  <script src="script.js?v=22"></script>
+</body>
+</html>

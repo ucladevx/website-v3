@@ -15,10 +15,11 @@ document.addEventListener('DOMContentLoaded', () => {
       orientation: 'vertical',
       gestureOrientation: 'vertical',
       smoothWheel: true,
-      wheelMultiplier: 0.75, // slightly slower, premium weighted scrolling feel
+      wheelMultiplier: 1.0,
       touchMultiplier: 1.2,
       infinite: false,
     });
+    window.lenis = lenis;
 
     function raf(time) {
       lenis.raf(time);
@@ -196,27 +197,8 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // =========================================================================
-  // 3. Hero 3D Parallax Tilt Effect
+  // 3. Hero Section (Interactive X Component handles live canvas particles)
   // =========================================================================
-  const heroSection = document.getElementById('hero');
-  const heroCluster = document.querySelector('.hero-devices-cluster');
-
-  if (heroSection && heroCluster && window.innerWidth > 1024) {
-    heroSection.addEventListener('mousemove', (e) => {
-      const rect = heroSection.getBoundingClientRect();
-      const x = (e.clientX - rect.left) / rect.width - 0.5;
-      const y = (e.clientY - rect.top) / rect.height - 0.5;
-
-      const rotateY = x * 10;
-      const rotateX = -y * 8;
-
-      heroCluster.style.transform = `perspective(1200px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
-    });
-
-    heroSection.addEventListener('mouseleave', () => {
-      heroCluster.style.transform = 'perspective(1200px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
-    });
-  }
 
   // =========================================================================
   // 4. Modal Management (Join Application / Recruitment)
@@ -261,21 +243,15 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  if (viewProjectsTrigger) {
+  if (viewProjectsTrigger && viewProjectsTrigger.tagName === 'BUTTON') {
     viewProjectsTrigger.addEventListener('click', () => {
-      // Cycle to next project showcase smoothly
-      const keys = ['blink', 'chat', 'soundtown'];
-      const nextIdx = (keys.indexOf(currentActiveKey) + 1) % keys.length;
-      updateProjectShowcase(keys[nextIdx]);
+      window.location.href = 'projects.html';
     });
   }
 
-  if (aboutUsTrigger) {
+  if (aboutUsTrigger && aboutUsTrigger.tagName === 'BUTTON') {
     aboutUsTrigger.addEventListener('click', () => {
-      const whoSection = document.getElementById('who-we-are');
-      if (whoSection) {
-        whoSection.scrollIntoView({ behavior: 'smooth' });
-      }
+      window.location.href = 'about.html';
     });
   }
 
@@ -380,32 +356,364 @@ document.addEventListener('DOMContentLoaded', () => {
   window.addEventListener('scroll', handleNavScroll, { passive: true });
 
   // =========================================================================
-  // 7. Navigation Scroll Spy (Active Links)
+  // 7. Navigation Scroll Spy (Active Links) - Only for pages with in-page hash links
   // =========================================================================
+  const hasHashNav = document.querySelector('.navbar-links a[href^="#"]');
   const sections = document.querySelectorAll('section[id]');
   const allNavLinks = document.querySelectorAll('.nav-link');
 
-  if (sections.length > 0) {
+  if (hasHashNav && sections.length > 0) {
+    let ticking = false;
     window.addEventListener('scroll', () => {
-      let currentSection = '';
-      const scrollPosition = (window.pageYOffset || document.documentElement.scrollTop) + 200;
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          let currentSection = '';
+          const scrollPosition = (window.pageYOffset || document.documentElement.scrollTop) + 200;
 
-      sections.forEach(section => {
-        const sectionTop = section.offsetTop;
-        const sectionHeight = section.offsetHeight;
-        if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
-          currentSection = section.getAttribute('id');
+          sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.offsetHeight;
+            if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+              currentSection = section.getAttribute('id');
+            }
+          });
+
+          if (currentSection) {
+            allNavLinks.forEach(link => {
+              if (link.getAttribute('href') === `#${currentSection}`) {
+                link.classList.add('active');
+              } else if (link.getAttribute('href')?.startsWith('#')) {
+                link.classList.remove('active');
+              }
+            });
+          }
+          ticking = false;
+        });
+        ticking = true;
+      }
+    }, { passive: true });
+  }
+
+  // =========================================================================
+  // 8. DevX Moments Floating Cursor Tooltip (About Us Page)
+  // =========================================================================
+  const momentsLabel = document.getElementById('moments-cursor-label');
+  const momentsItems = document.querySelectorAll('.moments-item[data-moment]');
+
+  if (momentsLabel && momentsItems.length > 0) {
+    let mouseX = 0;
+    let mouseY = 0;
+    let isInsideMoments = false;
+    let rafId = null;
+
+    function updateLabelPosition() {
+      if (isInsideMoments) {
+        momentsLabel.style.left = `${mouseX}px`;
+        momentsLabel.style.top = `${mouseY}px`;
+        rafId = requestAnimationFrame(updateLabelPosition);
+      }
+    }
+
+    momentsItems.forEach((item) => {
+      item.addEventListener('mouseenter', (e) => {
+        const text = item.getAttribute('data-moment');
+        if (text) {
+          momentsLabel.textContent = text;
+          momentsLabel.classList.add('active');
+          isInsideMoments = true;
+          mouseX = e.clientX;
+          mouseY = e.clientY;
+          momentsLabel.style.left = `${mouseX}px`;
+          momentsLabel.style.top = `${mouseY}px`;
+          if (!rafId) {
+            rafId = requestAnimationFrame(updateLabelPosition);
+          }
         }
       });
 
-      if (currentSection) {
-        allNavLinks.forEach(link => {
-          if (link.getAttribute('href') === `#${currentSection}`) {
-            link.classList.add('active');
-          } else if (link.getAttribute('href')?.startsWith('#')) {
-            link.classList.remove('active');
+      item.addEventListener('mousemove', (e) => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+      });
+
+      item.addEventListener('mouseleave', () => {
+        momentsLabel.classList.remove('active');
+        isInsideMoments = false;
+        if (rafId) {
+          cancelAnimationFrame(rafId);
+          rafId = null;
+        }
+      });
+    });
+  }
+
+  // =========================================================================
+  // 8b. About Us Page: Scroll-Triggered Entrance Animations (Images & Text)
+  // =========================================================================
+  if (document.body.classList.contains('about-body')) {
+    // Eagerly pre-decode images asynchronously to prevent scroll freezing
+    document.querySelectorAll('img').forEach((img) => {
+      if (img.decode) {
+        img.decode().catch(() => {});
+      }
+    });
+
+    const revealElements = document.querySelectorAll('.about-reveal, .about-reveal-media');
+
+    if (revealElements.length > 0) {
+      const revealObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-revealed');
+            observer.unobserve(entry.target);
           }
         });
+      }, {
+        root: null,
+        threshold: 0.05,
+        rootMargin: '120px 0px 40px 0px'
+      });
+
+      revealElements.forEach((el) => {
+        revealObserver.observe(el);
+      });
+    }
+  }
+
+  // =========================================================================
+  // 9. Projects Page: Top Icon Bar Jump Scrolling & Inertia Snap
+  // =========================================================================
+  const projectJumpButtons = document.querySelectorAll('.project-jump-btn[data-target]');
+
+  projectJumpButtons.forEach((btn) => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      const targetId = btn.getAttribute('data-target');
+      if (!targetId) return;
+
+      const targetSection = document.getElementById(targetId);
+      if (!targetSection) return;
+
+      targetSection.classList.add('in-view');
+      const targetY = targetSection.offsetTop;
+
+      if (window.lenis) {
+        window.lenis.scrollTo(targetY, {
+          duration: 1.25,
+          easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t))
+        });
+      } else {
+        window.scrollTo({
+          top: targetY,
+          behavior: 'smooth'
+        });
+      }
+    });
+  });
+
+  // =========================================================================
+  // 10. Projects Page: Automatic Screen 1 -> 2 -> 3 Cycler (Phone & Laptop)
+  // =========================================================================
+  const deviceShowcases = document.querySelectorAll('.device-showcase-wrapper[data-project]');
+
+  if (deviceShowcases.length > 0) {
+    deviceShowcases.forEach((showcase, index) => {
+      const screens = showcase.querySelectorAll('.device-screen-img');
+      if (screens.length <= 1) return;
+
+      let currentScreenIndex = 0;
+
+      // Stagger slightly so each device feels lively
+      const intervalDelay = 2800;
+
+      setInterval(() => {
+        if (document.hidden) return; // Pause when tab is inactive
+
+        screens[currentScreenIndex].classList.remove('active');
+        currentScreenIndex = (currentScreenIndex + 1) % screens.length;
+        screens[currentScreenIndex].classList.add('active');
+      }, intervalDelay);
+    });
+  }
+
+  // =========================================================================
+  // 11. Projects Page: Scroll-Triggered Staggered Section Reveals (Band -> Device -> Text)
+  // =========================================================================
+  const projectSections = document.querySelectorAll('.project-feature-section');
+
+  if (projectSections.length > 0) {
+    const sectionObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in-view');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {
+      root: null,
+      threshold: 0.04,
+      rootMargin: '0px 0px -2% 0px'
+    });
+
+    projectSections.forEach((sec) => {
+      sectionObserver.observe(sec);
+    });
+  }
+
+  // =========================================================================
+  // 12. Projects Page: Inertia-Driven Section-by-Section Snap Scrolling
+  // =========================================================================
+  if (document.body.classList.contains('projects-body')) {
+    const featureSections = [
+      document.getElementById('retune'),
+      document.getElementById('blink'),
+      document.getElementById('bchat'),
+      document.getElementById('sync'),
+      document.getElementById('bruinplan')
+    ].filter(Boolean);
+
+    function getProjectSnapPoints() {
+      const maxScroll = Math.max(0, document.documentElement.scrollHeight - window.innerHeight);
+      const points = [{ id: 'projects-hero', y: 0, el: document.getElementById('projects-hero') }];
+
+      featureSections.forEach((sec) => {
+        points.push({
+          id: sec.id,
+          y: Math.min(sec.offsetTop, maxScroll),
+          el: sec
+        });
+      });
+
+      // Bottom snap point (CTA and Footer)
+      if (maxScroll > points[points.length - 1].y + 60) {
+        points.push({
+          id: 'projects-cta',
+          y: maxScroll,
+          el: document.getElementById('projects-cta')
+        });
+      }
+
+      return points;
+    }
+
+    let activeSnapIndex = 0;
+    let isSnapping = false;
+    let lastSnapTimestamp = 0;
+
+    function getCurrentSnapIndex(snapPoints) {
+      const currentScroll = window.lenis ? window.lenis.scroll : (window.scrollY || window.pageYOffset || 0);
+      let closestIdx = 0;
+      let minDistance = Infinity;
+
+      snapPoints.forEach((pt, idx) => {
+        const dist = Math.abs(currentScroll - pt.y);
+        if (dist < minDistance) {
+          minDistance = dist;
+          closestIdx = idx;
+        }
+      });
+      return closestIdx;
+    }
+
+    function snapToSectionIndex(targetIdx) {
+      const snapPoints = getProjectSnapPoints();
+      const clampedIdx = Math.max(0, Math.min(targetIdx, snapPoints.length - 1));
+      const targetPoint = snapPoints[clampedIdx];
+      if (!targetPoint) return;
+
+      activeSnapIndex = clampedIdx;
+      isSnapping = true;
+      lastSnapTimestamp = Date.now();
+
+      if (targetPoint.el) {
+        targetPoint.el.classList.add('in-view');
+      }
+
+      if (window.lenis) {
+        window.lenis.scrollTo(targetPoint.y, {
+          duration: 0.95,
+          easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+          onComplete: () => {
+            setTimeout(() => {
+              isSnapping = false;
+            }, 120);
+          }
+        });
+      } else {
+        window.scrollTo({ top: targetPoint.y, behavior: 'smooth' });
+        setTimeout(() => {
+          isSnapping = false;
+        }, 700);
+      }
+    }
+
+    // Wheel listener: captures scroll gestures and glides into the next/previous section
+    window.addEventListener('wheel', (e) => {
+      // Don't intercept if recruitment modal or mobile menu is active
+      const modalOpen = document.getElementById('join-modal')?.classList.contains('open');
+      const mobileNavOpen = document.getElementById('nav-links')?.classList.contains('mobile-open');
+      if (modalOpen || mobileNavOpen) return;
+
+      const now = Date.now();
+      if (isSnapping || now - lastSnapTimestamp < 900) {
+        e.preventDefault();
+        return;
+      }
+
+      // Filter out micro-scrolls and jitter
+      if (Math.abs(e.deltaY) < 18) return;
+
+      e.preventDefault();
+      const snapPoints = getProjectSnapPoints();
+
+      // If user hasn't snapped recently (e.g. page jump), re-sync activeSnapIndex to current scroll
+      if (now - lastSnapTimestamp > 1200) {
+        activeSnapIndex = getCurrentSnapIndex(snapPoints);
+      }
+
+      if (e.deltaY > 0) {
+        snapToSectionIndex(activeSnapIndex + 1);
+      } else if (e.deltaY < 0) {
+        snapToSectionIndex(activeSnapIndex - 1);
+      }
+    }, { passive: false });
+
+    // Keyboard navigation (ArrowDown, ArrowUp, PageDown, PageUp, Space)
+    window.addEventListener('keydown', (e) => {
+      const modalOpen = document.getElementById('join-modal')?.classList.contains('open');
+      if (modalOpen) return;
+
+      if (['ArrowDown', 'PageDown'].includes(e.key) || (e.key === ' ' && !e.shiftKey)) {
+        e.preventDefault();
+        if (isSnapping) return;
+        const snapPoints = getProjectSnapPoints();
+        snapToSectionIndex(getCurrentSnapIndex(snapPoints) + 1);
+      } else if (['ArrowUp', 'PageUp'].includes(e.key) || (e.key === ' ' && e.shiftKey)) {
+        e.preventDefault();
+        if (isSnapping) return;
+        const snapPoints = getProjectSnapPoints();
+        snapToSectionIndex(getCurrentSnapIndex(snapPoints) - 1);
+      }
+    });
+
+    // Touch swipe support for mobile/tablet
+    let touchStartY = 0;
+    window.addEventListener('touchstart', (e) => {
+      touchStartY = e.touches[0].clientY;
+    }, { passive: true });
+
+    window.addEventListener('touchend', (e) => {
+      if (isSnapping) return;
+      const touchEndY = e.changedTouches[0].clientY;
+      const deltaY = touchStartY - touchEndY;
+      if (Math.abs(deltaY) > 50) {
+        const snapPoints = getProjectSnapPoints();
+        const currentIdx = getCurrentSnapIndex(snapPoints);
+        if (deltaY > 0) {
+          snapToSectionIndex(currentIdx + 1);
+        } else {
+          snapToSectionIndex(currentIdx - 1);
+        }
       }
     }, { passive: true });
   }
