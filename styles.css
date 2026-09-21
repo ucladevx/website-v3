@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Play:wght@400;700&display=swap');
+
 /* ==========================================================================
    UCLA DevX Website Design System & Styles
    Direct 1:1 Scale Figma Implementation (Node 154:85)
@@ -14,6 +16,7 @@
   --btn-bg: #ffffff;
   --btn-text: #000000;
   --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-header: 'Play', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --transition-smooth: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
   --max-content-width: 1440px;
 }
@@ -42,6 +45,37 @@ body {
   position: relative;
   min-height: 100vh;
   width: 100%;
+}
+
+/* Headings & Brand Typography (Figma Design: Font Play) */
+h1, h2, h3, h4, h5, h6,
+.hero-title,
+.who-title,
+.dynamic-heading,
+.dynamic-word,
+.static-phrase,
+.section-title,
+.footer-brand,
+.team-page-title,
+.join-hero-title,
+.roles-section-title,
+.role-title,
+.internship-title,
+.timeline-title,
+.timeline-card-title,
+.mission-title,
+.story-title,
+.moments-title,
+.member-stories-title,
+.projects-page-title,
+.project-title,
+.projects-cta-title,
+.modal-title {
+  font-family: var(--font-header);
+}
+
+.footer-heading {
+  font-family: var(--font-family);
 }
 
 main {
@@ -437,10 +471,11 @@ main {
 }
 
 .hero-title {
-  font-size: clamp(88px, 9.2vw, 136px);
-  font-weight: 800;
-  line-height: 0.96;
-  letter-spacing: -0.03em;
+  font-family: var(--font-header);
+  font-size: clamp(88px, 9.8vw, 142px);
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: -0.01em;
   color: var(--text-white);
   margin-bottom: 16px;
 }
@@ -604,8 +639,9 @@ main {
 }
 
 .dynamic-word {
+  font-family: var(--font-header);
   display: inline;
-  font-weight: 500;
+  font-weight: 400;
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -647,6 +683,8 @@ main {
 }
 
 .static-phrase {
+  font-family: var(--font-header);
+  font-weight: 400;
   color: var(--text-white);
 }
 
@@ -1061,6 +1099,7 @@ main {
 }
 
 .footer-brand {
+  font-family: var(--font-header);
   font-size: 64px;
   font-weight: 700;
   line-height: 1.2;
