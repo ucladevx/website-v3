@@ -1096,7 +1096,7 @@ main {
   font-size: 16px;
   font-weight: 400;
   line-height: 2;
-  margin-bottom: 0px;
+  margin-bottom: 12px;
 }
 
 .footer-links {
@@ -1120,7 +1120,7 @@ main {
 }
 
 .secondary-links {
-  margin-top: 32px;
+  margin-top: 44px;
 }
 
 .footer-email {
@@ -1140,18 +1140,20 @@ main {
 .footer-socials {
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 12px;
 }
 
 .social-icon {
   display: flex;
   align-items: center;
   justify-content: center;
+  color: var(--text-white);
+  transition: opacity 0.2s ease, transform 0.2s ease;
 }
 
 .social-icon:hover {
-  transform: none !important;
-  opacity: 1 !important;
+  opacity: 0.8 !important;
+  transform: translateY(-1px) !important;
 }
 
 .social-icon img {
