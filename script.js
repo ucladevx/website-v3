@@ -6,41 +6,26 @@
 document.addEventListener('DOMContentLoaded', () => {
 
   // =========================================================================
-  // 0. Smooth Scroll Inertia (Premium Weighted Scrolling)
+  // 0. Smooth Anchor Navigation (Native Scroll)
   // =========================================================================
-  if (typeof Lenis !== 'undefined') {
-    const lenis = new Lenis({
-      duration: 1.4,
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-      orientation: 'vertical',
-      gestureOrientation: 'vertical',
-      smoothWheel: true,
-      wheelMultiplier: 1.0,
-      touchMultiplier: 1.2,
-      infinite: false,
-    });
-    window.lenis = lenis;
-
-    function raf(time) {
-      lenis.raf(time);
-      requestAnimationFrame(raf);
-    }
-    requestAnimationFrame(raf);
-
-    // Bind anchor clicks to Lenis smooth scroll
-    document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-      anchor.addEventListener('click', (e) => {
-        const targetId = anchor.getAttribute('href');
-        if (targetId && targetId !== '#') {
-          const targetElem = document.querySelector(targetId);
-          if (targetElem) {
-            e.preventDefault();
-            lenis.scrollTo(targetElem, { offset: -60 });
-          }
+  document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+    anchor.addEventListener('click', (e) => {
+      const targetId = anchor.getAttribute('href');
+      if (targetId && targetId !== '#') {
+        const targetElem = document.querySelector(targetId);
+        if (targetElem) {
+          e.preventDefault();
+          const headerOffset = 60;
+          const elementPosition = targetElem.getBoundingClientRect().top;
+          const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: 'smooth'
+          });
         }
-      });
+      }
     });
-  }
+  });
 
   // =========================================================================
   // 1. Dynamic Typewriter with Alternating Blue & Orange Gradient Themes
@@ -481,7 +466,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // =========================================================================
-  // 9. Projects Page: Top Icon Bar Jump Scrolling & Inertia Snap
+  // 9. Projects Page: Top Icon Bar Jump Scrolling
   // =========================================================================
   const projectJumpButtons = document.querySelectorAll('.project-jump-btn[data-target]');
 
@@ -495,19 +480,12 @@ document.addEventListener('DOMContentLoaded', () => {
       if (!targetSection) return;
 
       targetSection.classList.add('in-view');
-      const targetY = targetSection.offsetTop;
+      const targetY = targetSection.offsetTop - 60;
 
-      if (window.lenis) {
-        window.lenis.scrollTo(targetY, {
-          duration: 1.25,
-          easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t))
-        });
-      } else {
-        window.scrollTo({
-          top: targetY,
-          behavior: 'smooth'
-        });
-      }
+      window.scrollTo({
+        top: targetY,
+        behavior: 'smooth'
+      });
     });
   });
 
@@ -558,164 +536,6 @@ document.addEventListener('DOMContentLoaded', () => {
     projectSections.forEach((sec) => {
       sectionObserver.observe(sec);
     });
-  }
-
-  // =========================================================================
-  // 12. Projects Page: Inertia-Driven Section-by-Section Snap Scrolling
-  // =========================================================================
-  if (document.body.classList.contains('projects-body')) {
-    const featureSections = [
-      document.getElementById('retune'),
-      document.getElementById('blink'),
-      document.getElementById('bchat'),
-      document.getElementById('sync'),
-      document.getElementById('bruinplan')
-    ].filter(Boolean);
-
-    function getProjectSnapPoints() {
-      const maxScroll = Math.max(0, document.documentElement.scrollHeight - window.innerHeight);
-      const points = [{ id: 'projects-hero', y: 0, el: document.getElementById('projects-hero') }];
-
-      featureSections.forEach((sec) => {
-        points.push({
-          id: sec.id,
-          y: Math.min(sec.offsetTop, maxScroll),
-          el: sec
-        });
-      });
-
-      // Bottom snap point (CTA and Footer)
-      if (maxScroll > points[points.length - 1].y + 60) {
-        points.push({
-          id: 'projects-cta',
-          y: maxScroll,
-          el: document.getElementById('projects-cta')
-        });
-      }
-
-      return points;
-    }
-
-    let activeSnapIndex = 0;
-    let isSnapping = false;
-    let lastSnapTimestamp = 0;
-
-    function getCurrentSnapIndex(snapPoints) {
-      const currentScroll = window.lenis ? window.lenis.scroll : (window.scrollY || window.pageYOffset || 0);
-      let closestIdx = 0;
-      let minDistance = Infinity;
-
-      snapPoints.forEach((pt, idx) => {
-        const dist = Math.abs(currentScroll - pt.y);
-        if (dist < minDistance) {
-          minDistance = dist;
-          closestIdx = idx;
-        }
-      });
-      return closestIdx;
-    }
-
-    function snapToSectionIndex(targetIdx) {
-      const snapPoints = getProjectSnapPoints();
-      const clampedIdx = Math.max(0, Math.min(targetIdx, snapPoints.length - 1));
-      const targetPoint = snapPoints[clampedIdx];
-      if (!targetPoint) return;
-
-      activeSnapIndex = clampedIdx;
-      isSnapping = true;
-      lastSnapTimestamp = Date.now();
-
-      if (targetPoint.el) {
-        targetPoint.el.classList.add('in-view');
-      }
-
-      if (window.lenis) {
-        window.lenis.scrollTo(targetPoint.y, {
-          duration: 0.95,
-          easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-          onComplete: () => {
-            setTimeout(() => {
-              isSnapping = false;
-            }, 120);
-          }
-        });
-      } else {
-        window.scrollTo({ top: targetPoint.y, behavior: 'smooth' });
-        setTimeout(() => {
-          isSnapping = false;
-        }, 700);
-      }
-    }
-
-    // Wheel listener: captures scroll gestures and glides into the next/previous section
-    window.addEventListener('wheel', (e) => {
-      // Don't intercept if recruitment modal or mobile menu is active
-      const modalOpen = document.getElementById('join-modal')?.classList.contains('open');
-      const mobileNavOpen = document.getElementById('nav-links')?.classList.contains('mobile-open');
-      if (modalOpen || mobileNavOpen) return;
-
-      const now = Date.now();
-      if (isSnapping || now - lastSnapTimestamp < 900) {
-        e.preventDefault();
-        return;
-      }
-
-      // Filter out micro-scrolls and jitter
-      if (Math.abs(e.deltaY) < 18) return;
-
-      e.preventDefault();
-      const snapPoints = getProjectSnapPoints();
-
-      // If user hasn't snapped recently (e.g. page jump), re-sync activeSnapIndex to current scroll
-      if (now - lastSnapTimestamp > 1200) {
-        activeSnapIndex = getCurrentSnapIndex(snapPoints);
-      }
-
-      if (e.deltaY > 0) {
-        snapToSectionIndex(activeSnapIndex + 1);
-      } else if (e.deltaY < 0) {
-        snapToSectionIndex(activeSnapIndex - 1);
-      }
-    }, { passive: false });
-
-    // Keyboard navigation (ArrowDown, ArrowUp, PageDown, PageUp, Space)
-    window.addEventListener('keydown', (e) => {
-      const modalOpen = document.getElementById('join-modal')?.classList.contains('open');
-      if (modalOpen) return;
-
-      if (['ArrowDown', 'PageDown'].includes(e.key) || (e.key === ' ' && !e.shiftKey)) {
-        e.preventDefault();
-        if (isSnapping) return;
-        const snapPoints = getProjectSnapPoints();
-        snapToSectionIndex(getCurrentSnapIndex(snapPoints) + 1);
-      } else if (['ArrowUp', 'PageUp'].includes(e.key) || (e.key === ' ' && e.shiftKey)) {
-        e.preventDefault();
-        if (isSnapping) return;
-        const snapPoints = getProjectSnapPoints();
-        snapToSectionIndex(getCurrentSnapIndex(snapPoints) - 1);
-      }
-    });
-
-    // Touch swipe support for mobile/tablet
-    let touchStartY = 0;
-    window.addEventListener('touchstart', (e) => {
-      touchStartY = e.touches[0].clientY;
-    }, { passive: true });
-
-    window.addEventListener('touchend', (e) => {
-      if (isSnapping) return;
-      const touchEndY = e.changedTouches[0].clientY;
-      const deltaY = touchStartY - touchEndY;
-      if (Math.abs(deltaY) > 50) {
-        const snapPoints = getProjectSnapPoints();
-        const currentIdx = getCurrentSnapIndex(snapPoints);
-        if (deltaY > 0) {
-          snapToSectionIndex(currentIdx + 1);
-        } else {
-          snapToSectionIndex(currentIdx - 1);
-        }
-      }
-    }, { passive: true });
   }
 
 });
