@@ -2734,7 +2734,7 @@ main {
 .about-glow-blue-topleft {
   position: absolute;
   top: -360px;
-  left: -380px;
+  left: -500px;
   width: 1550px;
   height: 960px;
   pointer-events: none;
@@ -2742,7 +2742,7 @@ main {
   z-index: 0;
   overflow: visible;
   background: radial-gradient(
-    ellipse 65% 60% at 28% 28%,
+    ellipse 65% 60% at 25% 28%,
     rgba(67, 140, 255, 0.50) 0%,
     rgba(37, 99, 245, 0.36) 28%,
     rgba(22, 65, 170, 0.20) 52%,
@@ -3307,7 +3307,7 @@ main {
   .page-top-glow,
   .about-glow-blue-topleft {
     top: -180px;
-    left: -190px;
+    left: -250px;
     width: 580px;
     height: 460px;
   }
