@@ -776,6 +776,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }, { passive: true });
 
     build();
+    draw(0, 0.016);
     start();
   }
 
