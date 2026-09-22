@@ -992,19 +992,20 @@ main {
 }
 
 /* ==========================================================================
-   Where Our Members Have Gone (Figma Node 154:128 & 255:912 - 936px x 439px)
+   Where Our Members Have Gone (Figma Node 154:128 & 154:85 - 342px Parallax Viewport Bar)
    ========================================================================== */
 
 .alumni-section {
   position: relative;
   width: 100%;
   max-width: var(--max-content-width);
-  min-height: 638px;
+  min-height: 580px;
   height: auto;
-  padding: 60px 48px 100px;
+  padding: 80px 0 100px;
   display: flex;
   justify-content: center;
-  z-index: 1;
+  z-index: 2;
+  overflow: visible;
 }
 
 .alumni-container {
@@ -1014,67 +1015,127 @@ main {
   flex-direction: column;
   align-items: center;
   text-align: center;
+  position: relative;
 }
 
 .alumni-container .section-title {
-  margin-bottom: 48px;
+  font-family: var(--font-header);
   font-size: 48px;
-  font-weight: 700;
+  font-weight: 400;
+  line-height: 1.2;
   color: #ffffff;
+  margin-bottom: 52px;
+  padding: 0 24px;
+  letter-spacing: -0.01em;
 }
 
-/* Card Container Box behind company logos (Figma Node 255:912) */
-.alumni-box {
-  width: 100%;
-  max-width: 936px;
-  min-height: 439px;
-  background-color: #14161e;
-  border: 1px solid #3a3c48;
-  border-radius: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 36px 36px;
-  box-sizing: border-box;
+/* Parallax Screen Viewport Bar (Figma Node 579:1366: 342px high, #101017, full width) */
+.alumni-viewport-bar {
   position: relative;
+  width: 100vw;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  height: 342px;
+  background-color: #101017;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  /* HoYoverse Screen Depth: Inset top/bottom viewport framing shadows */
+  box-shadow: 
+    inset 0 28px 50px -10px rgba(0, 0, 0, 0.95), 
+    inset 0 -28px 50px -10px rgba(0, 0, 0, 0.95);
+  -webkit-mask-image: linear-gradient(90deg, transparent 0%, rgba(0, 0, 0, 1) 6%, rgba(0, 0, 0, 1) 94%, transparent 100%);
+  mask-image: linear-gradient(90deg, transparent 0%, rgba(0, 0, 0, 1) 6%, rgba(0, 0, 0, 1) 94%, transparent 100%);
+}
+
+/* Screen Ambient Radial Glow */
+.alumni-screen-glow {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 65% 55% at 50% 50%, rgba(41, 112, 255, 0.12) 0%, rgba(16, 16, 23, 0) 75%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Subtle Matrix/Scanline Screen Grid */
+.alumni-screen-grid {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(rgba(255, 255, 255, 0.018) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.018) 1px, transparent 1px);
+  background-size: 36px 36px;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.7;
+}
+
+/* Parallax Stage: shifts vertically at distinct depth plane relative to page scroll */
+.alumni-parallax-stage {
+  position: relative;
+  width: 100%;
+  height: 480px;
+  margin-top: -69px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
   z-index: 2;
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+  transform: translate3d(0, var(--alumni-parallax-y, 0px), 0);
+  will-change: transform;
+  transition: transform 0.1s cubic-bezier(0.15, 0.85, 0.35, 1);
 }
 
-/* Logo Group Frame: well-distributed to fill box comfortably */
-.logos-grid {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 38px;
-  width: 100%;
-  max-width: 860px;
-}
-
-.logo-row {
+/* Continuous Infinite Left-to-Right Marquee Track */
+.alumni-marquee-track {
   display: flex;
   align-items: center;
-  justify-content: center;
-  width: 100%;
+  width: max-content;
+  animation: alumniMarqueeLTR 40s linear infinite;
+  will-change: transform;
 }
 
-.row-1 {
-  gap: 94px;
+.alumni-viewport-bar:hover .alumni-marquee-track {
+  animation-play-state: paused;
 }
 
-.row-2 {
-  gap: 128px;
+/* Keyframe for continuous left-to-right motion */
+@keyframes alumniMarqueeLTR {
+  0% {
+    transform: translate3d(-50%, 0, 0);
+  }
+  100% {
+    transform: translate3d(0%, 0, 0);
+  }
 }
 
-.row-3 {
-  gap: 128px;
+/* Logo Group: horizontal flex container with uniform spacing */
+.alumni-logo-group {
+  display: flex;
+  align-items: center;
+  gap: 120px;
+  padding-right: 120px;
+  flex-shrink: 0;
 }
 
-.logo-item {
+.alumni-logo-item {
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-shrink: 0;
+  opacity: 0.92;
+  transition: opacity 0.3s ease, transform 0.3s ease, filter 0.3s ease;
+}
+
+.alumni-logo-item:hover {
+  opacity: 1;
+  transform: scale(1.05);
+  filter: drop-shadow(0 0 16px rgba(41, 112, 255, 0.4));
 }
 
 .company-logo {
@@ -1082,19 +1143,9 @@ main {
   object-fit: contain;
 }
 
-/* Harmonious, Well-Proportioned Logo Dimensions */
-.logo-apple {
-  height: 87px;
-  width: auto;
-}
-
-.logo-microsoft {
-  height: 56px;
-  width: auto;
-}
-
-.logo-adobe {
-  height: 47px;
+/* Logo Proportions (Figma Node 154:128 calibrated) */
+.logo-coinbase {
+  height: 52px;
   width: auto;
 }
 
@@ -1103,19 +1154,54 @@ main {
   width: auto;
 }
 
-.logo-roblox {
-  height: 54px;
-  width: auto;
-}
-
 .logo-meta {
   height: 52px;
   width: auto;
 }
 
-.logo-coinbase {
+.logo-amazon {
   height: 48px;
   width: auto;
+}
+
+.logo-apple {
+  height: 58px;
+  width: auto;
+}
+
+.logo-microsoft {
+  height: 48px;
+  width: auto;
+}
+
+.logo-roblox {
+  height: 48px;
+  width: auto;
+}
+
+.logo-adobe {
+  height: 44px;
+  width: auto;
+}
+
+/* Side Edge Vignettes */
+.alumni-edge-fade {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 140px;
+  pointer-events: none;
+  z-index: 5;
+}
+
+.alumni-fade-left {
+  left: 0;
+  background: linear-gradient(90deg, #101017 20%, rgba(16, 16, 23, 0) 100%);
+}
+
+.alumni-fade-right {
+  right: 0;
+  background: linear-gradient(270deg, #101017 20%, rgba(16, 16, 23, 0) 100%);
 }
 
 /* ==========================================================================
@@ -1460,13 +1546,36 @@ main {
   .alumni-section {
     height: auto;
     min-height: auto;
-    padding: 80px 24px;
+    padding: 70px 0 80px;
   }
 
-  .logos-grid {
-    width: 100%;
-    max-width: 804px;
+  .alumni-container .section-title {
+    font-size: 40px;
+    margin-bottom: 40px;
   }
+
+  .alumni-viewport-bar {
+    height: 280px;
+  }
+
+  .alumni-parallax-stage {
+    height: 380px;
+    margin-top: -50px;
+  }
+
+  .alumni-logo-group {
+    gap: 80px;
+    padding-right: 80px;
+  }
+
+  .logo-coinbase { height: 44px; }
+  .logo-google { height: 50px; }
+  .logo-meta { height: 44px; }
+  .logo-amazon { height: 40px; }
+  .logo-apple { height: 48px; }
+  .logo-microsoft { height: 40px; }
+  .logo-roblox { height: 40px; }
+  .logo-adobe { height: 38px; }
 
   .footer-container {
     grid-template-columns: 1fr 1fr;
@@ -1618,7 +1727,7 @@ main {
   }
 
   .alumni-section {
-    padding: 60px 16px 80px;
+    padding: 50px 0 70px;
     overflow: hidden;
   }
 
@@ -1628,54 +1737,38 @@ main {
   }
 
   .alumni-container .section-title {
-    font-size: clamp(22px, 5.8vw, 32px);
+    font-size: clamp(24px, 6vw, 34px);
     line-height: 1.25;
     margin-bottom: 28px;
-    padding: 0 8px;
+    padding: 0 16px;
   }
 
-  .alumni-box {
-    min-height: auto;
-    width: 100%;
-    max-width: 100%;
-    padding: 32px 14px;
-    border-radius: 12px;
-    box-sizing: border-box;
-    overflow: hidden;
+  .alumni-viewport-bar {
+    height: 210px;
   }
 
-  .logos-grid {
-    width: 100%;
-    max-width: 100%;
-    gap: 24px;
+  .alumni-parallax-stage {
+    height: 290px;
+    margin-top: -40px;
   }
 
-  .logo-row {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  .alumni-logo-group {
+    gap: 52px;
+    padding-right: 52px;
   }
 
-  .row-1 {
-    gap: 16px;
-  }
+  .logo-coinbase { height: 32px; }
+  .logo-google { height: 38px; }
+  .logo-meta { height: 32px; }
+  .logo-amazon { height: 30px; }
+  .logo-apple { height: 38px; }
+  .logo-microsoft { height: 30px; }
+  .logo-roblox { height: 30px; }
+  .logo-adobe { height: 28px; }
 
-  .row-2 {
-    gap: 28px;
+  .alumni-edge-fade {
+    width: 50px;
   }
-
-  .row-3 {
-    gap: 28px;
-  }
-
-  .logo-apple { height: 36px; }
-  .logo-microsoft { height: 22px; }
-  .logo-adobe { height: 19px; }
-  .logo-google { height: 28px; }
-  .logo-roblox { height: 23px; }
-  .logo-meta { height: 24px; }
-  .logo-coinbase { height: 20px; }
 
   .footer-container {
     grid-template-columns: 1fr;

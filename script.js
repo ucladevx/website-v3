@@ -573,5 +573,45 @@ document.addEventListener('DOMContentLoaded', () => {
     setInterval(updateCountdown, 1000);
   }
 
+  // =========================================================================
+  // 13. Alumni Viewport Bar: HoYoverse-Style Screen Parallax Controller
+  // Creates the optical illusion of peering into another display layer
+  // by shifting the inner stage at a distinct depth speed as the user scrolls
+  // =========================================================================
+  const alumniViewport = document.getElementById('alumni-viewport');
+  const alumniStage = document.getElementById('alumni-parallax-stage');
+
+  if (alumniViewport && alumniStage) {
+    let ticking = false;
+
+    function updateAlumniParallax() {
+      const rect = alumniViewport.getBoundingClientRect();
+      const windowHeight = window.innerHeight;
+
+      // Only calculate when the bar is close to or inside the visible window
+      if (rect.bottom >= -100 && rect.top <= windowHeight + 100) {
+        // Calculate normalized vertical position relative to screen center
+        const viewportCenter = rect.top + rect.height / 2;
+        const screenCenter = windowHeight / 2;
+        const delta = (viewportCenter - screenCenter) / (screenCenter || 1);
+
+        // Parallax vertical travel: smooth ±42px depth range
+        const parallaxY = -delta * 42;
+        alumniStage.style.setProperty('--alumni-parallax-y', `${parallaxY.toFixed(1)}px`);
+      }
+      ticking = false;
+    }
+
+    window.addEventListener('scroll', () => {
+      if (!ticking) {
+        window.requestAnimationFrame(updateAlumniParallax);
+        ticking = true;
+      }
+    }, { passive: true });
+
+    // Initial calculation on page load
+    updateAlumniParallax();
+  }
+
 });
 
