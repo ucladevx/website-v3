@@ -108,24 +108,75 @@ main {
   user-select: none;
 }
 
+/* ==========================================================================
+   Hero Top Ambient Gradients (Figma Node 154:86: Ellipse 14, 12, 13)
+   ========================================================================== */
+
+.hero-top-gradients,
 .hero-glow-blue-topleft {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  user-select: none;
+  overflow: visible;
+  z-index: 0;
+}
+
+.hero-glow-ellipse14,
+.hero-glow-blue-topleft-inner {
   position: absolute;
   top: -267px;
   left: -442px;
   width: 1127px;
   height: 670px;
-  pointer-events: none;
-  user-select: none;
-  z-index: 0;
-  opacity: 0.95;
 }
 
+.hero-glow-ellipse14 img,
 .hero-glow-blue-topleft img {
   position: absolute;
   top: -20.28%;
   left: -12.05%;
   width: 124.1%;
   height: 140.56%;
+  display: block;
+}
+
+.hero-glow-ellipse12 {
+  position: absolute;
+  top: -592px;
+  left: -378px;
+  width: 1041px;
+  height: 581px;
+  transform: rotate(180deg) scaleY(-1);
+}
+
+.hero-glow-ellipse12 img {
+  position: absolute;
+  top: -34.42%;
+  left: -19.21%;
+  width: 138.42%;
+  height: 168.84%;
+  display: block;
+}
+
+.hero-glow-ellipse13 {
+  position: absolute;
+  top: -513px;
+  left: -764px;
+  width: 1041px;
+  height: 627px;
+  transform: rotate(180deg) scaleY(-1);
+}
+
+.hero-glow-ellipse13 img {
+  position: absolute;
+  top: -31.9%;
+  left: -19.21%;
+  width: 138.42%;
+  height: 163.8%;
   display: block;
 }
 
@@ -2674,28 +2725,28 @@ main {
   position: relative;
 }
 
-/* Top Left Ambient Blue Glow (Figma Node 530:1114) */
+/* Top Left Ambient Glow for Subpages: About, Projects, Team, Join (Figma Node 207:444) */
+.page-top-glow,
 .about-glow-blue-topleft {
   position: absolute;
-  top: -280px;
-  left: -320px;
-  width: 1500px;
-  height: 920px;
+  top: -281px;
+  left: -445px;
+  width: 1127px;
+  height: 670px;
   pointer-events: none;
   user-select: none;
   z-index: 0;
-  background: radial-gradient(
-    ellipse 65% 55% at 30% 32%,
-    rgba(37, 99, 235, 0.32) 0%,
-    rgba(29, 78, 216, 0.22) 30%,
-    rgba(22, 54, 138, 0.12) 55%,
-    rgba(16, 35, 85, 0.04) 75%,
-    transparent 100%
-  );
+  overflow: visible;
 }
 
+.page-top-glow img,
 .about-glow-blue-topleft img {
-  display: none;
+  position: absolute;
+  top: -20.28%;
+  left: -12.05%;
+  width: 124.1%;
+  height: 140.56%;
+  display: block;
 }
 
 .mission-wrapper {
@@ -3239,6 +3290,7 @@ main {
     font-size: 17px;
   }
 
+  .page-top-glow,
   .about-glow-blue-topleft {
     top: -140px;
     left: -150px;
