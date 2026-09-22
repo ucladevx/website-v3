@@ -635,6 +635,8 @@ main {
   max-width: 710px;
   margin-left: 10px;
   transform: translateX(35px);                    /* Moves the X slightly towards the right */
+  cursor: pointer;
+  pointer-events: auto;
 }
 
 .xfx img {
@@ -647,7 +649,8 @@ main {
 
 .xfx canvas {
   position: absolute;
-  pointer-events: none;
+  pointer-events: auto;
+  cursor: pointer;
 }
 
 .xfx.is-live img {
@@ -1488,36 +1491,43 @@ main {
 @media (max-width: 1024px) {
   .hero-section {
     height: auto;
-    min-height: 720px;
+    min-height: 600px;
     max-height: none;
-    padding: 90px 24px 50px;
+    padding: 95px 32px 50px;
+    overflow: hidden;
   }
 
   .hero-container {
-    grid-template-columns: 1fr;
-    justify-items: center;
-    text-align: center;
+    grid-template-columns: minmax(320px, 46%) 1fr;
+    align-items: center;
+    justify-items: start;
+    text-align: left;
+    position: relative;
+    gap: 16px;
   }
 
   .hero-content {
-    align-items: center;
+    align-items: flex-start;
     padding-left: 0;
     padding-top: 0;
+    z-index: 5;
   }
 
   .hero-subtitle {
-    max-width: 480px;
+    max-width: 360px;
   }
 
   .hero-graphics {
     justify-content: center;
     height: auto;
+    overflow: visible;
   }
 
   .xfx {
-    width: min(85vw, 540px);
-    margin: 30px auto 0;
-    transform: none;
+    width: 100%;
+    max-width: 520px;
+    margin: 0;
+    transform: translateX(10px);
   }
 
   .who-section {
@@ -1593,20 +1603,25 @@ main {
 
 @media (max-width: 768px) {
   .navbar-wrapper {
-    padding: 0 16px;
-    top: 16px;
+    padding: 0 14px;
+    top: 12px;
   }
 
   .navbar {
-    height: 52px;
-    padding: 0 6px 0 16px;
+    height: 48px;
+    padding: 0 8px 0 14px;
+  }
+
+  .brand-logo {
+    width: 32px;
+    height: 32px;
   }
 
   .navbar-links {
     position: fixed;
-    top: 74px;
-    left: 16px;
-    right: 16px;
+    top: 68px;
+    left: 14px;
+    right: 14px;
     background: rgba(20, 21, 25, 0.96);
     border: 1px solid var(--border-nav);
     border-radius: 16px;
@@ -1622,31 +1637,45 @@ main {
     display: flex;
   }
 
+  .navbar-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
   .mobile-menu-toggle {
     display: flex;
-    width: 38px;
-    height: 38px;
+    width: 32px;
+    height: 32px;
   }
 
   .nav-join-btn {
-    height: 38px;
-    min-width: 76px;
-    padding: 0 14px;
-    font-size: 15px;
+    height: 32px;
+    min-width: unset;
+    padding: 0 13px;
+    font-size: 13.5px;
+    font-weight: 500;
+    line-height: 32px;
+    border-radius: 8px;
+    margin: 0 !important;
   }
 
   .btn-primary {
-    min-width: 120px;
-    height: 48px;
+    min-width: 110px;
+    height: 44px;
     padding: 10px 18px;
-    font-size: 18px;
+    font-size: 16px;
   }
 
   .hero-section {
-    min-height: auto;
+    min-height: 520px;
+    height: auto;
     max-height: none;
-    padding: 95px 20px 50px;
+    padding: 85px 16px 40px;
     overflow: hidden;
+    position: relative;
+    display: flex;
+    align-items: center;
   }
 
   .hero-glow-blue-topleft {
@@ -1657,27 +1686,76 @@ main {
     opacity: 0.85;
   }
 
+  .hero-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    position: relative;
+    overflow: visible;
+  }
+
+  .hero-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+    padding-left: 0;
+    padding-top: 0;
+    width: 62%;
+    max-width: 340px;
+    z-index: 5;
+    position: relative;
+  }
+
   .hero-title {
-    font-size: clamp(64px, 18vw, 80px);
-    margin-bottom: 14px;
+    font-size: clamp(52px, 14vw, 76px);
+    line-height: 1;
+    margin-bottom: 12px;
   }
 
   .hero-subtitle {
-    font-size: 18px;
-    max-width: 320px;
-    margin-bottom: 24px;
+    font-size: clamp(14px, 3.8vw, 17px);
+    line-height: 1.38;
+    max-width: 250px;
+    margin-bottom: 22px;
+  }
+
+  .hero-cta {
+    position: relative;
+    z-index: 6;
+  }
+
+  .hero-cta .btn-large {
+    min-width: 110px;
+    height: 44px;
+    font-size: 17px;
+    padding: 8px 20px;
   }
 
   .hero-graphics {
+    position: absolute;
+    right: -24%;
+    top: 50%;
+    transform: translateY(-50%);
+    width: clamp(260px, 70vw, 420px);
     height: auto;
-    width: 100%;
-    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+    overflow: visible;
+    pointer-events: auto;
   }
 
   .xfx {
-    width: min(85vw, 360px);
-    margin: 20px auto 0;
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
     transform: none;
+    cursor: pointer;
+    pointer-events: auto;
   }
 
   .binary-field {
@@ -2236,7 +2314,7 @@ main {
   flex-direction: column;
   position: relative;
   transition: background-color 0.25s ease, border-color 0.25s ease, color 0.25s ease, transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-  cursor: default;
+  cursor: pointer;
   box-sizing: border-box;
   transform-origin: center center;
 }
@@ -2283,13 +2361,15 @@ main {
 .role-card-pm,
 .role-card-marketer {
   background-color: rgba(67, 127, 254, 0.1);
+  border: 1.5px solid #437ffe;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
 }
 
 .role-card-developer .role-title,
 .role-card-designer .role-title,
 .role-card-pm .role-title,
 .role-card-marketer .role-title {
-  color: #437ffe;
+  color: #ffffff;
 }
 
 .role-card-developer .role-icon,
@@ -2300,39 +2380,59 @@ main {
 }
 
 .role-card-developer:hover,
+.role-card-developer.active,
 .role-card-designer:hover,
+.role-card-designer.active,
 .role-card-pm:hover,
-.role-card-marketer:hover {
+.role-card-pm.active,
+.role-card-marketer:hover,
+.role-card-marketer.active {
   background-color: #437ffe;
   border-color: #437ffe;
 }
 
 .role-card-developer:hover .role-title,
+.role-card-developer.active .role-title,
 .role-card-developer:hover .role-description,
+.role-card-developer.active .role-description,
 .role-card-designer:hover .role-title,
+.role-card-designer.active .role-title,
 .role-card-designer:hover .role-description,
+.role-card-designer.active .role-description,
 .role-card-pm:hover .role-title,
+.role-card-pm.active .role-title,
 .role-card-pm:hover .role-description,
+.role-card-pm.active .role-description,
 .role-card-marketer:hover .role-title,
-.role-card-marketer:hover .role-description {
+.role-card-marketer.active .role-title,
+.role-card-marketer:hover .role-description,
+.role-card-marketer.active .role-description {
   color: #141519;
 }
 
 .role-card-developer:hover .role-icon,
+.role-card-developer.active .role-icon,
 .role-card-designer:hover .role-icon,
+.role-card-designer.active .role-icon,
 .role-card-pm:hover .role-icon,
-.role-card-marketer:hover .role-icon {
+.role-card-pm.active .role-icon,
+.role-card-marketer:hover .role-icon,
+.role-card-marketer.active .role-icon {
   color: #141519;
 }
 
-/* Subtle alternating rotation on hover */
+/* Subtle alternating rotation on hover or active tap */
 .role-card-developer:hover,
-.role-card-pm:hover {
+.role-card-developer.active,
+.role-card-pm:hover,
+.role-card-pm.active {
   transform: rotate(-1.5deg);
 }
 
 .role-card-designer:hover,
-.role-card-marketer:hover {
+.role-card-designer.active,
+.role-card-marketer:hover,
+.role-card-marketer.active {
   transform: rotate(1.5deg);
 }
 
@@ -3819,106 +3919,185 @@ main {
 
 @media (max-width: 992px) {
   .project-feature-section {
-    min-height: auto;
-    padding: 75px 0;
+    min-height: 440px;
+    padding: 60px 0;
+    display: flex;
+    align-items: center;
+    position: relative;
   }
 
   .project-feature-container,
   .project-feature-container.reverse-layout {
-    flex-direction: column !important;
-    text-align: center;
-    gap: 45px;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: left !important;
+    gap: clamp(16px, 3.5vw, 42px);
+    padding: 0 24px;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
   }
 
-  .project-device-column,
+  .project-device-column {
+    flex: 0 1 auto;
+    width: clamp(200px, 44vw, 440px);
+    max-width: 48%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
   .laptop-column {
+    width: clamp(240px, 48vw, 520px);
+    max-width: 52%;
+  }
+
+  .device-showcase-wrapper {
     width: 100%;
-    max-width: 540px;
+    max-width: 100% !important;
   }
 
   .project-content-column {
-    align-items: center;
-    width: 100%;
-    max-width: 580px;
+    flex: 0 1 auto;
+    width: clamp(180px, 44vw, 360px);
+    max-width: 46%;
+    align-items: flex-start !important;
+    text-align: left !important;
+    gap: 16px;
   }
 
   .project-title-row {
-    justify-content: center;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 14px;
+  }
+
+  .project-title {
+    font-size: clamp(24px, 4vw, 34px);
+    line-height: 1.2;
+  }
+
+  .project-description {
+    font-size: clamp(14px, 2vw, 17px);
+    line-height: 1.48;
+    max-width: 300px;
   }
 
   .project-actions-row {
-    justify-content: center;
+    justify-content: flex-start;
   }
 
   .project-band {
-    height: 350px;
+    height: 420px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  .bruinplan-section .project-band {
+    height: 440px;
   }
 }
 
 @media (max-width: 768px) {
   .projects-hero-section {
-    padding-top: 155px;
-    padding-bottom: 40px;
+    padding-top: 130px;
+    padding-bottom: 30px;
   }
 
   .projects-page-title {
-    font-size: 32px;
-    margin-bottom: 28px;
+    font-size: 28px;
+    margin-bottom: 24px;
   }
 
   .projects-icon-bar {
     justify-content: center;
-    gap: 16px;
+    gap: clamp(8px, 2.5vw, 14px);
+    padding: 0 10px;
   }
 
   .jump-icon-card {
-    width: 64px;
-    height: 64px;
+    width: clamp(52px, 15vw, 64px);
+    height: clamp(52px, 15vw, 64px);
     border-radius: 12px;
   }
 
   .jump-label {
-    font-size: 13px;
-  }
-
-  .project-logo-badge {
-    width: 44px;
-    height: 44px;
-    border-radius: 10px;
+    font-size: 12px;
   }
 
   .project-feature-section {
-    padding: 55px 0;
+    min-height: 380px;
+    padding: 40px 0;
+  }
+
+  .project-feature-container,
+  .project-feature-container.reverse-layout {
+    gap: clamp(10px, 3vw, 24px);
+    padding: 0 12px;
+  }
+
+  .project-device-column {
+    width: clamp(130px, 44vw, 240px);
+    max-width: 48%;
+  }
+
+  .laptop-column {
+    width: clamp(155px, 48vw, 290px);
+    max-width: 52%;
+  }
+
+  .project-content-column {
+    width: clamp(140px, 46vw, 260px);
+    max-width: 48%;
+    gap: 10px;
+  }
+
+  .project-title-row {
+    gap: 10px;
+  }
+
+  .project-logo-badge {
+    width: clamp(32px, 7.5vw, 40px);
+    height: clamp(32px, 7.5vw, 40px);
+    border-radius: 8px;
+    flex-shrink: 0;
   }
 
   .project-title {
-    font-size: 28px;
+    font-size: clamp(19px, 5vw, 26px);
   }
 
   .project-description {
-    font-size: 16px;
+    font-size: clamp(12px, 3.1vw, 14.5px);
+    line-height: 1.4;
+    max-width: 220px;
+  }
+
+  .app-store-img {
+    height: clamp(28px, 6.5vw, 36px);
+  }
+
+  .project-band {
+    height: 360px;
+  }
+
+  .bruinplan-section .project-band {
+    height: 380px;
   }
 
   .projects-cta-section {
-    padding: 10px 20px 80px;
+    padding: 10px 16px 70px;
   }
 
   .projects-cta-title {
-    font-size: 26px;
+    font-size: 24px;
   }
 
   .contact-us-btn {
-    font-size: 17px;
-    padding: 12px 24px;
-    box-shadow: none !important;
-  }
-
-  .device-showcase-wrapper {
-    max-width: 340px;
-  }
-
-  .laptop-column .device-showcase-wrapper {
-    max-width: 420px;
+    font-size: 16px;
+    padding: 11px 22px;
   }
 }
 

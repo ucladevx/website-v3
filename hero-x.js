@@ -221,6 +221,46 @@
           c.vx *= Math.pow(0.93, dt * 60);
           c.vy *= Math.pow(0.93, dt * 60);
           if (Math.random() < 0.2) c.g = glyphFor(c.kind);
+        } else if (c.inBurst) {
+          const elapsed = now - c.burstTime;
+          if (elapsed < c.burstDuration) {
+            // Explosive dispersal outward away from tap point
+            const p = elapsed / c.burstDuration;
+            const ease = 1 - Math.pow(1 - p, 3);
+            c.dx = c.burstFromX + (c.burstToX - c.burstFromX) * ease;
+            c.dy = c.burstFromY + (c.burstToY - c.burstFromY) * ease;
+            if (Math.random() < 0.2) c.g = glyphFor(c.kind);
+          } else if (elapsed < c.burstDuration + c.burstHang) {
+            // Momentary apex hang with slight jitter
+            c.dx = c.burstToX + (Math.random() - 0.5) * 3 * dpr;
+            c.dy = c.burstToY + (Math.random() - 0.5) * 3 * dpr;
+            if (Math.random() < 0.1) c.g = glyphFor(c.kind);
+          } else {
+            // Swoop and arc gracefully back home to rest spot
+            const retElapsed = elapsed - c.burstDuration - c.burstHang;
+            const p = Math.min(1, retElapsed / c.returnDuration);
+            const ease = p < 0.5 ? 4 * p * p * p : 1 - Math.pow(-2 * p + 2, 3) / 2;
+            const arc = Math.sin(p * Math.PI) * c.curl * (1 - p * 0.4);
+            const norm = Math.hypot(c.burstToX, c.burstToY) || 1;
+            const perpX = -c.burstToY / norm;
+            const perpY = c.burstToX / norm;
+
+            c.dx = c.burstToX * (1 - ease) + perpX * arc;
+            c.dy = c.burstToY * (1 - ease) + perpY * arc;
+
+            if (p < 0.96 && Math.random() < 0.15) {
+              c.g = glyphFor(c.kind);
+            }
+
+            if (p >= 1) {
+              c.dx = 0;
+              c.dy = 0;
+              c.inBurst = false;
+              c.locked = true;
+              c.settled = true;
+              reroll(c);
+            }
+          }
         } else if (!c.locked) {
           if (now < c.seekDelay) {
             // Ambient floating drift before seeking home
@@ -349,6 +389,56 @@
     window.addEventListener('pointercancel', off);
     window.addEventListener('blur', off);
     document.documentElement.addEventListener('mouseleave', off);
+
+    /* ── tap / click disperse and return ── */
+    function triggerDisperseAndReturn(tapX, tapY) {
+      if (isExiting) return;
+      const now = t;
+      const tx = (typeof tapX === 'number' && !isNaN(tapX)) ? tapX : W * 0.5;
+      const ty = (typeof tapY === 'number' && !isNaN(tapY)) ? tapY : H * 0.5;
+
+      for (let n = 0; n < cells.length; n++) {
+        const c = cells[n];
+        const curX = c.ox + c.dx;
+        const curY = c.oy + c.dy;
+        const diffX = curX - tx;
+        const diffY = curY - ty;
+        const angle = Math.atan2(diffY, diffX) + (Math.random() - 0.5) * 1.1;
+        const blastDist = (120 + Math.pow(Math.random(), 0.75) * 340) * dpr;
+
+        c.burstFromX = c.dx;
+        c.burstFromY = c.dy;
+        c.burstToX = c.dx + Math.cos(angle) * blastDist;
+        c.burstToY = c.dy + Math.sin(angle) * blastDist;
+        c.burstTime = now;
+        c.burstDuration = 0.20 + Math.random() * 0.14;
+        c.burstHang = 0.04 + Math.random() * 0.12;
+        c.returnDuration = 0.60 + Math.random() * 0.40;
+        c.curl = (Math.random() - 0.5) * 80 * dpr;
+        c.inBurst = true;
+        c.locked = false;
+        c.settled = false;
+        reroll(c);
+      }
+      start();
+    }
+
+    function handleTap(e) {
+      if (isExiting) return;
+      if (e.button !== undefined && e.button !== 0) return;
+      const r = cvs.getBoundingClientRect();
+      const clientX = e.clientX !== undefined ? e.clientX : (e.touches && e.touches[0] ? e.touches[0].clientX : r.left + r.width * 0.5);
+      const clientY = e.clientY !== undefined ? e.clientY : (e.touches && e.touches[0] ? e.touches[0].clientY : r.top + r.height * 0.5);
+      const tapX = (clientX - r.left) * (W / r.width);
+      const tapY = (clientY - r.top) * (H / r.height);
+      triggerDisperseAndReturn(tapX, tapY);
+    }
+
+    host.addEventListener('pointerdown', handleTap);
+    cvs.addEventListener('pointerdown', handleTap);
+    host.style.cursor = 'pointer';
+
+    window.__disperseHeroX = (x, y) => triggerDisperseAndReturn(x, y);
 
     /* ── page exit disperse transition ── */
     function isXOnScreen() {

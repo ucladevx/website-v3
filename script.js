@@ -754,5 +754,27 @@ document.addEventListener('DOMContentLoaded', () => {
     start();
   }
 
+  // =========================================================================
+  // 8. Join Page Role Cards Click / Touch Toggle
+  // =========================================================================
+  const roleCards = document.querySelectorAll('.role-card');
+  if (roleCards.length > 0) {
+    roleCards.forEach((card) => {
+      card.addEventListener('click', (e) => {
+        const wasActive = card.classList.contains('active');
+        roleCards.forEach((c) => c.classList.remove('active'));
+        if (!wasActive) {
+          card.classList.add('active');
+        }
+      });
+    });
+
+    document.addEventListener('click', (e) => {
+      if (!e.target.closest('.role-card')) {
+        roleCards.forEach((c) => c.classList.remove('active'));
+      }
+    });
+  }
+
 });
 
