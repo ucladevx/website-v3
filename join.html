@@ -16,7 +16,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Play:wght@400;700&display=swap" rel="stylesheet">
   
   <!-- Main Stylesheet -->
-  <link rel="stylesheet" href="styles.css?v=84">
+  <link rel="stylesheet" href="styles.css?v=85">
 </head>
 <body class="join-body">
 
@@ -386,59 +386,9 @@
     </div>
   </footer>
 
-  <!-- Interactive Join / Recruitment Modal -->
-  <div class="modal-backdrop" id="join-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modal-title">
-    <div class="modal-card">
-      <button class="modal-close-btn" id="modal-close" aria-label="Close modal">&times;</button>
-      
-      <div class="modal-header">
-        <span class="modal-badge">Recruitment</span>
-        <h2 class="modal-title" id="modal-title">Join UCLA DevX</h2>
-        <p class="modal-description">
-          Build products that matter. We recruit product managers, software engineers, UI/UX designers, and growth marketers each quarter.
-        </p>
-      </div>
-
-      <form class="join-form" id="join-form" onsubmit="event.preventDefault(); handleFormSubmit();">
-        <div class="form-group">
-          <label for="applicant-name">Full Name</label>
-          <input type="text" id="applicant-name" placeholder="Bruin Bear" required />
-        </div>
-
-        <div class="form-group">
-          <label for="applicant-email">UCLA Email (@g.ucla.edu)</label>
-          <input type="email" id="applicant-email" placeholder="bbear@g.ucla.edu" required />
-        </div>
-
-        <div class="form-group">
-          <label for="applicant-role">Role of Interest</label>
-          <select id="applicant-role" required>
-            <option value="" disabled selected>Select a track</option>
-            <option value="software">Software Engineering (Frontend / Backend / Fullstack / Mobile)</option>
-            <option value="design">UI/UX Product Design</option>
-            <option value="pm">Product Management</option>
-            <option value="marketing">Growth & Marketing</option>
-          </select>
-        </div>
-
-        <div class="form-group">
-          <label for="applicant-year">Year & Major</label>
-          <input type="text" id="applicant-year" placeholder="e.g. 2nd Year, Computer Science" required />
-        </div>
-
-        <button type="submit" class="btn btn-primary btn-block">Submit Application Interest</button>
-      </form>
-
-      <div class="form-success-message" id="form-success" style="display: none;">
-        <div class="success-icon">✓</div>
-        <h3>Interest Received!</h3>
-        <p>We'll notify you as soon as recruitment applications open for the upcoming cycle.</p>
-      </div>
-    </div>
-  </div>
 
   <!-- JavaScript Logic & Atmospheric Binary Texture -->
   <script src="binary-texture.js?v=3"></script>
-  <script src="script.js?v=31"></script>
+  <script src="script.js?v=32"></script>
 </body>
 </html>

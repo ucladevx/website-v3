@@ -186,49 +186,10 @@ document.addEventListener('DOMContentLoaded', () => {
   // =========================================================================
 
   // =========================================================================
-  // 4. Modal Management (Join Application / Recruitment)
+  // 4. Action Triggers
   // =========================================================================
-  const modal = document.getElementById('join-modal');
-  const modalCloseBtn = document.getElementById('modal-close');
-  const navJoinTrigger = document.getElementById('nav-join-trigger');
-  const heroJoinTrigger = document.getElementById('hero-join-trigger');
-  const footerJoinLink = document.getElementById('footer-join-link');
   const viewProjectsTrigger = document.getElementById('view-projects-trigger');
   const aboutUsTrigger = document.getElementById('about-us-trigger');
-
-  function openModal() {
-    if (modal) {
-      modal.classList.add('open');
-      modal.setAttribute('aria-hidden', 'false');
-      document.body.style.overflow = 'hidden';
-      const firstInput = modal.querySelector('input');
-      if (firstInput) firstInput.focus();
-    }
-  }
-
-  function closeModal() {
-    if (modal) {
-      modal.classList.remove('open');
-      modal.setAttribute('aria-hidden', 'true');
-      document.body.style.overflow = '';
-    }
-  }
-
-  const heroStartAppBtn = document.getElementById('hero-start-app-btn');
-
-  if (navJoinTrigger && navJoinTrigger.tagName === 'BUTTON') {
-    navJoinTrigger.addEventListener('click', openModal);
-  }
-  if (heroJoinTrigger) heroJoinTrigger.addEventListener('click', openModal);
-  if (heroStartAppBtn && heroStartAppBtn.tagName === 'BUTTON') {
-    heroStartAppBtn.addEventListener('click', openModal);
-  }
-  if (footerJoinLink) footerJoinLink.addEventListener('click', (e) => {
-    if (footerJoinLink.getAttribute('href') === '#') {
-      e.preventDefault();
-      openModal();
-    }
-  });
 
   if (viewProjectsTrigger && viewProjectsTrigger.tagName === 'BUTTON') {
     viewProjectsTrigger.addEventListener('click', () => {
@@ -241,40 +202,6 @@ document.addEventListener('DOMContentLoaded', () => {
       window.location.href = 'about.html';
     });
   }
-
-  if (modalCloseBtn) modalCloseBtn.addEventListener('click', closeModal);
-
-  if (modal) {
-    modal.addEventListener('click', (e) => {
-      if (e.target === modal) {
-        closeModal();
-      }
-    });
-  }
-
-  window.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && modal && modal.classList.contains('open')) {
-      closeModal();
-    }
-  });
-
-  // Form submission handler
-  window.handleFormSubmit = function() {
-    const form = document.getElementById('join-form');
-    const successMsg = document.getElementById('form-success');
-    if (form && successMsg) {
-      form.style.display = 'none';
-      successMsg.style.display = 'block';
-      setTimeout(() => {
-        closeModal();
-        setTimeout(() => {
-          form.reset();
-          form.style.display = 'flex';
-          successMsg.style.display = 'none';
-        }, 400);
-      }, 2500);
-    }
-  };
 
   // =========================================================================
   // 5. Mobile Menu Toggle

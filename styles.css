@@ -758,7 +758,7 @@ main {
 }
 
 .dynamic-word.theme-orange {
-  background-image: linear-gradient(90deg, #f07b5a 0%, #f7b483 25%, #ffffff 60%);
+  background-image: linear-gradient(90deg, #e84d38 0%, #f2745d 25%, #ffffff 60%);
 }
 
 .typing-cursor {
@@ -2288,17 +2288,17 @@ main {
 }
 
 .role-card-designer {
-  background-color: rgba(228, 144, 123, 0.1);
+  background-color: rgba(232, 93, 71, 0.12);
 }
 .role-card-designer .role-title {
-  color: #e4907b;
+  color: #e85d47;
 }
 .role-card-designer .role-icon {
-  color: #e4907b;
+  color: #e85d47;
 }
 .role-card-designer:hover {
-  background-color: #e4907b;
-  border-color: #e4907b;
+  background-color: #e85d47;
+  border-color: #e85d47;
   transform: rotate(1.5deg);
 }
 .role-card-designer:hover .role-title,
@@ -2310,17 +2310,17 @@ main {
 }
 
 .role-card-pm {
-  background-color: rgba(228, 144, 123, 0.1);
+  background-color: rgba(232, 93, 71, 0.12);
 }
 .role-card-pm .role-title {
-  color: #e4907b;
+  color: #e85d47;
 }
 .role-card-pm .role-icon {
-  color: #e4907b;
+  color: #e85d47;
 }
 .role-card-pm:hover {
-  background-color: #e4907b;
-  border-color: #e4907b;
+  background-color: #e85d47;
+  border-color: #e85d47;
   transform: rotate(-1.5deg);
 }
 .role-card-pm:hover .role-title,
