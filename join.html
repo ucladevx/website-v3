@@ -16,7 +16,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Play:wght@400;700&display=swap" rel="stylesheet">
   
   <!-- Main Stylesheet -->
-  <link rel="stylesheet" href="styles.css?v=69">
+  <link rel="stylesheet" href="styles.css?v=70">
 </head>
 <body class="join-body">
 
@@ -63,7 +63,11 @@
           <p class="join-hero-desc">
             Ready to build, design, and innovate with us? Join DevX and start putting your ideas into the world.
           </p>
-          <div class="join-hero-cta">
+          <p class="join-countdown" id="app-countdown">
+            Applications close in ...
+          </p>
+          <div class="join-hero-cta btn-binary-wrap">
+            <div class="binary-field btn-binary-texture" aria-hidden="true"></div>
             <a href="https://docs.google.com/forms/d/e/1FAIpQLSchejwgFc5q5m28leclT5td6BfMTT5e-CC6-MO5BaVGH29n7w/viewform?usp=header" target="_blank" rel="noopener noreferrer" class="btn btn-hero-apply" id="hero-start-app-btn">
               Start Application
             </a>
@@ -425,7 +429,8 @@
     </div>
   </div>
 
-  <!-- JavaScript Logic -->
-  <script src="script.js?v=25"></script>
+  <!-- JavaScript Logic & Atmospheric Binary Texture -->
+  <script src="binary-texture.js?v=3"></script>
+  <script src="script.js?v=26"></script>
 </body>
 </html>

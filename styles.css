@@ -167,6 +167,33 @@ main {
   z-index: 0;
 }
 
+/* Universal wrapper and texture placement for white action buttons */
+.btn-binary-wrap {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+}
+
+.btn-binary-wrap .btn,
+.btn-binary-wrap .btn-hero-apply,
+.btn-binary-wrap .contact-us-btn {
+  position: relative;
+  z-index: 1;
+}
+
+.btn-binary-texture {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 360px;
+  height: 180px;
+  pointer-events: none;
+  z-index: 0;
+}
+
 /* 2. Who We Are Section: upper-right background behind text */
 .who-binary-right {
   top: 40px;
@@ -473,7 +500,7 @@ main {
 .hero-title {
   font-family: var(--font-header);
   font-size: clamp(88px, 9.8vw, 142px);
-  font-weight: 400;
+  font-weight: 700;
   line-height: 1;
   letter-spacing: -0.01em;
   color: var(--text-white);
@@ -1991,8 +2018,30 @@ main {
 }
 
 .join-hero-cta {
-  display: flex;
+  display: inline-flex;
   align-items: center;
+  position: relative;
+  width: fit-content;
+}
+
+.join-countdown {
+  font-family: var(--font-family);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.4;
+  color: #9ea1b3;
+  margin-top: -12px;
+  margin-bottom: 24px;
+  letter-spacing: -0.01em;
+}
+
+@keyframes liveTextPulse {
+  0%, 100% {
+    color: #000000;
+  }
+  50% {
+    color: #2970FF;
+  }
 }
 
 .btn-hero-apply {
@@ -2003,13 +2052,17 @@ main {
   background-color: #ffffff;
   color: #000000;
   font-size: 20px;
-  font-weight: 500;
+  font-weight: 600;
   padding: 14px 40px;
   border-radius: 10px;
   border: none;
   cursor: pointer;
-  transition: opacity 0.2s ease;
+  transition: opacity 0.2s ease, transform 0.2s ease;
   font-family: var(--font-family);
+  animation: liveTextPulse 2.8s ease-in-out infinite;
+  will-change: color;
+  position: relative;
+  z-index: 1;
 }
 
 .btn-hero-apply:hover {
@@ -3310,6 +3363,16 @@ main {
 .bruinplan-section {
   min-height: 760px;
   padding-bottom: 20px;
+}
+
+.bruinplan-section .project-content-column {
+  margin-top: -36px;
+}
+
+@media (max-width: 900px) {
+  .bruinplan-section .project-content-column {
+    margin-top: 0;
+  }
 }
 
 /* Ambient Gradient Mesh Bands (Drawn in on Scroll) */

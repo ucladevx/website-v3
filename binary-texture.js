@@ -31,9 +31,9 @@
     let cells = [], heat, atlas, colW, rowW;
     let running = false, raf = 0, last = 0, t = Math.random() * 10, visible = false;
 
-    // Detect if this field sits behind a button/CTA (e.g. Hero Join button)
-    const cta = host.closest('.hero-cta');
-    const ctaBtn = cta ? cta.querySelector('.btn') : null;
+    // Detect if this field sits behind a button/CTA (e.g. Hero Join, Start Application, View Projects, About Us, Contact Us)
+    const cta = host.closest('.hero-cta, .btn-binary-wrap, .join-hero-cta, .who-cta, .projects-cta, .projects-cta-container');
+    const ctaBtn = cta ? cta.querySelector('.btn, .btn-primary, .btn-hero-apply, .contact-us-btn') : null;
     let ctaHovered = false;
     let ctaIntensity = 0;
 

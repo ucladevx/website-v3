@@ -540,5 +540,38 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // =========================================================================
+  // 12. Recruitment Application Countdown Timer (Figma Node 207:602)
+  // Applications close October 2, 2026 at 11:59:59 PM PDT (UTC-7)
+  // =========================================================================
+  const appCountdown = document.getElementById('app-countdown');
+  if (appCountdown) {
+    const targetDate = new Date('2026-10-02T23:59:59-07:00').getTime();
+
+    function updateCountdown() {
+      const now = Date.now();
+      const diff = targetDate - now;
+
+      if (diff <= 0) {
+        appCountdown.textContent = 'Applications are now closed for this cycle.';
+        return;
+      }
+
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+      if (days > 0) {
+        appCountdown.textContent = `Applications close in ${days} Days, ${hours} Hours, ${minutes}m, ${seconds}s`;
+      } else {
+        appCountdown.textContent = `Applications close in ${hours} Hours, ${minutes}m, ${seconds}s`;
+      }
+    }
+
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+  }
+
 });
 
