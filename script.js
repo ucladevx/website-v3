@@ -108,45 +108,60 @@ document.addEventListener('DOMContentLoaded', () => {
   }, 1200);
 
   // =========================================================================
-  // 2. Interactive Projects Showcase
+  // 2. Interactive Projects Showcase (5 Figma Projects)
   // =========================================================================
   const projectDetails = {
+    retune: {
+      title: "Retune",
+      caption: "Retune, a location based music discovery app",
+      image: "assets/carousel-retune.png"
+    },
     blink: {
-      title: "blink",
-      caption: "blink, an app to stay on top of UCLA pop-ups",
-      image: "assets/project-blink.png"
+      title: "bLink",
+      caption: "bLink, an app to stay on top of UCLA pop-ups",
+      image: "assets/carousel-blink.png"
     },
-    chat: {
-      title: "UCLA ClassChat",
-      caption: "UCLA ClassChat, real-time course collaboration & lecture discussion",
-      image: "assets/project-chat.png"
+    bchat: {
+      title: "bChat",
+      caption: "bChat, an easy way to connect with classmates",
+      image: "assets/carousel-bchat.png"
     },
-    soundtown: {
-      title: "SoundTown",
-      caption: "SoundTown, social music tracking and UCLA friend discovery",
-      image: "assets/project-soundtown.png"
+    sync: {
+      title: "Sync",
+      caption: "Sync, scheduling with friends made easy",
+      image: "assets/carousel-sync.png"
+    },
+    bruinplan: {
+      title: "BruinPlan",
+      caption: "BruinPlan, drag-and-drop course and 4-year degree planning",
+      image: "assets/carousel-bruinplan.png"
     }
   };
 
+  const projectOrder = ['retune', 'blink', 'bchat', 'sync', 'bruinplan'];
   const projectCards = document.querySelectorAll('.project-card');
   const projectCaption = document.getElementById('project-caption');
+  const carouselContainer = document.getElementById('projects-carousel');
   let currentActiveKey = 'blink';
+  let rotateInterval = null;
 
   function updateProjectShowcase(activeKey) {
-    if (activeKey === currentActiveKey) return;
+    if (!projectOrder.includes(activeKey)) return;
     currentActiveKey = activeKey;
 
-    const keys = ['chat', 'blink', 'soundtown'];
-    const activeIdx = keys.indexOf(activeKey);
+    const total = projectOrder.length;
+    const activeIdx = projectOrder.indexOf(activeKey);
 
-    // Calculate left, center, right slots
-    const leftKey = keys[(activeIdx + 2) % 3];
+    const leftIdx = (activeIdx - 1 + total) % total;
+    const rightIdx = (activeIdx + 1) % total;
+
+    const leftKey = projectOrder[leftIdx];
     const centerKey = activeKey;
-    const rightKey = keys[(activeIdx + 1) % 3];
+    const rightKey = projectOrder[rightIdx];
 
     projectCards.forEach(card => {
       const pKey = card.getAttribute('data-project');
-      card.classList.remove('center-card', 'left-card', 'right-card', 'active');
+      card.classList.remove('center-card', 'side-card', 'left-card', 'right-card', 'hidden-card', 'active');
 
       if (pKey === centerKey) {
         card.classList.add('center-card', 'active');
@@ -154,6 +169,8 @@ document.addEventListener('DOMContentLoaded', () => {
         card.classList.add('side-card', 'left-card');
       } else if (pKey === rightKey) {
         card.classList.add('side-card', 'right-card');
+      } else {
+        card.classList.add('hidden-card');
       }
     });
 
@@ -166,10 +183,34 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
+  function nextProject() {
+    const currIdx = projectOrder.indexOf(currentActiveKey);
+    const nextIdx = (currIdx + 1) % projectOrder.length;
+    updateProjectShowcase(projectOrder[nextIdx]);
+  }
+
+  function startAutoRotate() {
+    stopAutoRotate();
+    rotateInterval = setInterval(() => {
+      nextProject();
+    }, 3000);
+  }
+
+  function stopAutoRotate() {
+    if (rotateInterval) {
+      clearInterval(rotateInterval);
+      rotateInterval = null;
+    }
+  }
+
+  // Start 5-second automatic rotation
+  startAutoRotate();
+
   projectCards.forEach(card => {
     card.addEventListener('click', () => {
       const pKey = card.getAttribute('data-project');
       updateProjectShowcase(pKey);
+      startAutoRotate();
     });
 
     card.addEventListener('keydown', (e) => {
@@ -177,9 +218,15 @@ document.addEventListener('DOMContentLoaded', () => {
         e.preventDefault();
         const pKey = card.getAttribute('data-project');
         updateProjectShowcase(pKey);
+        startAutoRotate();
       }
     });
   });
+
+  if (carouselContainer) {
+    carouselContainer.addEventListener('mouseenter', stopAutoRotate);
+    carouselContainer.addEventListener('mouseleave', startAutoRotate);
+  }
 
   // =========================================================================
   // 3. Hero Section (Interactive X Component handles live canvas particles)

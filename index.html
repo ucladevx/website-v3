@@ -16,7 +16,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Play:wght@400;700&display=swap" rel="stylesheet">
   
   <!-- Main Stylesheet -->
-  <link rel="stylesheet" href="styles.css?v=85" />
+  <link rel="stylesheet" href="styles.css?v=88" />
 </head>
 <body>
 
@@ -238,29 +238,45 @@
             <img src="assets/projects-glow.svg" alt="" />
           </div>
 
-          <!-- 3-Device Showcase Carousel -->
+          <!-- 5-Project Showcase Carousel -->
           <div class="projects-carousel" id="projects-carousel">
             
-            <!-- Left Side Project Card: Class Chat -->
-            <div class="project-card side-card left-card" data-project="chat" id="card-chat" role="button" tabindex="0" aria-label="View ClassChat Project">
+            <!-- Card 1: Retune -->
+            <div class="project-card side-card left-card" data-project="retune" id="card-retune" role="button" tabindex="0" aria-label="View Retune Project">
               <div class="phone-frame">
-                <img src="assets/project-chat.png" alt="UCLA Class Chat Project Screenshot" class="project-screenshot" />
+                <img src="assets/carousel-retune.png?v=2" alt="Retune Music Discovery App" class="project-screenshot" />
                 <div class="card-overlay"></div>
               </div>
             </div>
 
-            <!-- Center Project Card (Active): Blink Pop-ups -->
-            <div class="project-card center-card active" data-project="blink" id="card-blink" role="button" tabindex="0" aria-label="View Blink Project">
+            <!-- Card 2: bLink (Active Initially) -->
+            <div class="project-card center-card active" data-project="blink" id="card-blink" role="button" tabindex="0" aria-label="View bLink Project">
               <div class="phone-frame center-frame">
-                <img src="assets/project-blink.png" alt="Blink UCLA Pop-ups App Screenshot" class="project-screenshot" />
+                <img src="assets/carousel-blink.png?v=2" alt="bLink UCLA Pop-ups App" class="project-screenshot" />
                 <div class="card-overlay"></div>
               </div>
             </div>
 
-            <!-- Right Side Project Card: SoundTown -->
-            <div class="project-card side-card right-card" data-project="soundtown" id="card-soundtown" role="button" tabindex="0" aria-label="View SoundTown Project">
+            <!-- Card 3: BChat -->
+            <div class="project-card side-card right-card" data-project="bchat" id="card-bchat" role="button" tabindex="0" aria-label="View bChat Project">
               <div class="phone-frame">
-                <img src="assets/project-soundtown.png" alt="SoundTown Music Friends App Screenshot" class="project-screenshot" />
+                <img src="assets/carousel-bchat.png?v=2" alt="bChat Student Messaging App" class="project-screenshot" />
+                <div class="card-overlay"></div>
+              </div>
+            </div>
+
+            <!-- Card 4: Sync -->
+            <div class="project-card hidden-card" data-project="sync" id="card-sync" role="button" tabindex="0" aria-label="View Sync Project">
+              <div class="phone-frame">
+                <img src="assets/carousel-sync.png?v=2" alt="Sync Social Calendar App" class="project-screenshot" />
+                <div class="card-overlay"></div>
+              </div>
+            </div>
+
+            <!-- Card 5: BruinPlan -->
+            <div class="project-card hidden-card" data-project="bruinplan" id="card-bruinplan" role="button" tabindex="0" aria-label="View BruinPlan Project">
+              <div class="phone-frame">
+                <img src="assets/carousel-bruinplan.png?v=2" alt="BruinPlan Degree Planner App" class="project-screenshot" />
                 <div class="card-overlay"></div>
               </div>
             </div>
@@ -269,7 +285,7 @@
 
           <!-- Dynamic Project Caption -->
           <p class="project-caption" id="project-caption">
-            blink, an app to stay on top of UCLA pop-ups
+            bLink, an app to stay on top of UCLA pop-ups
           </p>
 
           <!-- Action Button -->
@@ -347,6 +363,6 @@
   <!-- JavaScript Logic & Interactive Hero X Component -->
   <script src="hero-x.js?v=12"></script>
   <script src="binary-texture.js?v=3"></script>
-  <script src="script.js?v=32"></script>
+  <script src="script.js?v=35"></script>
 </body>
 </html>

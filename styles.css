@@ -963,45 +963,47 @@ main {
   transition: opacity 0.4s ease;
 }
 
-/* Left Card (Figma node 183:366 - 206px x 281px) */
+/* Left Card */
 .project-card.left-card {
-  left: 30px;
-  width: 206px;
-  height: 281px;
+  left: 20px;
+  width: 280px;
+  height: 175px;
   opacity: 0.45;
   transform: scale(1) translateZ(0);
   z-index: 2;
 }
 
 .project-card.left-card .phone-frame {
-  width: 206px;
-  height: 281px;
+  width: 280px;
+  height: 175px;
+  border-radius: 12px;
 }
 
 .project-card.left-card .card-overlay {
-  background: linear-gradient(to right, rgba(20, 21, 25, 0.3), rgba(20, 21, 25, 0.85));
+  background: linear-gradient(to right, rgba(20, 21, 25, 0.25), rgba(20, 21, 25, 0.85));
 }
 
-/* Right Card (Figma node 183:364 - 231px x 281px) */
+/* Right Card */
 .project-card.right-card {
-  right: 30px;
-  width: 231px;
-  height: 281px;
+  right: 20px;
+  width: 280px;
+  height: 175px;
   opacity: 0.45;
   transform: scale(1) translateZ(0);
   z-index: 2;
 }
 
 .project-card.right-card .phone-frame {
-  width: 231px;
-  height: 281px;
+  width: 280px;
+  height: 175px;
+  border-radius: 12px;
 }
 
 .project-card.right-card .card-overlay {
-  background: linear-gradient(to left, rgba(20, 21, 25, 0.3), rgba(20, 21, 25, 0.85));
+  background: linear-gradient(to left, rgba(20, 21, 25, 0.25), rgba(20, 21, 25, 0.85));
 }
 
-/* Center Card (Figma node 183:362 - 676px x 400px) */
+/* Center Card (Active: 676px x 400px) */
 .project-card.center-card {
   width: 676px;
   height: 400px;
@@ -1020,6 +1022,17 @@ main {
 .project-card.center-card .card-overlay {
   opacity: 0;
 }
+
+/* Hidden Cards in Carousel */
+.project-card.hidden-card {
+  opacity: 0 !important;
+  pointer-events: none !important;
+  visibility: hidden;
+  transform: scale(0.6) translateZ(-50px);
+  z-index: 0;
+}
+
+
 
 .project-caption {
   font-size: 20px;
@@ -2264,93 +2277,63 @@ main {
   transition: color 0.25s ease;
 }
 
-/* Specific Role Theme Colors & Figma Variant-2 Exact Hover with slight outward rotation */
-.role-card-developer {
-  background-color: rgba(67, 127, 254, 0.1);
-}
-.role-card-developer .role-title {
-  color: #437ffe;
-}
-.role-card-developer .role-icon {
-  color: #437ffe;
-}
-.role-card-developer:hover {
-  background-color: #437ffe;
-  border-color: #437ffe;
-  transform: rotate(-1.5deg);
-}
-.role-card-developer:hover .role-title,
-.role-card-developer:hover .role-description {
-  color: #141519;
-}
-.role-card-developer:hover .role-icon {
-  color: #141519;
-}
-
-.role-card-designer {
-  background-color: rgba(232, 93, 71, 0.12);
-}
-.role-card-designer .role-title {
-  color: #e85d47;
-}
-.role-card-designer .role-icon {
-  color: #e85d47;
-}
-.role-card-designer:hover {
-  background-color: #e85d47;
-  border-color: #e85d47;
-  transform: rotate(1.5deg);
-}
-.role-card-designer:hover .role-title,
-.role-card-designer:hover .role-description {
-  color: #141519;
-}
-.role-card-designer:hover .role-icon {
-  color: #141519;
-}
-
-.role-card-pm {
-  background-color: rgba(232, 93, 71, 0.12);
-}
-.role-card-pm .role-title {
-  color: #e85d47;
-}
-.role-card-pm .role-icon {
-  color: #e85d47;
-}
-.role-card-pm:hover {
-  background-color: #e85d47;
-  border-color: #e85d47;
-  transform: rotate(-1.5deg);
-}
-.role-card-pm:hover .role-title,
-.role-card-pm:hover .role-description {
-  color: #141519;
-}
-.role-card-pm:hover .role-icon {
-  color: #141519;
-}
-
+/* Specific Role Theme Colors - All roles unified to the Dev & Marketer Blue Theme */
+.role-card-developer,
+.role-card-designer,
+.role-card-pm,
 .role-card-marketer {
   background-color: rgba(67, 127, 254, 0.1);
 }
+
+.role-card-developer .role-title,
+.role-card-designer .role-title,
+.role-card-pm .role-title,
 .role-card-marketer .role-title {
   color: #437ffe;
 }
+
+.role-card-developer .role-icon,
+.role-card-designer .role-icon,
+.role-card-pm .role-icon,
 .role-card-marketer .role-icon {
   color: #437ffe;
 }
+
+.role-card-developer:hover,
+.role-card-designer:hover,
+.role-card-pm:hover,
 .role-card-marketer:hover {
   background-color: #437ffe;
   border-color: #437ffe;
-  transform: rotate(1.5deg);
 }
+
+.role-card-developer:hover .role-title,
+.role-card-developer:hover .role-description,
+.role-card-designer:hover .role-title,
+.role-card-designer:hover .role-description,
+.role-card-pm:hover .role-title,
+.role-card-pm:hover .role-description,
 .role-card-marketer:hover .role-title,
 .role-card-marketer:hover .role-description {
   color: #141519;
 }
+
+.role-card-developer:hover .role-icon,
+.role-card-designer:hover .role-icon,
+.role-card-pm:hover .role-icon,
 .role-card-marketer:hover .role-icon {
   color: #141519;
+}
+
+/* Subtle alternating rotation on hover */
+.role-card-developer:hover,
+.role-card-pm:hover {
+  transform: rotate(-1.5deg);
+}
+
+.role-card-designer:hover,
+.role-card-marketer:hover {
+  transform: rotate(1.5deg);
 }
 
 /* 3. Internship Program Section */
