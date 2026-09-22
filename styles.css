@@ -1749,7 +1749,10 @@ main {
    ========================================================================== */
 
 .team-body {
+  position: relative;
   background-color: var(--bg-main);
+  color: var(--text-white);
+  overflow-x: hidden;
   min-height: auto;
 }
 
@@ -2007,6 +2010,7 @@ main {
    ========================================================================== */
 
 .join-body {
+  position: relative;
   background-color: var(--bg-main);
   color: var(--text-white);
   overflow-x: hidden;
@@ -2729,23 +2733,33 @@ main {
 .page-top-glow,
 .about-glow-blue-topleft {
   position: absolute;
-  top: -281px;
-  left: -445px;
-  width: 1127px;
-  height: 670px;
+  top: -280px;
+  left: -320px;
+  width: 1500px;
+  height: 920px;
   pointer-events: none;
   user-select: none;
   z-index: 0;
   overflow: visible;
+  background: radial-gradient(
+    ellipse 65% 55% at 30% 32%,
+    rgba(55, 130, 245, 0.40) 0%,
+    rgba(29, 78, 216, 0.28) 30%,
+    rgba(22, 54, 138, 0.16) 55%,
+    rgba(16, 35, 85, 0.05) 75%,
+    transparent 100%
+  );
 }
 
 .page-top-glow img,
 .about-glow-blue-topleft img {
   position: absolute;
-  top: -20.28%;
-  left: -12.05%;
-  width: 124.1%;
-  height: 140.56%;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.9;
   display: block;
 }
 
@@ -3304,8 +3318,10 @@ main {
    ========================================================================== */
 
 .projects-body {
+  position: relative;
   background-color: var(--bg-main);
   color: var(--text-white);
+  overflow-x: hidden;
   min-height: 100vh;
 }
 
