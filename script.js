@@ -220,7 +220,9 @@ document.addEventListener('DOMContentLoaded', () => {
     navJoinTrigger.addEventListener('click', openModal);
   }
   if (heroJoinTrigger) heroJoinTrigger.addEventListener('click', openModal);
-  if (heroStartAppBtn) heroStartAppBtn.addEventListener('click', openModal);
+  if (heroStartAppBtn && heroStartAppBtn.tagName === 'BUTTON') {
+    heroStartAppBtn.addEventListener('click', openModal);
+  }
   if (footerJoinLink) footerJoinLink.addEventListener('click', (e) => {
     if (footerJoinLink.getAttribute('href') === '#') {
       e.preventDefault();
