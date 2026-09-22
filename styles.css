@@ -368,7 +368,7 @@ main {
   font-family: var(--font-family);
   font-weight: 400;
   border-radius: 10px;
-  transition: var(--transition-smooth);
+  transition: color 0.25s ease, background-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease, opacity 0.2s ease;
   text-decoration: none;
   user-select: none;
 }
@@ -385,6 +385,7 @@ main {
 
 .btn-primary:hover {
   background-color: #f3f4f6;
+  color: #2970FF;
   transform: translateY(-2px) scale(1.02);
   box-shadow: 0 12px 28px -4px rgba(255, 255, 255, 0.22);
 }
@@ -410,6 +411,7 @@ main {
   transform: none !important;
   box-shadow: none !important;
   background-color: #f3f4f6;
+  color: #2970FF;
 }
 
 .btn-large {
@@ -419,15 +421,35 @@ main {
   padding: 16px 24px;
 }
 
-/* Disabled hover effects on About Us & View Projects buttons on Home */
+/* Action buttons on Home (Join, About Us, View Projects) keep stable size and turn text blue on hover */
+#hero-join-trigger:hover,
 #about-us-trigger:hover,
-#about-us-trigger:active,
-#view-projects-trigger:hover,
-#view-projects-trigger:active {
+#view-projects-trigger:hover {
   transform: none !important;
   box-shadow: none !important;
   background-color: var(--btn-bg) !important;
-  color: var(--btn-text) !important;
+  color: #2970FF !important;
+}
+
+#hero-join-trigger:active,
+#about-us-trigger:active,
+#view-projects-trigger:active {
+  transform: scale(0.98) !important;
+  box-shadow: none !important;
+  color: #2970FF !important;
+}
+
+/* Universal Action Buttons Hover: Text turns vibrant DevX blue on hover */
+.btn-primary:hover,
+.btn-hero-apply:hover,
+.contact-us-btn:hover,
+.nav-join-btn:hover,
+#hero-join-trigger:hover,
+#about-us-trigger:hover,
+#view-projects-trigger:hover,
+#hero-start-app-btn:hover,
+#projects-contact-trigger:hover {
+  color: #2970FF !important;
 }
 
 .btn-block {
@@ -535,6 +557,7 @@ main {
   transform: none;
   box-shadow: none;
   background-color: var(--btn-bg);
+  color: #2970FF;
 }
 
 .hero-cta .btn:active,
@@ -2066,7 +2089,9 @@ main {
 }
 
 .btn-hero-apply:hover {
-  opacity: 0.92;
+  opacity: 0.96;
+  color: #2970FF !important;
+  animation-play-state: paused;
 }
 
 .btn-hero-apply:active {
@@ -3691,6 +3716,7 @@ main {
 .contact-us-btn:focus,
 .contact-us-btn:active {
   background-color: #f3f4f6;
+  color: #2970FF;
   transform: none !important;
   box-shadow: none !important;
   text-shadow: none !important;
