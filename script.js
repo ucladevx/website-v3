@@ -776,5 +776,43 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // =========================================================================
+  // 9. Add to Calendar (Applications Due)
+  // =========================================================================
+  const addCalBtn = document.getElementById('add-to-calendar-btn');
+  if (addCalBtn) {
+    addCalBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      const icsData = [
+        'BEGIN:VCALENDAR',
+        'VERSION:2.0',
+        'PRODID:-//UCLA DevX//Application Deadline//EN',
+        'CALSCALE:GREGORIAN',
+        'METHOD:PUBLISH',
+        'BEGIN:VEVENT',
+        'UID:devx-apps-due-' + Date.now() + '@ucladevx.com',
+        'DTSTAMP:' + new Date().toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z',
+        'DTSTART:20261002T235900',
+        'DTEND:20261003T005900',
+        'SUMMARY:UCLA DevX Applications Due',
+        'DESCRIPTION:Submit your application along with your resume and portfolio at https://ucladevx.com/join.html',
+        'LOCATION:UCLA',
+        'STATUS:CONFIRMED',
+        'END:VEVENT',
+        'END:VCALENDAR'
+      ].join('\r\n');
+
+      const blob = new Blob([icsData], { type: 'text/calendar;charset=utf-8' });
+      const url = URL.createObjectURL(blob);
+      const tempLink = document.createElement('a');
+      tempLink.href = url;
+      tempLink.setAttribute('download', 'DevX-Applications-Due.ics');
+      document.body.appendChild(tempLink);
+      tempLink.click();
+      document.body.removeChild(tempLink);
+      setTimeout(() => URL.revokeObjectURL(url), 1000);
+    });
+  }
+
 });
 
