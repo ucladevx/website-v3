@@ -1205,7 +1205,6 @@ main {
   pointer-events: none;
   z-index: 10;
   display: block;
-  box-shadow: 0 0 12px rgba(67, 127, 254, 0.35);
 }
 
 .footer-pixel-canvas {
