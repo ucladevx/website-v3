@@ -2733,20 +2733,20 @@ main {
 .page-top-glow,
 .about-glow-blue-topleft {
   position: absolute;
-  top: -280px;
-  left: -320px;
-  width: 1500px;
-  height: 920px;
+  top: -260px;
+  left: -280px;
+  width: 1550px;
+  height: 960px;
   pointer-events: none;
   user-select: none;
   z-index: 0;
   overflow: visible;
   background: radial-gradient(
-    ellipse 65% 55% at 30% 32%,
-    rgba(55, 130, 245, 0.40) 0%,
-    rgba(29, 78, 216, 0.28) 30%,
-    rgba(22, 54, 138, 0.16) 55%,
-    rgba(16, 35, 85, 0.05) 75%,
+    ellipse 65% 60% at 32% 32%,
+    rgba(67, 140, 255, 0.48) 0%,
+    rgba(37, 99, 245, 0.34) 28%,
+    rgba(22, 65, 170, 0.20) 52%,
+    rgba(16, 40, 110, 0.08) 72%,
     transparent 100%
   );
 }
