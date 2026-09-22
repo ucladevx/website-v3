@@ -573,5 +573,211 @@ document.addEventListener('DOMContentLoaded', () => {
     setInterval(updateCountdown, 1000);
   }
 
+  // =========================================================================
+  // 13. Footer Top Border Pixel Band (Interactive Blue ASCII / Pixel Shimmer)
+  // Matching the Hero X simmering particle effect along the top of the footer
+  // =========================================================================
+  const footerElem = document.querySelector('.site-footer');
+  if (footerElem) {
+    let band = footerElem.querySelector('.footer-pixel-band');
+    if (!band) {
+      band = document.createElement('div');
+      band.className = 'footer-pixel-band';
+      band.setAttribute('aria-hidden', 'true');
+      footerElem.insertBefore(band, footerElem.firstChild);
+    }
+
+    let cvs = band.querySelector('canvas');
+    if (!cvs) {
+      cvs = document.createElement('canvas');
+      cvs.className = 'footer-pixel-canvas';
+      band.appendChild(cvs);
+    }
+
+    const ctx = cvs.getContext('2d');
+    const mqReduce = matchMedia('(prefers-reduced-motion: reduce)');
+
+    const GLYPHS = ['0', '1', '+', '-', '=', '/', '\\', '|', '<', '>', '#', ':', '*', '~', '^'];
+    const CELL_SIZE = 7; // CSS pixels per cell
+    let W = 0, H = 0, dpr = 1, cols = 0, rows = 1, cells = [];
+    let running = false, raf = 0, last = 0, t = 0, isVisible = true;
+    let grad = null, gradW = 0;
+    const ptr = { on: false, x: 0, y: 0, R: 100 };
+
+    // Pre-rendered glyph atlas for high-performance stamping
+    let atlas = null;
+    function makeAtlas(cellPx) {
+      atlas = document.createElement('canvas');
+      atlas.width = GLYPHS.length * cellPx;
+      atlas.height = cellPx;
+      const a = atlas.getContext('2d');
+      a.fillStyle = '#ffffff';
+      a.textAlign = 'center';
+      a.textBaseline = 'middle';
+      a.font = `700 ${Math.round(cellPx * 0.92)}px ui-monospace, SFMono-Regular, Menlo, Consolas, monospace`;
+      GLYPHS.forEach((ch, k) => a.fillText(ch, k * cellPx + cellPx / 2, cellPx * 0.52));
+    }
+
+    function build() {
+      const rect = band.getBoundingClientRect();
+      const w = rect.width || footerElem.clientWidth || window.innerWidth;
+      const h = rect.height || 8;
+      if (!w) return;
+
+      dpr = Math.min(window.devicePixelRatio || 1, 2);
+      W = Math.round(w * dpr);
+      H = Math.round(h * dpr);
+      cvs.width = W;
+      cvs.height = H;
+      cvs.style.width = `${w}px`;
+      cvs.style.height = `${h}px`;
+
+      const cellPx = Math.max(5, Math.round(CELL_SIZE * dpr));
+      cols = Math.ceil(W / cellPx);
+      rows = Math.max(1, Math.floor(H / cellPx));
+      makeAtlas(cellPx);
+
+      cells = [];
+      for (let j = 0; j < rows; j++) {
+        for (let i = 0; i < cols; i++) {
+          const r = Math.random();
+          // 40% bits (0/1), 30% ascii glyphs, 30% solid micro pixel blocks
+          const kind = r < 0.40 ? 0 : r < 0.70 ? 1 : 2;
+          const g = kind === 0 ? (Math.random() < 0.5 ? 0 : 1)
+                  : kind === 1 ? 2 + Math.floor(Math.random() * (GLYPHS.length - 2))
+                  : -1;
+          cells.push({
+            i, j,
+            kind,
+            g,
+            sp: 0.9 + Math.random() * 1.8,
+            ph: Math.random() * Math.PI * 2,
+            baseAlpha: 0.22 + Math.random() * 0.50,
+            heat: 0
+          });
+        }
+      }
+      grad = null;
+    }
+
+    function draw(now, dt) {
+      if (!W || !H || !cells.length) return;
+      ctx.clearRect(0, 0, W, H);
+
+      const cellPx = Math.max(5, Math.round(CELL_SIZE * dpr));
+      const pxSize = Math.max(1, Math.round(cellPx * 0.8));
+      const pxOff = (cellPx - pxSize) >> 1;
+      const decay = Math.pow(0.85, dt * 60);
+
+      for (let n = 0; n < cells.length; n++) {
+        const c = cells[n];
+        c.heat *= decay;
+
+        if (ptr.on) {
+          const cx = (c.i + 0.5) * cellPx;
+          const cy = (c.j + 0.5) * cellPx;
+          const dist = Math.hypot(cx - ptr.x, cy - ptr.y);
+          if (dist < ptr.R * dpr) {
+            const f = 1 - dist / (ptr.R * dpr);
+            if (f > c.heat) c.heat = f;
+          }
+        }
+
+        const pulse = 0.5 + 0.5 * Math.sin(now * c.sp + c.ph);
+        if (pulse > 0.93 && Math.random() < 0.08) {
+          if (c.kind === 0) c.g = Math.random() < 0.5 ? 0 : 1;
+          else if (c.kind === 1) c.g = 2 + Math.floor(Math.random() * (GLYPHS.length - 2));
+        }
+
+        let a = c.baseAlpha * (0.65 + 0.35 * pulse) + c.heat * 0.55;
+        if (a > 1) a = 1;
+        if (a < 0.04) continue;
+
+        const x = c.i * cellPx;
+        const y = c.j * cellPx;
+
+        ctx.globalAlpha = a;
+        if (c.g < 0) {
+          ctx.fillRect(x + pxOff, y + pxOff, pxSize, pxSize);
+        } else {
+          ctx.drawImage(atlas, c.g * cellPx, 0, cellPx, cellPx, x, y, cellPx, cellPx);
+        }
+      }
+
+      // DevX Electric Blue gradient overlay matching Hero X
+      ctx.globalAlpha = 1;
+      ctx.globalCompositeOperation = 'source-in';
+      if (!grad || gradW !== W) {
+        gradW = W;
+        grad = ctx.createLinearGradient(0, 0, W, 0);
+        grad.addColorStop(0.00, '#3875f6');
+        grad.addColorStop(0.15, '#437ffe');
+        grad.addColorStop(0.35, '#5b8bfb');
+        grad.addColorStop(0.50, '#7da7fd');
+        grad.addColorStop(0.65, '#5b8bfb');
+        grad.addColorStop(0.85, '#437ffe');
+        grad.addColorStop(1.00, '#3875f6');
+      }
+      ctx.fillStyle = grad;
+      ctx.fillRect(0, 0, W, H);
+      ctx.globalCompositeOperation = 'source-over';
+    }
+
+    function loop(ms) {
+      if (!running) return;
+      raf = requestAnimationFrame(loop);
+      const dt = Math.min(0.05, (ms - last) / 1000 || 0.016);
+      last = ms;
+      t += dt;
+      draw(t, dt);
+    }
+
+    function start() {
+      if (running || mqReduce.matches || !isVisible) return;
+      running = true;
+      last = performance.now();
+      raf = requestAnimationFrame(loop);
+    }
+
+    function stop() {
+      running = false;
+      if (raf) cancelAnimationFrame(raf);
+    }
+
+    footerElem.addEventListener('pointerenter', () => { ptr.on = true; }, { passive: true });
+    footerElem.addEventListener('pointerleave', () => { ptr.on = false; }, { passive: true });
+    footerElem.addEventListener('pointermove', (e) => {
+      ptr.on = true;
+      const rect = cvs.getBoundingClientRect();
+      ptr.x = (e.clientX - rect.left) * dpr;
+      ptr.y = (e.clientY - rect.top) * dpr;
+    }, { passive: true });
+
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          isVisible = entry.isIntersecting;
+          if (isVisible) start();
+          else stop();
+        });
+      }, { threshold: 0.01 });
+      observer.observe(footerElem);
+    } else {
+      start();
+    }
+
+    let resizeTimer;
+    window.addEventListener('resize', () => {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(() => {
+        build();
+        draw(t, 0.016);
+      }, 100);
+    }, { passive: true });
+
+    build();
+    start();
+  }
+
 });
 
