@@ -29,7 +29,7 @@
 }
 
 html {
-  overflow-x: hidden;
+  overflow-x: clip;
   scroll-behavior: smooth;
   background-color: var(--bg-main);
   color: var(--text-white);
@@ -41,7 +41,7 @@ html {
 body {
   background-color: var(--bg-main);
   color: var(--text-white);
-  overflow-x: hidden;
+  overflow-x: clip;
   position: relative;
   min-height: 100vh;
   width: 100%;
@@ -538,13 +538,13 @@ main {
    ========================================================================== */
 
 .hero-section {
-  position: relative;
+  position: sticky;
+  top: 0;
   width: 100%;
   max-width: 100%;
   background-color: #101216;                      /* Darker background for hero section */
   height: 100vh;
   min-height: 680px;
-  max-height: 840px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -672,8 +672,10 @@ main {
   padding: 170px 48px 80px;
   display: flex;
   justify-content: center;
-  z-index: 1;
+  z-index: 10;
   overflow: hidden;
+  background-color: var(--bg-main);
+  box-shadow: none;
 }
 
 /* Side Glow Container inside Who Section - Subtle edge accent (mostly off-screen) */
@@ -829,14 +831,15 @@ main {
 .projects-section {
   position: relative;
   width: 100%;
-  max-width: var(--max-content-width);
+  max-width: 100%;
   min-height: 974px;
   height: 974px;
   padding: 130px 48px 0;
   display: flex;
   justify-content: center;
-  z-index: 1;
+  z-index: 10;
   overflow: hidden;
+  background-color: var(--bg-main);
 }
 
 .projects-container {
@@ -1074,8 +1077,9 @@ main {
   display: flex;
   flex-direction: column;
   align-items: center;
-  z-index: 2;
+  z-index: 10;
   overflow: hidden;
+  background-color: var(--bg-main);
 }
 
 .alumni-container {
@@ -1208,7 +1212,7 @@ main {
   padding: 65px 48px 40px;
   display: flex;
   justify-content: center;
-  z-index: 1;
+  z-index: 10;
   border-top: none;
 }
 
@@ -1492,7 +1496,10 @@ main {
 
 @media (max-width: 1024px) {
   .hero-section {
-    height: auto;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    height: 100vh;
     min-height: 600px;
     max-height: none;
     padding: 95px 32px 50px;
@@ -1670,12 +1677,15 @@ main {
   }
 
   .hero-section {
+    position: sticky;
+    top: 0;
+    z-index: 1;
     min-height: 520px;
-    height: auto;
+    height: 100vh;
+    height: 100svh;
     max-height: none;
     padding: 85px 16px 40px;
     overflow: hidden;
-    position: relative;
     display: flex;
     align-items: center;
   }
